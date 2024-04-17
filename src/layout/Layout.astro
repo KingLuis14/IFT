@@ -1,0 +1,284 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import BtnWhatsApp from '../components/BtnWhatsApp.astro';
+import MiFooter from '../components/Footer.astro';
+
+
+interface Props {
+    titulo: string;
+    descripction: string;
+}
+const { titulo, descripction } = Astro.props;
+
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content={descripction} />
+        <slot name="preload" />
+        <title>IFT - {titulo}</title>
+        <ViewTransitions />
+    </head>
+    <body>
+        <slot name="Banner" />
+        <slot />
+        <slot name="CTA" /> 
+        <BtnWhatsApp />
+        <MiFooter />
+    </body>
+
+</html>
+<style is:global lang="scss">
+    // @font-face {
+    //     font-family: "inter";
+    //     src: url("/fonts/Inter-VariableFont_slnt,wght.woff2") format("woff2-variations");
+    //     font-display: swap;
+    // }
+
+    :root {
+        --step--2: clamp(0.6944rem, 0.6766rem + 0.089vi, 0.7378rem);
+        --step--1: clamp(0.8333rem, 0.812rem + 0.1068vi, 0.8854rem);
+        --step-0: clamp(1rem, 0.9744rem + 0.1282vi, 1.0625rem);
+        --step-1: clamp(1.2rem, 1.1692rem + 0.1538vi, 1.275rem);
+        --step-2: clamp(1.44rem, 1.4031rem + 0.1846vi, 1.53rem);
+        --step-3: clamp(1.728rem, 1.6837rem + 0.2215vi, 1.836rem);
+        --step-4: clamp(2.0736rem, 2.0204rem + 0.2658vi, 2.2032rem);
+        --step-5: clamp(2.4883rem, 2.4245rem + 0.319vi, 2.6438rem);
+        --step-6: clamp(2.986rem, 2.9094rem + 0.3828vi, 3.1726rem);
+
+        --alto-header: clamp(3rem, 1.2727rem + 3.6364vw, 4rem);
+        --section-padding: clamp(2rem, 1.2727rem + 3.6364vw, 5rem);
+
+        --color-Primary50: #f1f4ff;
+        --color-Primary100: #e5eaff;
+        --color-Primary200: #cfdbff;
+        --color-Primary300: #a8baff;
+        --color-Primary400: #778dff;
+        --color-Primary500: #4054ff;
+        --color-Primary600: #1a25ff;
+        --color-Primary700: #0814f9;
+        --color-Primary800_: #0610cc; 
+        --color-Primary900: #070fab;
+        --color-Primary950: #010c74;
+
+        --bg-color: #e5eaff;
+        --color-Secondary:#282829;
+        color-scheme: light;
+    }
+
+
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    img {
+        display: block;
+        object-fit: cover;
+        max-width: 100%;
+        width: 100%;
+        height: 100%;
+        min-height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        text-indent: -9999px;
+        vertical-align: middle;
+    }
+
+    body {
+        min-height: 100svh;
+        // margin-top: var(--alto-header);
+        font-size: var(--step-0);
+        font-family: sans-serif;
+        line-height: 1.45;
+        overflow-x: hidden;
+        
+        
+        
+    }
+
+    .wrapper {
+        width: min(90%, 1100px);
+        display: grid;
+        margin-inline: auto;
+        gap: var(--section-padding);
+    }
+
+    .titleSection {
+        font-size: var(--step-3);
+        text-align: center; 
+        line-height: normal;
+    }
+
+    section {
+        padding-block: var(--section-padding);
+        // position: relative;
+        
+    }
+
+    .section-padding {
+        padding-block: var(--section-padding);
+        
+    }
+
+    .sectionColor2{
+        background-color: #f8f8f8;
+    }
+
+    .degradado {
+        background-image: linear-gradient(
+            135deg,
+            var(--color-Primary) 0%,
+            var(--color-Secondary) 100%
+        );
+    }
+
+    .footerColor {
+        background: rgb(37, 37, 37);
+    }
+
+    a {
+        text-decoration: none;
+        display: inline-block;
+    }
+    li {
+        list-style: none;
+    }
+
+    .superTitulo {
+        font-size: var(--step-6);
+        line-height: normal;
+        text-align: center;
+    }
+
+    h1,
+    .title1 {
+        font-size: var(--step-3);
+    }
+
+    h2,
+    .title2 {
+        font-size: var(--step-2);
+    }
+    h3,
+    .title3 {
+        font-size: var(--step-1);
+    }
+    h4,
+    .normal {
+        font-size: var(--step-0);
+    }
+    h5,
+    .small {
+        font-size: var(--step--1);
+    }
+    h6,
+    .smallx {
+        font-size: var(--step--2);
+    }
+
+    .boton{
+        width: max-content;
+        border-radius: .25rem;
+        padding: .5rem 1.5rem;
+        text-align: center;
+        font-weight: 600;
+
+        &--primary{
+            @extend .boton;
+            color: #fff;
+            background-color: var(--color-Primary500);
+
+            &:hover{
+                background-color: var(--color-Primary600);
+            }
+            
+        }
+
+        &--secondary{
+            @extend .boton;
+            color: var(--color-Secondary);
+            border: 3px solid var(--color-Secondary);
+        }
+    }
+
+    .animation-loader{
+        background-color: #d7e1e7;
+        animation: loader 2s infinite alternate;
+    }
+
+    @keyframes loader {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: .5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("astro:page-load", function () {
+        const images =
+            document.querySelectorAll<HTMLImageElement>("img[data-srcx]");
+        const sectionCTA =
+            document.querySelectorAll<HTMLImageElement>("section[data-cta]");
+
+        const imgOptions = {
+            rootMargin: `0px 0px 200px 0px`,
+        };
+        const imgObserver = new IntersectionObserver((entries, imgObserver) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                const img = entry.target as HTMLImageElement;
+                img.src = img.getAttribute("data-srcx");
+                imgObserver.unobserve(entry.target);
+
+                img.addEventListener("load", () => {
+                    setTimeout(() => {
+                        img.parentElement.classList.remove("animation-loader");
+                        img.parentElement.classList.add("loaderOk");
+                    }, 1500);
+                });
+            });
+        }, imgOptions);
+
+        const imgOptionsCTA = {
+            rootMargin: `0px 0px 700px 0px`,
+        };
+        const imgObserverCTA = new IntersectionObserver(
+            (entries, imgObserver) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+
+                    const CTA = entry.target as HTMLElement;
+                    CTA.classList.remove("animation-loader");
+                    CTA.classList.add("background");
+                    imgObserver.unobserve(entry.target);
+                });
+            },
+            imgOptionsCTA,
+        );
+
+        images.forEach((img) => {
+            imgObserver.observe(img);
+        });
+
+        sectionCTA.forEach((img) => {
+            imgObserverCTA.observe(img);
+        });
+    });
+</script>
+
+

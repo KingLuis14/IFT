@@ -1,0 +1,18 @@
+[
+    {
+        "item": "Nosotros",
+        "url": "/nosotros"
+    },
+    {
+        "item": "Contacto",
+        "url": "/contacto"
+    },
+    {
+        "item": "Servicios",
+        "url": "/servicios"
+    },
+    {
+        "item": "Area Virtual",
+        "url": "/area-virtual"
+    }
+]

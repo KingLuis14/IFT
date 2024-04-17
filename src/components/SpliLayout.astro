@@ -1,0 +1,77 @@
+---
+type order = "Left" | "Right";
+
+interface Props {
+    orderContainer?: order;
+    imagen: string;
+    placeholder: string;
+}
+
+const { orderContainer = "Left", imagen, placeholder } = Astro.props;
+---
+
+<article class="Split-Container">
+    <div class:list={["contenido", { order: orderContainer === "Right" }]}>
+        <slot />
+    </div>
+    <div class="Imagen-Container">
+        <img
+            class="Split__Imagen"
+            data-srcx={`img/${imagen}.avif`}
+            style={`background-image: url(/img/${placeholder})`}
+            alt={`${imagen} - IFT`}
+        />
+    </div>
+</article>
+
+<style lang="scss">
+    .Split-Container {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: min(100%, 850px);
+        margin-inline: auto;
+        gap: 2rem;
+        @media (width > 768px) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .Imagen-Container {
+        overflow: hidden;
+        aspect-ratio: 16/9;
+        border-radius: .5rem;
+        min-height: 100%;
+        // -webkit-mask-image: linear-gradient(black 90%, transparent 100%);
+        // mask-image: linear-gradient(white 97%, transparent 100%);
+
+        @media (width > 768px) {
+            aspect-ratio: 1/1;
+        }
+    }
+
+    .Split__Imagen {
+        background-color: #d7e1e7;
+        filter: saturate(0.8);
+        transition:
+            transform 0.7s,
+            filter 0.7s;
+
+        &:hover {
+            transform: scale(1.15);
+            filter: saturate(1);
+        }
+
+    }
+
+    .contenido {
+        min-height: 100%;
+        align-content: center;
+    }
+
+    .order {
+        order: 0;
+        @media (width > 768px) {
+            order: 1;
+        }
+    }
+</style>

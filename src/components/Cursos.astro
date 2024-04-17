@@ -1,0 +1,38 @@
+---
+import DataCursos from "../data/GetDataCursos";
+import CardCurso from "./CardCurso.astro";
+---
+
+
+<section>
+    <div class="wrapper">
+        <h2 class="titleSection">Cursos</h2>
+        <div class="Cursos-Container">
+            {
+             DataCursos.map(({titulo, descripcion, url, imagenes}) =>{
+                return <CardCurso 
+                            titulo={titulo} 
+                            descripcion={descripcion} 
+                            url={url} 
+                            imagenes={imagenes}
+                        />
+                })   
+            }
+        </div>
+    </div>
+</section>
+
+<style lang="scss" >
+    .Cursos-Container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        @media (width > 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media (width > 1024px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+</style>

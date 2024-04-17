@@ -1,0 +1,103 @@
+---
+import DataCursos from "../data/GetDataCursos";
+import Layout from "../layout/Layout.astro";
+import MallaCurricular from "../sections/MallaCurricular.astro";
+import Acordeon from "../components/Acordeon.astro";
+import BannerCurso from "../components/BannerCurso.astro";
+
+export async function getStaticPaths() {
+    return DataCursos.map((curso) => {
+        return {
+            params: { curso: curso.id },
+            props: curso,
+        };
+    });
+}
+
+const { id, url, descripcion, titulo, imagenes, modulos, imagenesBanner } =
+    Astro.props;
+
+const { base64, original } = imagenes;
+---
+
+<Layout titulo={titulo} descripction={descripcion}>
+    <link
+        slot="preload"
+        fetchpriority="high"
+        rel="preload"
+        as="image"
+        href=`img/${imagenesBanner.imagen}-small-lcpi.avif`
+        media="(max-width: 640px)"
+        type="image/webp"
+    />
+    <link
+        slot="preload"
+        fetchpriority="high"
+        rel="preload"
+        as="image"
+        href=`img/${imagenesBanner.imagen}-large-lcpi.avif`
+        media="(min-width: 641px)"
+        type="image/webp"
+    />
+    <BannerCurso
+        slot="Banner"
+        titulo={titulo}
+        description={descripcion}
+        textButton="Inscribete"
+        imagenesBanner={imagenesBanner}
+    />
+    <MallaCurricular>
+        {
+            modulos.map(({ id, semanas }, i) => {
+                return (
+                    <>
+                        <h3 style="padding: 1rem;">{`Modulo ${i+1} : ${id}`}</h3>
+                        {semanas.map((semana, index) => {
+                            return (
+                                <Acordeon
+                                    numModulo={index + 1}
+                                    modulo={id}
+                                    semanas={semana.temas}
+                                />
+                            );
+                        })}
+                    </>
+                );
+            })
+        }
+
+        <div slot="Poster" class="Poster animation-loader">
+            <img data-srcx={`${original}.avif`} alt={`${titulo} - IFT`} />
+        </div>
+    </MallaCurricular>
+</Layout>
+
+<style lang="scss">
+    .Poster {
+        aspect-ratio: 2/2.5;
+        grid-area: poster;
+        align-self: start;
+        position: sticky;
+        top: 0;
+        overflow: hidden;
+        border-radius: 1rem;
+
+        &.animation-loader {
+            background-color: #d7e1e7;
+            animation: loader 1.5s infinite alternate;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #d7e1e7;
+        }
+
+        &.loaderOk::before {
+            content: none;
+        }
+    }
+</style>

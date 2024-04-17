@@ -1,0 +1,31 @@
+---
+import HabilidadesData from "../data/Habilidades.json";
+import ItemBeneficio from "./ItemBeneficio.astro";
+---
+
+
+<section class="sectionColor2">
+    <div class="wrapper">
+        <h2 class="titleSection">Beneficios</h2>
+        <div class="Habilidades-Container">
+            {
+                HabilidadesData.map(({icono, texto}) =>{
+                    return <ItemBeneficio nameIcon={icono} texto={texto}/>
+                })
+            }
+        </div>
+    </div>
+</section>
+
+<style lang="scss" >
+
+    .Habilidades-Container {
+       display: flex;
+       flex-wrap: wrap;
+       gap: 1rem;
+       justify-content: center;
+       width: min(90%, 700px);
+       margin-inline: auto;
+    //    background-color: black;
+   }
+</style>

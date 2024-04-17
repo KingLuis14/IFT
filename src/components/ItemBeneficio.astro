@@ -1,0 +1,43 @@
+---
+import { Icon } from 'astro-icon/components';
+interface Props {
+    nameIcon: string;
+    texto: string;
+}
+
+
+const {nameIcon, texto} = Astro.props;
+---
+
+
+<article class="Skill">
+    <span style="">
+        <Icon class="Skill__Icon" name={nameIcon} size={70}/>
+    </span>
+    <p class="Skill__texto">{texto}</p>
+</article>
+
+<style lang="scss" >
+    .Skill{
+        flex-basis: 45%;
+        padding: 1rem;
+        display: flex;
+        min-width: 130px;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .Skill__Icon{
+
+        color: var(--color-Primary500);
+        background-color: var(--color-Primary100);
+        border-radius: 50%;
+        padding: 0.7rem;
+    }
+
+    .Skill__texto{
+        text-align: center;
+        white-space: pre-line;
+    }
+</style>

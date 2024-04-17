@@ -1,0 +1,12 @@
+---
+import Banner from "../components/Banner.astro";
+import Layout from "../layout/Layout.astro";
+import BannerData from "../data/BannerData";
+
+---
+
+<Layout titulo="404" descripction="Pagina aun en construccion">
+    <Banner {...BannerData.servicios} slot="Banner"/>
+    <!-- <Nosotros2 />
+    <Cta slot="CTA"/> -->
+</Layout>

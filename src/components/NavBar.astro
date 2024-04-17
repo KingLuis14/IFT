@@ -1,0 +1,118 @@
+---
+import { Icon } from "astro-icon/components";
+interface Props {
+    ArrayItems: { item: string; url: string }[];
+}
+
+const { ArrayItems } = Astro.props;
+
+---
+
+<header class="navbar-container">
+    <nav class="navbar wrapper">
+        <a class="navbar__logo" href="/" aria-label="click para ir al pagina principal">
+            <img src="img/logo.png" alt="logo del instituto IFT">
+        </a>
+        <ul class="menu" id="main-menu">
+            {
+                ArrayItems.map( ({ item, url }) => {
+                    return <li class="menu__item">
+                                <a class="menu__link" href={url}>
+                                    {item}
+                                </a>
+                            </li>
+                })
+            }
+        </ul>
+        <button class="Boton-Toogle" id="BtnToogle" title="Button-Show">
+            <Icon name="MenuIcon" size={16} />
+        </button>
+    </nav>
+</header>
+
+<style lang="scss">
+    .navbar-container {
+        position: absolute;
+        height: var(--alto-header);
+        //  background-color: #100077c3;;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
+        padding-block: .7rem;
+    }
+
+    .navbar {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        z-index: 100;
+
+        &__logo {
+            height: 100%;
+            width: auto;
+        }
+    }
+
+    .menu {
+        background-color: #131331;
+        position: fixed;
+        top: var(--alto-header);
+        width: 100%;
+        height: 100%;
+        will-change: right;
+        right: -100%;
+        transition: right 0.5s;
+        // backdrop-filter: blur(1rem);
+
+        &.active {
+            will-change: auto;
+            right: -35%;
+        }
+
+        &__item {
+            padding: 1rem;
+            overflow: hidden;
+        }
+
+        &__link {
+            color: #fff;
+            
+        }
+
+        @media (width > 768px) {
+            background-color: transparent;
+            position: static;
+            width: auto;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .Boton-Toogle{
+        border: none;
+        background-color: var(--color-Primary);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        height: 100%;
+        padding-inline: 0.5rem;
+        color: white;
+
+        @media (width > 768px) {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        const MenuHamburguesa = document.getElementById("BtnToogle");
+        const MainMenu = document.getElementById("main-menu");
+
+        MenuHamburguesa.addEventListener("click", () => {
+            MainMenu.classList.toggle("active");
+        });
+    });
+</script>

@@ -1,0 +1,15 @@
+---
+interface Props {
+    itemsProgramas: string[];
+}
+import Form from "./Form.jsx";
+import { Icon } from "astro-icon/components";
+const {itemsProgramas} = Astro.props;
+---
+
+
+<Form client:load itemsProgramas={itemsProgramas}> 
+    <Icon name="CheckIcon" size={50} color="#12CB54" slot="iconCheck">
+</Form>
+
+

@@ -1,0 +1,54 @@
+<section class="animation-loader" data-cta>
+    <div class="wrapper Cta">
+        <h2 class="superTitulo Cta-Titulo">HABLA CON NOSOTROS</h2>
+        <p class="Cta__parrafo">¿Tiene alguna pregunta? Siempre estamos abiertos a hablar sobre su tus cursos, nuevos inicios, dificultades, oportunidades creativas y cómo podemos ayudarlo.</p>
+        <a href="#Formulario" class="Cta__btnContacto boton--primary">
+            WhatsApp
+        </a>
+    </div>
+</section>
+
+<style lang="scss">
+
+    section{
+        
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        color: #fff;
+        padding-block: 0;
+        
+
+        &.background{
+            background-image: url("img/cta.webp");
+            background-color: #100077c3;
+            background-blend-mode: color;
+        }
+    }
+
+    .Cta{
+        min-height: 80svh;
+        justify-items: center;
+        align-content: center;
+        gap: 2rem;
+        content-visibility: auto;
+
+        &__btnContacto{
+            margin-top: 1rem;
+        }
+
+        &__parrafo{
+        
+        text-align: center;
+        text-wrap: balance;
+        }
+    }
+    .Cta-Titulo{
+        white-space: pre-line;
+    }
+
+    .textDegradado{
+        -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+    }
+</style>

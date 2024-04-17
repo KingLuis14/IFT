@@ -1,0 +1,14 @@
+---
+import Banner from "../components/Banner.astro";
+import Layout from "../layout/Layout.astro";
+import BannerData from "../data/BannerData";
+import Cta from "../components/Cta.astro";
+import Nosotros2 from "../components/Nosotros2.astro";
+
+---
+
+<Layout titulo="Nosotros" descripction="Acerca del Instituto de formacion tencologica">
+    <Banner {...BannerData.home} slot="Banner"/>
+    <Nosotros2 />
+    <Cta slot="CTA"/>
+</Layout>

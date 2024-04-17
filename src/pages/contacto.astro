@@ -1,0 +1,24 @@
+---
+import Banner from "../components/Banner.astro";
+import Layout from "../layout/Layout.astro";
+import BannerData from "../data/BannerData";
+import Formulario from "../components/Formulario/Formulario.astro";
+import Cursos from "../data/GetDataCursos";
+
+const cursosArray = [];
+
+Cursos.map(({titulo})=>{
+    cursosArray.push( titulo );
+})
+
+---
+
+<Layout titulo="404" descripction="Pagina aun en construccion">
+    <Banner {...BannerData.servicios} slot="Banner"/>
+    <section>
+        <div class="wrapper" style="place-items: center;">
+            <h2>Ponte en Contacto</h2>
+            <Formulario  itemsProgramas={cursosArray}/>
+        </div>
+    </section>
+</Layout>

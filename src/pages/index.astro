@@ -1,0 +1,39 @@
+---
+import Banner from "../components/Banner.astro";
+import Beneficios from "../components/Beneficios.astro";
+import Cursos from "../components/Cursos.astro";
+import Layout from "../layout/Layout.astro";
+import BannerData from "../data/BannerData";
+import AboutUs from "../components/AboutUs.astro";
+import Cta from "../components/Cta.astro";
+
+const { smallLcpi, largeLcpi } = BannerData.home.imagenesBanner;
+---
+
+<Layout titulo="Home" descripction="Instituto de formacion tencologica">
+    <link
+        slot="preload"
+        fetchpriority="high"
+        rel="preload"
+        as="image"
+        href=`${smallLcpi}`
+        media="(max-width: 640px)"
+        type="image/webp"
+    />
+    <link
+        slot="preload"
+        fetchpriority="high"
+        rel="preload"
+        as="image"
+        href=`${largeLcpi}`
+        media="(min-width: 641px)"
+        type="image/webp"
+    />
+
+    <Banner {...BannerData.home} slot="Banner"/>
+    <Cursos />
+    <Beneficios />
+    <AboutUs />
+    <Cta slot="CTA"/>
+</Layout>
+

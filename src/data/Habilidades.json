@@ -1,0 +1,18 @@
+[
+    {
+        "icono": "certificado",
+        "texto": "Certificacion \nProgresiva"
+    },
+    {
+        "icono": "clasesVivo",
+        "texto": "Clases en \nVivo"
+    },
+    {
+        "icono": "libro",
+        "texto": "Materiales por \nCurso"
+    },
+    {
+        "icono": "plataformaVirtual",
+        "texto": "Plataforma \nVirtual"
+    }
+]
