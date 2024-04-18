@@ -3,14 +3,14 @@
       "id": "ofimatica",
       "titulo": "Ofimatica Básica",
       "descripcion": "Aprenda habilidades esenciales de Microsoft Office, incluyendo Word, Excel y PowerPoint.  Certificación al completar el curso que mejora las perspectivas laborales.",
-      "url": "https://www.ift.pe/cursos/",
+      "url": "/ofimatica",
       "imagenesBanner": {
             "base64": "data:image/webp;base64,UklGRjoBAABXRUJQVlA4TC0BAAAvCYABAC/CRgAAFbrb2vGB/AqfthkZu02n+Ybr2rbN6sS29ZVa1G8qSAl5tm0bbAMAQKG7e2dt/l84xNTdzfyHDnb/ejo2M/Sey3uAIwfouELiTSIiQN6GlfxZyu7+Hzz89ikRSlgVL9LdpUB7GkAhakAhHgx0QdD4BzzqzL/JfC0w4e27tP7q6YXTcKVtQWMvWseHxt8SiZDDBMhOl7b5bQ12FNNgJRggGLH8gvoyiiAgaU+SaKSXKv+djzzs7811+30txA0g4fO6MsV4vdTLFYdmqulEabcCEzaPHX1gEcDzAybtt7IoBgcBAJBteLZt28bNiP5H8k0/2fUYLUdTFaF+3zvjh4AQLMpU22wBa5bS49UPO/D8Vxy/zssUuV580xkcQ0M/v5wFSRM2AA==",
             "imagen": "ofimatica-banner"
         },
       "imagenes": {
         "base64": "",
-        "original": "img/ofimatica"
+        "original": "/img/ofimatica"
       },
       "modulos": [
         {
@@ -149,14 +149,14 @@
       "id": "diseño-grafico",
       "titulo": "Diseño Gráfico",
       "descripcion": "Aprenda habilidades esenciales de CorelDraw, incluyendo Adobe Photoshop , Adobe Indesign.  Certificación al completar el curso que mejora las perspectivas laborales.",
-      "url": "https://www.ift.pe/cursos/",
+      "url": "/diseño-grafico",
       "imagenesBanner": {
             "base64": "data:image/webp;base64,UklGRi4BAABXRUJQVlA4TCEBAAAvCcABAG/CKpJkJ3t75Jz9O+IvO8DCA9YG68i2k7wb9wQrhIppij741AjbyLaVPMHdGyCl/xrog5jsu85/gKBGlqHRrZPKjSo7mPZsiY/BzIZ48SnKnk2magICi/JAUDQriiEo6u2/CBj7vwg3y2NDyosBiFbsyE+lqCXOACjDqBkK4ABwTCQfeWJCLgesLVEFXwEdhBq9FagGkkHqWe4LqhV2JkmcAycCIA70tSQJhCipIiPEAaiYC8JBUouACozzVMnuX/xKzhVsre38rOfrPhpwGABg2cZT27at2TYj+h/VFapP58uGQcL8Pl7d1rMYK+Wv5u2mixH6EenssNzPI5j987/nNulNAIxWKpTHiwOWn7qDOnk7lGAHx6bTCZwEAA==",
             "imagen": "disenograficoBanner"
         },
       "imagenes": {
         "base64": "",
-        "original": "img/Diseno-grafico"
+        "original": "/img/Diseno-grafico"
       },
       "modulos": [
         {
@@ -287,14 +287,14 @@
       "id": "diseño-web",
       "titulo": "Diseño Web",
       "descripcion": "Aprenda habilidades esenciales de Html y CSS, incluyendo css FlexBox, CSS Grid , Java Scrip.  Certificación al completar el curso que mejora las perspectivas laborales.",
-      "url": "https://www.ift.pe/cursos/",
+      "url": "/diseño-web",
       "imagenesBanner": {
             "base64": "data:image/webp;base64,UklGRsYAAABXRUJQVlA4TLoAAAAvCQABAH+hoI0kZW/u0cv7t8Zgg4EkSYZ2evds3/3/fTZn2Lht5Mj2zO5dmcr7//uu2xzmP6QwWSARB/EAik44eXByiN0SiEQkJgi+BQ6H11SagIlY0PBgEuSLwXGJl4fu2m70wWH5LI+njS3avzVPvbuQRpQRQm1NCh+SNaC7fXZuf4pVKBrseoGBJEmGk7P22bYR0f8wdn3+6y2m2GPb+d3HXiU+XepyxADg5Nw3adgNXBMRRHnWKgQ=",
             "imagen": "disenoweb-banner"
         },
       "imagenes": {
         "base64": "",
-        "original": "img/Diseno-Web"
+        "original": "/img/Diseno-Web"
       },
       "modulos": [
         {
@@ -425,14 +425,14 @@
       "id": "programacion",
       "titulo": "Programación",
       "descripcion": "Aprenda habilidades esenciales de Programción, incluyendo Python, Java Básico, Java POO y PHP.  Certificación al completar el curso que mejora las perspectivas laborales.",
-      "url": "https://www.ift.pe/cursos/",
+      "url": "/programacion",
       "imagenesBanner": {
             "base64": "data:image/webp;base64,UklGRhABAABXRUJQVlA4TAMBAAAvCYABACfCoJEkRTP3zPz+Zb0Q3N0DGwwjSTZ1e+/b9s8/np+JjWPbSJKi2WP4tyn/kD4HRov3bv6Dup//GZgRhCAEcQQAJAiJgBDSCzmx8Bq0SKGRpBg5yUgiM31fz2NhiVaSyuxBm+DTMk3Bt6h+qTSNDEn+CWJVIFEkyDWllF/SWA4FIvHMNIBoaCVDj8xwU7oVdoL1oZvWiTGnkgWlWxSxErkh/y8mp7gE7CWvw/m33EXsIePoXENHlJTqHhwEAEC24dm2bVs3IvofzTpqAksRCBQv8+/750kUSs/np508Doft4rgPZWAAmJjXj+vW+y6ohNX7tXUOI8lWluyRrtImAA==",
             "imagen": "programacion-banner"
         },
       "imagenes": {
         "base64": "",
-        "original": "img/Programacion"
+        "original": "/img/Programacion"
       },
       "modulos": [
         {
@@ -563,14 +563,14 @@
       "id": "base-datos",
       "titulo": "Base de datos",
       "descripcion": "Aprenda habilidades esenciales de Base de datos, incluyendo Access, MySQL Básico y MySQL Avanzado.  Certificación al completar el curso que mejora las perspectivas laborales.",
-      "url": "https://www.ift.pe/cursos/",
+      "url": "/base-datos",
       "imagenesBanner": {
             "base64": "data:image/webp;base64,UklGRgIBAABXRUJQVlA4TPUAAAAvCUABAN/BKrZtJXPuve/hEoE2ZCcLf25XarBtJElR390z8+cfFVpvvskMbBtJUjR398zoYXKf56fzFjPN/MdEs6aQASidvJaMwsQyr0qY6LdAgP4OsifkXVh6ilSDiKArhSQfNfx7+DI09+f3PaMlZcMG/yM4kk+mDr9z6GVOrlcWoTuZ6AuenVTfNUaoxlZ/Prole361blmWztkRHpfOp/8xyPa4ylEArP04ktZqoANs5+6f6PF7c98CwwAAi2aHbNu2XUT/oxjKqp5eg/9lJWpaLzBVm6X0rk+yJQ4FThq3/cx9VyRpYp2143oYDO/UsdAHAAA=",
             "imagen": "basedatos-banner"
         },
       "imagenes": {
         "base64": "",
-        "original": "img/Base-de-datos"
+        "original": "/img/Base-de-datos"
       },
       "modulos": [
         {
@@ -701,14 +701,14 @@
       "id": "excel",
       "titulo": "Microsoft Excel",
       "descripcion": "Aprenda habilidades esenciales de Excel, incluyendo Excel Básico, Excel Intermedio y Excel Avanzado.  Certificación al completar el curso que mejora las perspectivas laborales.",
-      "url": "https://www.ift.pe/cursos/",
+      "url": "/excel",
       "imagenesBanner": {
             "base64": "data:image/webp;base64,UklGRtQAAABXRUJQVlA4TMgAAAAvCQABAI/BIJKkRntk/w4xAB/JsDbYSJKtZL/jcP+LERO5RN+NQSNJinb3WMD5V3YO+J5x5j8AauC891TCigR2fbT/NvOl8lvVh+luvb21cGEF2A9BmLxSNiigy4kcRvkxGSGKs4BmQsDeayI+OmoCUijb4SNscwSrdQD5WfUIMuhdVzYBE316gSEre/B95MiFnzZx3aSagGEAAGWT2c22zYj+R6HrJoy6B9y5EYzydP1hZiUmSI3+N8SOW1a91+7vtsznlATHBQ==",
             "imagen": "excel-banner"
         },
       "imagenes": {
         "base64": "",
-        "original": "img/Microsoft-Excel"
+        "original": "/img/Microsoft-Excel"
       },
       "modulos": [
         {

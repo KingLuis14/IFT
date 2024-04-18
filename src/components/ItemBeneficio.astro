@@ -19,13 +19,21 @@ const {nameIcon, texto} = Astro.props;
 
 <style lang="scss" >
     .Skill{
-        flex-basis: 45%;
-        padding: 1rem;
+        flex-basis: 40%;
+        padding: 1rem .5rem;
         display: flex;
         min-width: 130px;
         flex-direction: column;
         align-items: center;
         gap: 1rem;
+        background-color: white;
+        border-radius: .5rem;
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+
+        @media screen and (width > 768px) {
+            flex-basis: 22%;
+        }
     }
 
     .Skill__Icon{

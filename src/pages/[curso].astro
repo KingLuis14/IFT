@@ -4,6 +4,8 @@ import Layout from "../layout/Layout.astro";
 import MallaCurricular from "../sections/MallaCurricular.astro";
 import Acordeon from "../components/Acordeon.astro";
 import BannerCurso from "../components/BannerCurso.astro";
+import HeroImg from "../components/HeroImg.astro";
+import FormularioBanner from "../components/Formulario/FormularioBanner.astro";
 
 export async function getStaticPaths() {
     return DataCursos.map((curso) => {
@@ -39,19 +41,22 @@ const { base64, original } = imagenes;
         media="(min-width: 641px)"
         type="image/webp"
     />
-    <BannerCurso
-        slot="Banner"
-        titulo={titulo}
-        description={descripcion}
-        textButton="Inscribete"
-        imagenesBanner={imagenesBanner}
-    />
+    <HeroImg {imagenesBanner} slot="Banner">
+        <div slot="Contenido" class="wrapper container">
+            <div class="contenido">
+                <h1 class="superTitulo">{titulo}</h1>
+                <p>{descripcion}</p>
+                <a href="/contacto" class="contenido__boton">Inscribete</a>
+            </div>
+            <FormularioBanner />
+        </div>
+    </HeroImg>
     <MallaCurricular>
         {
             modulos.map(({ id, semanas }, i) => {
                 return (
                     <>
-                        <h3 style="padding: 1rem;">{`Modulo ${i+1} : ${id}`}</h3>
+                        <h3 style="padding: 1rem;">{`Modulo ${i + 1} : ${id}`}</h3>
                         {semanas.map((semana, index) => {
                             return (
                                 <Acordeon
@@ -78,9 +83,9 @@ const { base64, original } = imagenes;
         grid-area: poster;
         align-self: start;
         position: sticky;
-        top: 0;
+        top: var(--alto-header);
         overflow: hidden;
-        border-radius: 1rem;
+        border-radius: 0.5rem;
 
         &.animation-loader {
             background-color: #d7e1e7;
@@ -98,6 +103,61 @@ const { base64, original } = imagenes;
 
         &.loaderOk::before {
             content: none;
+        }
+    }
+    .container {
+        position: relative;
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: 1fr;
+        height: 100%;
+        text-align: center;
+        color: white;
+        padding-block: 2rem;
+
+        @media (width > 640px) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .contenido {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+
+        @media (width > 640px) {
+            align-items: start;
+        }
+
+        & > .superTitulo {
+            text-align: center;
+            @media (width > 640px) {
+                text-align: start;
+            }
+        }
+
+        &__boton {
+            color: rgb(255, 255, 255);
+            justify-self: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.4rem;
+            background-color: var(--color-Primary500);
+            font-weight: 700;
+
+            &:hover {
+                background-color: var(--color-Primary600);
+            }
+        }
+
+        > p {
+            text-wrap: balance;
+            text-align: center;
+            color: #eeeeee;
+            @media (width > 640px) {
+                text-align: start;
+            }
         }
     }
 </style>

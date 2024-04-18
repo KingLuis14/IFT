@@ -1,7 +1,4 @@
 ---
-import NavBar from './NavBar.astro';
-import MenuData from "../data/Menu.json";
-
 
 interface imagenesBanner {
     base64: string;
@@ -24,13 +21,12 @@ const {base64, imagen} = imagenesBanner;
 <div 
     class="HeroImgContainer"
     style={`--base64: url(${base64});
-            --small-lcpi: url(img/${imagen}-small-lcpi.avif);
-            --small: url(img/${imagen}.avif);
-            --large-lcpi: url(img/${imagen}-large-lcpi.avif);
-            --large: url(img/${imagen}.avif);`
+            --small-lcpi: url(/img/${imagen}-small-lcpi.avif);
+            --small: url(/img/${imagen}.avif);
+            --large-lcpi: url(/img/${imagen}-large-lcpi.avif);
+            --large: url(/img/${imagen}.avif);`
             } 
     >
-    <NavBar ArrayItems={MenuData}/>
     <article class="contenido">
         <div class="wrapper" style="gap: 1.5rem;" >
             <h1 class="superTitulo">{ titulo }</h1>
@@ -47,8 +43,8 @@ const {base64, imagen} = imagenesBanner;
         --Ibase64 : var(--base64);
         --lcpi : var(--small-lcpi);
         --original : var(--small);
-        height: 100vmin;
-        min-height: 85svh; 
+        height: calc(100vmin - var(--alto-header));
+        min-height: 75svh; 
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;

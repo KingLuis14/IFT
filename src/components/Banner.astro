@@ -1,6 +1,5 @@
 ---
-import NavBar from './NavBar.astro';
-import MenuData from "../data/Menu.json";
+
 
 
 interface imagenesBanner {
@@ -32,7 +31,7 @@ const {base64, large, largeLcpi, small, smallLcpi} = imagenesBanner;
             --large-lcpi: url(${largeLcpi});
             --large: url(${large});`} 
     >
-    <NavBar ArrayItems={MenuData}/>
+    
     <article class="contenido">
         <div class="wrapper" style="gap: 1.5rem;" >
             <h1 class="superTitulo">{ titulo }</h1>
@@ -49,8 +48,8 @@ const {base64, large, largeLcpi, small, smallLcpi} = imagenesBanner;
         --Ibase64 : var(--base64);
         --lcpi : var(--small-lcpi);
         --original : var(--small);
-        height: 100vmin;
-        min-height: 80svh; 
+        height: calc(100vmin - var(--alto-header));
+        min-height: 75svh; 
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;

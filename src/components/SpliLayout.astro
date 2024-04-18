@@ -14,11 +14,10 @@ const { orderContainer = "Left", imagen, placeholder } = Astro.props;
     <div class:list={["contenido", { order: orderContainer === "Right" }]}>
         <slot />
     </div>
-    <div class="Imagen-Container">
+    <div class="Imagen-Container animation-loader">
         <img
-            class="Split__Imagen"
-            data-srcx={`img/${imagen}.avif`}
-            style={`background-image: url(/img/${placeholder})`}
+            class="Split__Imagen "
+            data-srcx={`/img/${imagen}.avif`}
             alt={`${imagen} - IFT`}
         />
     </div>
@@ -39,10 +38,27 @@ const { orderContainer = "Left", imagen, placeholder } = Astro.props;
     .Imagen-Container {
         overflow: hidden;
         aspect-ratio: 16/9;
-        border-radius: .5rem;
+        border-radius: 0.5rem;
         min-height: 100%;
-        // -webkit-mask-image: linear-gradient(black 90%, transparent 100%);
-        // mask-image: linear-gradient(white 97%, transparent 100%);
+        position: relative;
+
+        &.animation-loader {
+            background-color: #d7e1e7;
+            animation: loader 1.5s infinite alternate;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #d7e1e7;
+        }
+
+        &.loaderOk::after {
+            content: none;
+        }
 
         @media (width > 768px) {
             aspect-ratio: 1/1;
@@ -51,16 +67,16 @@ const { orderContainer = "Left", imagen, placeholder } = Astro.props;
 
     .Split__Imagen {
         background-color: #d7e1e7;
+
         filter: saturate(0.8);
         transition:
-            transform 0.7s,
-            filter 0.7s;
+            transform 0.3s,
+            filter 0.3s;
 
         &:hover {
-            transform: scale(1.15);
+            transform: scale(1.07);
             filter: saturate(1);
         }
-
     }
 
     .contenido {

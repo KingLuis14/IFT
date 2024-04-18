@@ -2,6 +2,8 @@
 import { ViewTransitions } from "astro:transitions";
 import BtnWhatsApp from '../components/BtnWhatsApp.astro';
 import MiFooter from '../components/Footer.astro';
+import NavBar from '../components/NavBar.astro';
+import MenuData from "../data/Menu.json";
 
 
 interface Props {
@@ -18,11 +20,13 @@ const { titulo, descripction } = Astro.props;
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content={descripction} />
-        <slot name="preload" />
+        <link rel="icon" type="image/png" href="/img/logo.png">
         <title>IFT - {titulo}</title>
+        <slot name="preload" />
         <ViewTransitions />
     </head>
     <body>
+        <NavBar ArrayItems={MenuData}/>
         <slot name="Banner" />
         <slot />
         <slot name="CTA" /> 
@@ -32,11 +36,6 @@ const { titulo, descripction } = Astro.props;
 
 </html>
 <style is:global lang="scss">
-    // @font-face {
-    //     font-family: "inter";
-    //     src: url("/fonts/Inter-VariableFont_slnt,wght.woff2") format("woff2-variations");
-    //     font-display: swap;
-    // }
 
     :root {
         --step--2: clamp(0.6944rem, 0.6766rem + 0.089vi, 0.7378rem);
@@ -49,7 +48,7 @@ const { titulo, descripction } = Astro.props;
         --step-5: clamp(2.4883rem, 2.4245rem + 0.319vi, 2.6438rem);
         --step-6: clamp(2.986rem, 2.9094rem + 0.3828vi, 3.1726rem);
 
-        --alto-header: clamp(3rem, 1.2727rem + 3.6364vw, 4rem);
+        --alto-header: clamp(3rem, 6.531vw + 1.694rem, 4.5rem);
         --section-padding: clamp(2rem, 1.2727rem + 3.6364vw, 5rem);
 
         --color-Primary50: #f1f4ff;
@@ -94,12 +93,14 @@ const { titulo, descripction } = Astro.props;
     }
 
     body {
+        background-color: #f7f7fc;
         min-height: 100svh;
-        // margin-top: var(--alto-header);
+        margin-top: var(--alto-header);
         font-size: var(--step-0);
         font-family: sans-serif;
         line-height: 1.45;
         overflow-x: hidden;
+        
         
         
         

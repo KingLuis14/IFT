@@ -1,18 +1,23 @@
 [
     {
-        "item": "Nosotros",
-        "url": "/nosotros"
+        "item": "Inicio",
+        "url": "/"
     },
     {
-        "item": "Contacto",
-        "url": "/contacto"
+        "item": "Nosotros",
+        "url": "/nosotros"
     },
     {
         "item": "Servicios",
         "url": "/servicios"
     },
     {
+        "item": "Contacto",
+        "url": "/contacto"
+    },
+    
+    {
         "item": "Area Virtual",
-        "url": "/area-virtual"
+        "url": "https://www.ift.pe/virtual/"
     }
 ]

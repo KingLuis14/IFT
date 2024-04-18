@@ -1,8 +1,18 @@
 .formulario {
-    width: min(100%, 700px);
+    width: min(100%, 400px);
     display: flex;
     flex-direction: column;
+    margin-inline: auto;
+    margin-block: auto;
     gap: 0.7rem;
+    background-color: #fff;
+    padding: 1rem;
+    color: #000;
+    border-radius: .8rem;
+
+    @media (width > 640px) {
+        margin-inline: auto 0;
+    }
 }
 
 .label {
@@ -12,10 +22,11 @@
 .input,
 .textarea,
 .select {
-    padding: 0.5rem;
+    padding: 1rem;
     outline: none;
     border-radius: 0.2rem;
     border: 2px solid rgb(230, 230, 230);
+    background-color: #f9f9f9;
 
     &:focus {
         border: 2px solid rgb(108, 136, 249);

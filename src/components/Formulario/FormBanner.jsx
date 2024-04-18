@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import Styles from "./Form.module.scss";
+import Styles from "./FormBanner.module.scss";
 
 export default function Form(props) {
 
@@ -43,22 +43,12 @@ export default function Form(props) {
     }
 
     return (
+        
         <form onSubmit={submit} className={Styles.formulario} ref={formulario}>
-            <label className={Styles.label} htmlFor="nombre">
-                Nombre
-            </label>
-            <input className={Styles.input} name="nombre" id="nombre" required />
-            <label className={Styles.label} htmlFor="apellido">
-                Apellido
-            </label>
-            <input className={Styles.input} name="apellido" id="apellido" required />
-            <label className={Styles.label} htmlFor="email">
-                Correo
-            </label>
-            <input className={Styles.input} name="email" type="email" id="email" required />
-            <label className={Styles.label} htmlFor="programasLabel">
-                Seleccione el programa de estudio
-            </label>
+            <h3>Inscribete aqui</h3>
+            <input className={Styles.input} name="nombre" id="nombre" required placeholder="Nombre Completo" />
+            <input className={Styles.input} name="apellido" id="apellido" required placeholder="Número de contacto"/>
+            <input className={Styles.input} name="email" type="email" id="email" required placeholder="Email"/>
             <select name="programasEstudio" id="programas" className={Styles.select}>
                 {
                     props.itemsProgramas.map((programa, i) => {
@@ -66,11 +56,7 @@ export default function Form(props) {
                     })
                 }
             </select>
-            <label className={Styles.label} htmlFor="observacion">
-                Alguna observacion
-            </label>
-            <textarea className={Styles.textarea} name="observacion" id="observacion"></textarea>
-            <button className={Styles.boton}>Solicitar Informacion</button>
+            <button className={Styles.boton} title="Registrate en el formulario">Inscribete</button>
 
             <dialog className={Styles.modal} ref={modal}>
                 <div className={`${Styles.containerIcons}`} >

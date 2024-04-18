@@ -12,7 +12,10 @@ import { Icon } from "astro-icon/components";
                 {
                     Cursos.map(({ titulo , id}) => {
                         return <li>
-                                    <a href={`/${id}`} class="small" style="color: rgb(210, 210, 210);" >{ titulo }</a>
+                                    <a href={`/${id}`} 
+                                    aria-label={`Ir a la pagina del curso de ${titulo}`}
+                                        class="small" 
+                                        style="color: rgb(210, 210, 210);" >{ titulo }</a>
                                 </li>
                     })
                 }
@@ -59,7 +62,7 @@ import { Icon } from "astro-icon/components";
     footer{
         padding-block: 2rem;
         
-        background-color: rgb(50, 50, 50);
+        background-color: #282829;
         color: white;
 
         

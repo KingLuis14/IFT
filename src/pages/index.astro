@@ -1,13 +1,14 @@
 ---
-import Banner from "../components/Banner.astro";
 import Beneficios from "../components/Beneficios.astro";
 import Cursos from "../components/Cursos.astro";
 import Layout from "../layout/Layout.astro";
 import BannerData from "../data/BannerData";
 import AboutUs from "../components/AboutUs.astro";
 import Cta from "../components/Cta.astro";
-
-const { smallLcpi, largeLcpi } = BannerData.home.imagenesBanner;
+import HeroImg from "../components/HeroImg.astro";
+import FormularioBanner from "../components/Formulario/FormularioBanner.astro";
+const {description, titulo, textButton} = BannerData.home;
+const {imagen } = BannerData.home.imagenesBanner;
 ---
 
 <Layout titulo="Home" descripction="Instituto de formacion tencologica">
@@ -16,7 +17,7 @@ const { smallLcpi, largeLcpi } = BannerData.home.imagenesBanner;
         fetchpriority="high"
         rel="preload"
         as="image"
-        href=`${smallLcpi}`
+        href=`img/${imagen}-small-lcpi.avif`
         media="(max-width: 640px)"
         type="image/webp"
     />
@@ -25,15 +26,85 @@ const { smallLcpi, largeLcpi } = BannerData.home.imagenesBanner;
         fetchpriority="high"
         rel="preload"
         as="image"
-        href=`${largeLcpi}`
+        href=`img/${imagen}-large-lcpi.avif`
         media="(min-width: 641px)"
         type="image/webp"
     />
-
-    <Banner {...BannerData.home} slot="Banner"/>
+    <HeroImg imagenesBanner={BannerData.home.imagenesBanner} slot="Banner">
+        <div slot="Contenido" class="wrapper container">
+            <div class="contenido">
+                <h1 class="superTitulo">{titulo}</h1>
+                <p>{description}</p>
+                <a href="/contacto" 
+                    class="contenido__boton" 
+                    aria-label="Inscribete en uno de nuestros cursos y se todo un profesional"
+                    >
+                    {textButton}
+                </a>
+            </div>
+            <FormularioBanner />
+        </div>
+    </HeroImg>
     <Cursos />
     <Beneficios />
     <AboutUs />
     <Cta slot="CTA"/>
 </Layout>
 
+<style lang="scss">
+    .container {
+        position: relative;
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: 1fr;
+        height: 100%;
+        text-align: center;
+        color: white;
+        padding-block: 2rem;
+
+        @media (width > 640px) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .contenido {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+
+        @media (width > 640px) {
+            align-items: start;
+        }
+
+        & > .superTitulo {
+            text-align: center;
+            @media (width > 640px) {
+                text-align: start;
+            }
+        }
+
+        &__boton {
+            color: rgb(255, 255, 255);
+            justify-self: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.4rem;
+            background-color: var(--color-Primary500);
+            font-weight: 700;
+
+            &:hover {
+                background-color: var(--color-Primary600);
+            }
+        }
+
+        > p {
+            text-wrap: balance;
+            text-align: center;
+            color: #eeeeee;
+            @media (width > 640px) {
+                text-align: start;
+            }
+        }
+    }
+</style>

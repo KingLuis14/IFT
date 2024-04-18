@@ -1,12 +1,93 @@
 ---
-import Banner from "../components/Banner.astro";
 import Layout from "../layout/Layout.astro";
 import BannerData from "../data/BannerData";
-
+import HeroImg from "../components/HeroImg.astro";
+import Servicios2 from "../sections/servicios.astro";
+import FormularioBanner from "../components/Formulario/FormularioBanner.astro";
+import BannerCurso from "../components/BannerCurso.astro";
+const { imagen } = BannerData.servicios.imagenesBanner;
 ---
 
-<Layout titulo="404" descripction="Pagina aun en construccion">
-    <Banner {...BannerData.servicios} slot="Banner"/>
-    <!-- <Nosotros2 />
-    <Cta slot="CTA"/> -->
+<Layout
+    titulo="servicios"
+    descripction="brindamos clases virtuales personalizadas y creamos paginas web"
+>
+    <link
+        slot="preload"
+        fetchpriority="high"
+        rel="preload"
+        as="image"
+        href=`img/${imagen}-small-lcpi.avif`
+        media="(max-width: 640px)"
+        type="image/webp"
+    />
+    <link
+        slot="preload"
+        fetchpriority="high"
+        rel="preload"
+        as="image"
+        href=`img/${imagen}-large-lcpi.avif`
+        media="(min-width: 641px)"
+        type="image/webp"
+    />
+    <BannerCurso {...BannerData.servicios} slot="Banner"/>
+    <Servicios2 />
 </Layout>
+
+<style lang="scss">
+    .container {
+        position: relative;
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: 1fr;
+        height: 100%;
+        text-align: center;
+        color: white;
+        padding-block: 2rem;
+
+        @media (width > 640px) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .contenido {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+
+        @media (width > 640px) {
+            align-items: start;
+        }
+
+        & > .superTitulo {
+            text-align: center;
+            @media (width > 640px) {
+                text-align: start;
+            }
+        }
+
+        &__boton {
+            color: rgb(255, 255, 255);
+            justify-self: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.4rem;
+            background-color: var(--color-Primary500);
+            font-weight: 700;
+
+            &:hover {
+                background-color: var(--color-Primary600);
+            }
+        }
+
+        > p {
+            text-wrap: balance;
+            text-align: center;
+            color: #eeeeee;
+            @media (width > 640px) {
+                text-align: start;
+            }
+        }
+    }
+</style>
