@@ -5,24 +5,32 @@ interface Props {
 }
 
 const { ArrayItems } = Astro.props;
-
 ---
 
 <header class="navbar-container">
     <nav class="navbar wrapper">
-        <a class="navbar__logo" href="/" aria-label="click para ir al pagina principal">
-            <img src="/img/logo.png" alt="logo del instituto IFT">
+        <a
+            class="navbar__logo"
+            href="/"
+            aria-label="click para ir al pagina principal"
+        >
+            <img src="/img/logo.png" alt="logo del instituto IFT" />
         </a>
         <ul class="menu" id="main-menu">
             {
-                ArrayItems.map( ({ item, url }) => {
-                    return <li class="menu__item">
-                                <a class="menu__link" 
-                                href={url} 
-                                target={url === "https://www.ift.pe/virtual/" && "_blank" }>
-                                    {item}
-                                </a>
-                            </li>
+                ArrayItems.map(({ item, url }) => {
+                    return (
+                        <li class="menu__item">
+                            <a
+                                class="menu__link"
+                                href={url}
+                                target={url === "https://www.ift.pe/virtual/" && "_blank"}
+                                rel={url === "https://www.ift.pe/virtual/" ? "noopener noreferrer" : undefined}
+                            >
+                                {item}
+                            </a>
+                        </li>
+                    );
                 })
             }
         </ul>
@@ -34,13 +42,13 @@ const { ArrayItems } = Astro.props;
 
 <style lang="scss">
     .navbar-container {
-        position: fixed;    
+        position: fixed;
         height: var(--alto-header);
-         background-color: #fff;
+        background-color: #fff;
         top: 0;
         z-index: 1000;
         width: 100%;
-        padding-block: .7rem;
+        padding-block: 0.7rem;
     }
 
     .navbar {
@@ -66,7 +74,6 @@ const { ArrayItems } = Astro.props;
         will-change: right;
         right: -100%;
         transition: right 0.5s;
-        // backdrop-filter: blur(1rem);
 
         &.active {
             will-change: auto;
@@ -83,8 +90,7 @@ const { ArrayItems } = Astro.props;
 
             @media (width > 840px) {
                 color: #000;
-        }
-            
+            }
         }
 
         @media (width > 840px) {
@@ -96,15 +102,13 @@ const { ArrayItems } = Astro.props;
         }
     }
 
-    .Boton-Toogle{
+    .Boton-Toogle {
         border: none;
         aspect-ratio: 1/1;
         background-color: var(--color-Primary700);
         border-radius: 50%;
         display: grid;
         place-items: center;
-        
-        // height: 100%;
         padding-inline: 0.5rem;
         color: white;
 

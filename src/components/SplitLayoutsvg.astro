@@ -1,25 +1,18 @@
 ---
-type order = "Left" | "Right";
 
+type order = "Left" | "Right";
 interface Props {
     orderContainer?: order;
-    imagen: string;
 }
 
-const { orderContainer = "Left", imagen } = Astro.props;
+const { orderContainer = "Left"} = Astro.props;
 ---
 
 <article class="Split-Container">
     <div class:list={["contenido", { order: orderContainer === "Right" }]}>
-        <slot />
+        <slot/>
     </div>
-    <div class="Imagen-Container animation-loader">
-        <img
-            class="Split__Imagen "
-            data-srcx={`/img/${imagen}.avif`}
-            alt={`${imagen} - IFT`}
-        />
-    </div>
+    <slot name="imagen" />
 </article>
 
 <style lang="scss">

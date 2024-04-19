@@ -15,7 +15,7 @@ export default function Form(props) {
         modal.current.showModal();
         loader.current.classList.add(Styles.animate);
         setResponseMessage("Solicitando ...");
-        
+
         const formData = new FormData(e.target);
         const response = await fetch("https://formsubmit.co/ajax/informes@ift.pe", {
             method: "POST",
@@ -35,7 +35,7 @@ export default function Form(props) {
 
     }
 
-    const closeDialog = (e) =>{
+    const closeDialog = (e) => {
         e.preventDefault();
         formulario.current.reset();
         modal.current.close();
@@ -43,13 +43,34 @@ export default function Form(props) {
     }
 
     return (
-        
+
         <form onSubmit={submit} className={Styles.formulario} ref={formulario}>
-            <h3>Inscribete aqui</h3>
-            <input className={Styles.input} name="nombre" id="nombre" required placeholder="Nombre Completo" />
-            <input className={Styles.input} name="apellido" id="apellido" required placeholder="Número de contacto"/>
-            <input className={Styles.input} name="email" type="email" id="email" required placeholder="Email"/>
-            <select name="programasEstudio" id="programas" className={Styles.select}>
+            <h2>Inscribete aqui</h2>
+            <input className={Styles.input}
+                aria-label="nombre"
+                name="nombre"
+                id="nombre"
+                required
+                placeholder="Nombre Completo" />
+            <input className={Styles.input}
+                type="tel"
+                aria-label="numero de celular"
+                name="apellido"
+                id="apellido"
+                required
+                placeholder="Número de contacto" />
+            <input className={Styles.input}
+                aria-label="email"
+                name="email"
+                type="email"
+                id="email"
+                required
+                placeholder="Email" />
+            <select
+                name="programasEstudio"
+                aria-label="seleccione su programa de estudio"
+                id="programas"
+                className={Styles.select}>
                 {
                     props.itemsProgramas.map((programa, i) => {
                         return <option value={programa} key={i}>{programa}</option>

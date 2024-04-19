@@ -1,9 +1,7 @@
 ---
 import Layout from "../layout/Layout.astro";
 import BannerData from "../data/BannerData";
-import HeroImg from "../components/HeroImg.astro";
 import Servicios2 from "../sections/servicios.astro";
-import FormularioBanner from "../components/Formulario/FormularioBanner.astro";
 import BannerCurso from "../components/BannerCurso.astro";
 const { imagen } = BannerData.servicios.imagenesBanner;
 ---
@@ -17,7 +15,7 @@ const { imagen } = BannerData.servicios.imagenesBanner;
         fetchpriority="high"
         rel="preload"
         as="image"
-        href=`img/${imagen}-small-lcpi.avif`
+        href=`/img/${imagen}-small-lcpi.avif`
         media="(max-width: 640px)"
         type="image/webp"
     />
@@ -26,11 +24,16 @@ const { imagen } = BannerData.servicios.imagenesBanner;
         fetchpriority="high"
         rel="preload"
         as="image"
-        href=`img/${imagen}-large-lcpi.avif`
+        href=`/img/${imagen}-large-lcpi.avif`
         media="(min-width: 641px)"
         type="image/webp"
     />
     <BannerCurso {...BannerData.servicios} slot="Banner"/>
+    <section>
+        <div class="wrapper">
+            <h2 class="titleSection">Creación de Paginas Web</h2>
+        </div>
+    </section>
     <Servicios2 />
 </Layout>
 

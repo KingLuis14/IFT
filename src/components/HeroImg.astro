@@ -34,10 +34,11 @@ const {base64, imagen} = imagenesBanner;
         --lcpi : var(--small-lcpi);
         --original : var(--small);
         display: grid;
-        min-height: auto;
+        min-height: calc(100svh - var(--alto-header));
+        // min-height: auto;
         // height: calc(100vmin - var(--alto-header));
         
-        min-height: 75svh; 
+        // min-height: 75svh; 
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
