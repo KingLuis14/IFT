@@ -1,53 +1,50 @@
 <section class="animation-loader" data-cta>
     <div class="wrapper Cta">
         <h2 class="superTitulo Cta-Titulo">HABLA CON NOSOTROS</h2>
-        <p class="Cta__parrafo">¿Tiene alguna pregunta? Siempre estamos abiertos a hablar sobre su tus cursos, nuevos inicios, dificultades, oportunidades creativas y cómo podemos ayudarlo.</p>
-        <a href="#Formulario" class="Cta__btnContacto boton--primary">
+        <p class="Cta__parrafo">
+            ¿Tiene alguna pregunta? Siempre estamos abiertos a hablar sobre su
+            tus cursos, nuevos inicios, dificultades, oportunidades creativas y
+            cómo podemos ayudarlo.
+        </p>
+        <a href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0" class="Cta__btnContacto boton--primary">
             WhatsApp
         </a>
     </div>
 </section>
 
 <style lang="scss">
-
-    section{
-        
+    section {
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
         color: #fff;
         padding-block: 0;
-        
 
-        &.background{
+        &.background {
             background-image: url("/img/cta.webp");
             background-color: #100077c3;
             background-blend-mode: color;
         }
     }
 
-    .Cta{
+    .Cta {
+        min-height: 90vh;
         min-height: 90svh;
         justify-items: center;
+        -ms-flex-line-pack: center;
         align-content: center;
         gap: 2rem;
 
-        &__btnContacto{
+        &__btnContacto {
             margin-top: 1rem;
         }
 
-        &__parrafo{
-        
-        text-align: center;
-        text-wrap: balance;
+        &__parrafo {
+            text-align: center;
+            text-wrap: balance;
         }
     }
-    .Cta-Titulo{
+    .Cta-Titulo {
         white-space: pre-line;
-    }
-
-    .textDegradado{
-        -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
     }
 </style>

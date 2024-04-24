@@ -47,6 +47,8 @@
     color: white;
     font-weight: 700;
     cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
 
     &:hover{
         background-color: var(--color-Primary600);

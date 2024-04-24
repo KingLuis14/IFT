@@ -1,16 +1,15 @@
 ---
 import Layout from "../layout/Layout.astro";
 import Cta from "../components/Cta.astro";
-import Nosotros2 from "../components/Nosotros2.astro";
 import HeroImg from "../components/HeroImg.astro";
 import FormularioBanner from "../components/Formulario/FormularioBanner.astro";
 import BannerData from "../data/BannerData";
-const {description, titulo, textButton} = BannerData.nosotros;
-const {imagen } = BannerData.nosotros.imagenesBanner;
-
+import InfoCursos from "../sections/InfoCursos.astro";
+const {description, titulo, textButton} = BannerData.cursos;
+const {imagen } = BannerData.cursos.imagenesBanner;
 ---
 
-<Layout titulo="Nosotros" descripction="Acerca del Instituto de formacion tencologica">
+<Layout titulo="cursos" descripction="Ofrecemos los mejores cursos virtuales mas demandados en el area tecnologica">
     <link
         slot="preload"
         fetchpriority="high"
@@ -29,7 +28,7 @@ const {imagen } = BannerData.nosotros.imagenesBanner;
         media="(min-width: 641px)"
         type="image/webp"
     />
-    <HeroImg imagenesBanner={BannerData.nosotros.imagenesBanner} slot="Banner">
+    <HeroImg imagenesBanner={BannerData.cursos.imagenesBanner} slot="Banner">
         <div slot="Contenido" class="wrapper container">
             <div class="contenido">
                 <h1 class="superTitulo">{titulo}</h1>
@@ -44,7 +43,7 @@ const {imagen } = BannerData.nosotros.imagenesBanner;
             <FormularioBanner />
         </div>
     </HeroImg>
-    <Nosotros2 />
+    <InfoCursos />
     <Cta slot="CTA"/>
 </Layout>
 
@@ -97,7 +96,7 @@ const {imagen } = BannerData.nosotros.imagenesBanner;
 
         > p {
             text-align: center;
-            color: #eeeeee;
+            color: #ececec;
             @media (width > 640px) {
                 text-align: start;
             }

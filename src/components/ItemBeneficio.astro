@@ -3,15 +3,17 @@ import { Icon } from 'astro-icon/components';
 interface Props {
     nameIcon: string;
     texto: string;
+    styleSplit? : string;
+    inlineStyle? : string;
 }
 
 
-const {nameIcon, texto} = Astro.props;
+const {nameIcon, texto , styleSplit, inlineStyle , ...rest} = Astro.props;
 ---
 
 
-<article class="Skill">
-    <span style="">
+<article class=`Skill ${styleSplit}` style={inlineStyle} {...rest}>
+    <span>
         <Icon class="Skill__Icon" name={nameIcon} size={70}/>
     </span>
     <p class="Skill__texto">{texto}</p>

@@ -34,11 +34,8 @@ const {base64, imagen} = imagenesBanner;
         --lcpi : var(--small-lcpi);
         --original : var(--small);
         display: grid;
+        min-height: calc(100vh - var(--alto-header));
         min-height: calc(100svh - var(--alto-header));
-        // min-height: auto;
-        // height: calc(100vmin - var(--alto-header));
-        
-        // min-height: 75svh; 
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -54,10 +51,7 @@ const {base64, imagen} = imagenesBanner;
             height: 100%;
             background-color: #100077c3;
         }
-
-
-        @media (min-width: 640px) {
-            min-height: calc(100svh - var(--alto-header));
+        @media (width > 640px) {
             --lcpi : var(--large-lcpi);
             --original : var(--large);
         }

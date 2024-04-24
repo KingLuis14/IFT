@@ -1,16 +1,18 @@
 ---
 type order = "Left" | "Right";
 
+
 interface Props {
     orderContainer?: order;
     imagen: string;
+    class? : string;
 }
 
-const { orderContainer = "Left", imagen } = Astro.props;
+const { orderContainer = "Left" , imagen, class : classname, ...rest } = Astro.props;
 ---
 
 <article class="Split-Container">
-    <div class:list={["contenido", { order: orderContainer === "Right" }]}>
+    <div class:list={["contenido", classname, { order: orderContainer === "Right" }]} {...rest}>
         <slot />
     </div>
     <div class="Imagen-Container animation-loader">
@@ -81,6 +83,8 @@ const { orderContainer = "Left", imagen } = Astro.props;
     .contenido {
         min-height: 100%;
         align-content: center;
+        display: grid;
+        gap: 1rem;
     }
 
     .order {
@@ -89,4 +93,6 @@ const { orderContainer = "Left", imagen } = Astro.props;
             order: 1;
         }
     }
+
+    
 </style>

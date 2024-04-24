@@ -1,0 +1,100 @@
+---
+import SplitLayoutsvg from "../components/SplitLayoutsvg.astro";
+import DataCursos from "../data/GetDataCursos";
+---
+
+{
+    DataCursos.map(({ titulo, descripcion, url, imagenes }, index) => (
+        <section class={`${(index + 1) % 2 === 0 && 'sectionColor2' }`}>
+            <div class="wrapper">
+                <SplitLayoutsvg>
+                    <div
+                        slot="CONTENIDO"
+                        class={`contenido ${(index + 1) % 2 === 0 ? "Order-Bottom-Left" : "Order-Bottom-Rigth"}`}
+                    >
+                        <h2 class="titleSection" style="text-align: start;">
+                            {titulo}
+                        </h2>
+                        <p class="parrafo">{descripcion}</p>
+                        <div>
+                            <p >
+                                <strong>Duración:</strong> 3 meses
+                            </p>
+                            <p >
+                                <strong>Modalidad:</strong> Virtual en vivo, y
+                                Asíncrono.
+                            </p>
+                            <p >
+                                <strong>Plataforma virtual 24/7</strong>
+                            </p>
+                        </div>
+                        <a
+                            href={url}
+                            aria-label={`Click para ver el temario del curso de ${titulo}`}
+                            class="boton--primary"
+                        >
+                            Ver Malla
+                        </a>
+                    </div>
+                    <div
+                        class="Imagen-Container animation-loader"
+                        slot="imagen"
+                    >
+                        <img
+                            class="Split__Imagen"
+                            data-srcx={`${imagenes.original}.avif`}
+                            alt={`about2 - IFT`}
+                        />
+                    </div>
+                </SplitLayoutsvg>
+            </div>
+        </section>
+    ))
+}
+
+<style lang="scss">
+    .contenido {
+        min-height: 100%;
+        align-content: center;
+        display: grid;
+        gap: 1rem;
+    }
+    .parrafo {
+        color: rgb(49, 49, 49);
+    }
+
+    .Imagen-Container {
+        overflow: hidden;
+        border-radius: 0.5rem;
+        min-height: 100%;
+        position: relative;
+
+        &.animation-loader {
+            background-color: #d7e1e7;
+            animation: loader 1.5s infinite alternate;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #d7e1e7;
+        }
+
+        &.loaderOk::after {
+            content: none;
+        }
+    }
+
+    .Split__Imagen {
+        aspect-ratio: 2/2.5;
+        transition: transform 0.2s;
+        background-color: #d7e1e7;
+
+        &:hover {
+            transform: scale(0.95);
+        }
+    }
+</style>

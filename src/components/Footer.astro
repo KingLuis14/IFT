@@ -43,33 +43,39 @@ import { Icon } from "astro-icon/components";
             </FooterList>
             <FooterList titulo="Servicios">
                 <p class="small">Educacion Online</p>
-                <p class="small">Creacion de Paginas Webs</p>
+                <p class="small">Creacion de Paginas Web</p>
             </FooterList>
             <FooterList titulo="Redes Sociales" styleContent="Iconos-Container">
                 <a
+                    class="RedesSociales-Icon"
                     href="https://www.facebook.com/people/Instituto-de-Formaci%C3%B3n-Tecnol%C3%B3gica-IFT/61555145250465/"
                     aria-label=`Ir a la nuestro facebook`
                     target="_blank"
+                    rel="noopener noreferrer"
                 >
                     <Icon name="facebook" size={30} />
                 </a>
                 <a
+                    class="RedesSociales-Icon"
                     href="https://www.youtube.com/channel/UCesc5xJfVHuvT6k401bGlcg"
                     aria-label=`Ir a la nuestro canal de Youtube`
                     target="_blank"
+                    rel="noopener noreferrer"
                 >
                     <Icon name="Youtube" size={30} />
                 </a>
                 <a
+                    class="RedesSociales-Icon"
                     href="https://www.instagram.com/institutoift/?igsh=NTc4MTIwNjQ2YQ%3D%3D"
                     aria-label=`Ir a la nuestro Instagram`
                     target="_blank"
+                    rel="noopener noreferrer"
                 >
                     <Icon name="Instagram" size={30} />
                 </a>
             </FooterList>
         </div>
-        <p>© 2024 Todos los Derechos Reservados</p>
+        <p>©2024 IFT. Todos los derechos reservados.</p>
     </div>
 </footer>
 
@@ -112,6 +118,15 @@ import { Icon } from "astro-icon/components";
         gap: 1rem;
         > a {
             color: rgb(210, 210, 210);
+        }
+    }
+
+    .RedesSociales-Icon{
+
+        transition: transform .2s;
+
+        &:hover{
+            transform: scale(1.15);
         }
     }
 </style>

@@ -2,6 +2,11 @@
   "name": "ift",
   "type": "module",
   "version": "0.0.1",
+  "browserslist": [
+    "last 2 version",
+    "> 1%",
+    "not dead"
+  ],
   "scripts": {
     "dev": "astro dev --host",
     "start": "astro dev",
@@ -21,7 +26,16 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@types/postcss-import": "^14.0.3",
+    "@types/postcss-reporter": "^7.0.5",
+    "@types/postcss-url": "^10.0.4",
+    "autoprefixer": "^10.4.19",
     "lightningcss": "^1.24.1",
+    "postcss": "^8.4.38",
+    "postcss-import": "^16.1.0",
+    "postcss-preset-env": "^9.5.9",
+    "postcss-reporter": "^7.1.0",
+    "postcss-url": "^10.1.3",
     "sass": "^1.75.0"
   }
 }

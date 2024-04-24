@@ -1,17 +1,14 @@
 ---
-
-type order = "Left" | "Right";
 interface Props {
-    orderContainer?: order;
+    styleSplit? : string;
 }
 
-const { orderContainer = "Left"} = Astro.props;
+const { styleSplit, ...rest} = Astro.props;
 ---
 
-<article class="Split-Container">
-    <div class:list={["contenido", { order: orderContainer === "Right" }]}>
-        <slot/>
-    </div>
+<article class=`Split-Container ${styleSplit}` {...rest}>
+    <slot name="CONTENIDO" />
+    
     <slot name="imagen" />
 </article>
 
@@ -27,53 +24,16 @@ const { orderContainer = "Left"} = Astro.props;
         }
     }
 
-    .Imagen-Container {
-        overflow: hidden;
-        aspect-ratio: 16/9;
-        border-radius: 0.5rem;
-        min-height: 100%;
-        position: relative;
-
-        &.animation-loader {
-            background-color: #d7e1e7;
-            animation: loader 1.5s infinite alternate;
-        }
-
-        &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #d7e1e7;
-        }
-
-        &.loaderOk::after {
-            content: none;
-        }
-
-        @media (width > 768px) {
-            aspect-ratio: 1/1;
-        }
+    .prueba{
+        border: 5px solid red;
     }
 
-    .Split__Imagen {
-        background-color: #d7e1e7;
-
-        filter: saturate(0.8);
-        transition:
-            transform 0.3s,
-            filter 0.3s;
-
-        &:hover {
-            transform: scale(1.07);
-            filter: saturate(1);
-        }
-    }
 
     .contenido {
         min-height: 100%;
         align-content: center;
+        display: grid;
+        gap: 1rem;
     }
 
     .order {
@@ -81,5 +41,9 @@ const { orderContainer = "Left"} = Astro.props;
         @media (width > 768px) {
             order: 1;
         }
+    }
+    .order2 {
+        order: 1;
+        background-color: crimson;
     }
 </style>

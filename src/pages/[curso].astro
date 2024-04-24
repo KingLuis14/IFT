@@ -3,7 +3,6 @@ import DataCursos from "../data/GetDataCursos";
 import Layout from "../layout/Layout.astro";
 import MallaCurricular from "../sections/MallaCurricular.astro";
 import Acordeon from "../components/Acordeon.astro";
-import BannerCurso from "../components/BannerCurso.astro";
 import HeroImg from "../components/HeroImg.astro";
 import FormularioBanner from "../components/Formulario/FormularioBanner.astro";
 
@@ -16,10 +15,10 @@ export async function getStaticPaths() {
     });
 }
 
-const { id, url, descripcion, titulo, imagenes, modulos, imagenesBanner } =
+const {descripcion, titulo, imagenes, modulos, imagenesBanner } =
     Astro.props;
 
-const { base64, original } = imagenes;
+const { original } = imagenes;
 ---
 
 <Layout titulo={titulo} descripction={descripcion}>

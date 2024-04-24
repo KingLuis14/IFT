@@ -43,14 +43,15 @@ const {base64, imagen} = imagenesBanner;
         --Ibase64 : var(--base64);
         --lcpi : var(--small-lcpi);
         --original : var(--small);
-        height: calc(100svh - var(--alto-header));
-        // min-height: 75svh; 
+        display: grid;
+        min-height: calc(100vh - var(--alto-header));
+        min-height: calc(100svh - var(--alto-header));
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
         background-image: var(--original), var(--lcpi), var(--Ibase64) ;
 
-        @media (min-width: 640px) {
+        @media (width > 640px) {
             --lcpi : var(--large-lcpi);
             --original : var(--large);
         }
@@ -81,10 +82,8 @@ const {base64, imagen} = imagenesBanner;
     }
 
     p{
-        text-wrap: balance;
-        @media (width > 768px) {
-            white-space: pre-line;
-        }
+        width: min(100%, 75ch);
+        margin-inline: auto;
     }
     
 </style>

@@ -78,7 +78,7 @@ export default function Form(props) {
                 }
             </select>
             <button className={Styles.boton} title="Registrate en el formulario">Inscribete</button>
-
+            {props.redes}
             <dialog className={Styles.modal} ref={modal}>
                 <div className={`${Styles.containerIcons}`} >
                     <span className={`${Styles.loader}`} ref={loader} />

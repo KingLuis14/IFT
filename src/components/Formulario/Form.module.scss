@@ -1,5 +1,5 @@
 .formulario {
-    width: min(100%, 700px);
+    width: min(100%, 550px);
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
@@ -36,6 +36,8 @@
     color: white;
     font-weight: 700;
     cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
 
     &:hover{
         background-color: var(--color-Primary600);

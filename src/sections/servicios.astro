@@ -4,17 +4,23 @@ import SplitLayoutsvg from "../components/SplitLayoutsvg.astro";
 
 <section>
     <div class="wrapper">
-        <SplitLayoutsvg>
-            <h2
-                class="titleSection"
-                style="margin-bottom: 2rem ; text-align: start;"
-            >
-                Diseño Personalizado
-            </h2>
-            <p class="parrafo">
-                Creación de sitios web a medida según las necesidades y
-                requisitos específicos del cliente.
-            </p>
+        <SplitLayoutsvg styleSplit="Scroll-Fade">
+            <div slot="CONTENIDO" class="contenido Order-Top-Left">
+                <h3 style="text-align: start;">
+                    Diseño Personalizado
+                </h3>
+                <p class="parrafo">
+                    Creación de sitios web a medida según las necesidades y
+                    requisitos específicos del cliente.
+                </p>
+                <a
+                    href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
+                    aria-label={`Click para abrir el whatsapp`}
+                    class="boton--primary"
+                    target="_blank"
+                    >Solicitar
+                </a>
+            </div>
             <img
                 slot="imagen"
                 class="Split__Imagen"
@@ -24,19 +30,25 @@ import SplitLayoutsvg from "../components/SplitLayoutsvg.astro";
         </SplitLayoutsvg>
     </div>
 </section>
-<section>
+<section class="sectionColor2">
     <div class="wrapper">
-        <SplitLayoutsvg orderContainer="Right">
-            <h2
-                class="titleSection"
-                style="margin-bottom: 2rem ; text-align: start;"
-            >
-                Versión Móvil
-            </h2>
-            <p class="parrafo">
-                Diseño web autoadministrable adaptado para visualización desde
-                dispositivos móviles, tablets y PC
-            </p>
+        <SplitLayoutsvg styleSplit="Scroll-Fade">
+            <div slot="CONTENIDO" class="contenido Order-Top-Rigth">
+                <h3 style="text-align: start;">
+                    Versión Móvil
+                </h3>
+                <p class="parrafo">
+                    Diseño web autoadministrable adaptado para visualización
+                    desde dispositivos móviles, tablets y PC
+                </p>
+                <a
+                    href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
+                    aria-label={`Click para abrir el whatsapp`}
+                    class="boton--primary"
+                    target="_blank"
+                    >Solicitar
+                </a>
+            </div>
             <img
                 slot="imagen"
                 class="Split__Imagen"
@@ -48,17 +60,24 @@ import SplitLayoutsvg from "../components/SplitLayoutsvg.astro";
 </section>
 <section>
     <div class="wrapper">
-        <SplitLayoutsvg >
-            <h2
-                class="titleSection"
-                style="margin-bottom: 2rem ; text-align: start;"
-            >
-                Redes sociales
-            </h2>
-            <p class="parrafo">
-                Tu web estará vinculada a tus redes sociales, la cual te servirá
-                par dar a conocer tu marca a la mayor cantidad de personas.
-            </p>
+        <SplitLayoutsvg styleSplit="Scroll-Fade">
+            <div slot="CONTENIDO" class="contenido Order-Top-Left">
+                <h3 style="text-align: start;">
+                    Redes sociales
+                </h3>
+                <p class="parrafo">
+                    Tu web estará vinculada a tus redes sociales, la cual te
+                    servirá par dar a conocer tu marca a la mayor cantidad de
+                    personas.
+                </p>
+                <a
+                    href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
+                    aria-label={`Click para abrir el whatsapp`}
+                    class="boton--primary"
+                    target="_blank"
+                    >Solicitar
+                </a>
+            </div>
             <img
                 slot="imagen"
                 class="Split__Imagen"
@@ -68,21 +87,27 @@ import SplitLayoutsvg from "../components/SplitLayoutsvg.astro";
         </SplitLayoutsvg>
     </div>
 </section>
-<section>
+<section class="sectionColor2">
     <div class="wrapper">
-        <SplitLayoutsvg orderContainer="Right">
-            <h2
-                class="titleSection"
-                style="margin-bottom: 2rem ; text-align: start;"
-            >
+        <SplitLayoutsvg styleSplit="Scroll-Fade">
+            <div slot="CONTENIDO" class="contenido Order-Top-Rigth">
+            <h3 style="text-align: start;">
                 Soporte continuo y personalizado
-            </h2>
+            </h3>
             <p class="parrafo">
                 Disfruta de asistencia dedicada para realizar cambios,
                 actualizaciones y mejoras en tu sitio web. Estamos aquí para
                 garantizar que tu presencia en línea esté siempre en su mejor
                 forma.
             </p>
+            <a
+                href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
+                aria-label={`Click para abrir el whatsapp`}
+                class="boton--primary"
+                target="_blank"
+                >Solicitar
+            </a>
+        </div>
             <img
                 slot="imagen"
                 class="Split__Imagen"
@@ -94,11 +119,16 @@ import SplitLayoutsvg from "../components/SplitLayoutsvg.astro";
 </section>
 
 <style lang="scss">
+    .Split__Imagen {
+        height: auto;
+        min-height: auto;
+    }
 
-.Split__Imagen{
-
-    height: auto;
-    min-height: auto;
-}
-
+    .contenido {
+        min-height: 100%;
+        align-content: center;
+        display: grid;
+        gap: 1rem;
+    }
+    
 </style>

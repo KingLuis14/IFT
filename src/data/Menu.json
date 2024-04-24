@@ -3,6 +3,11 @@
         "item": "Inicio",
         "url": "/"
     },
+    
+    {
+        "item": "Cursos",
+        "url": "/cursos"
+    },
     {
         "item": "Nosotros",
         "url": "/nosotros"
