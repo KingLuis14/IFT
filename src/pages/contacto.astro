@@ -2,16 +2,9 @@
 import Layout from "../layout/Layout.astro";
 import BannerData from "../data/BannerData";
 import Formulario from "../components/Formulario/Formulario.astro";
-import Cursos from "../data/GetDataCursos";
-import BannerCurso from "../components/BannerCurso.astro";
-const {imagen } = BannerData.contacto.imagenesBanner;
-
-const cursosArray = [];
-
-Cursos.map(({titulo})=>{
-    cursosArray.push( titulo );
-})
-
+import BannerNew from "../components/BannerNew.astro";
+const { description, titulo, textButton, imagenesBanner } = BannerData.contacto;
+const { imagen } = imagenesBanner;
 ---
 
 <Layout titulo="contacto" descripction="contactate con nosotros, mediante nuestras redes ">
@@ -33,11 +26,16 @@ Cursos.map(({titulo})=>{
         media="(min-width: 641px)"
         type="image/webp"
     />
-    <BannerCurso {...BannerData.contacto} slot="Banner"/>
+    <BannerNew
+        titulo={titulo}
+        descripcion={description}
+        textoBoton={textButton}
+        imagenesBanner={imagenesBanner}
+    />
     <section>
         <div class="wrapper" style="place-items: center;">
             <h2 class="titleSection">Ponte en Contacto</h2>
-            <Formulario  itemsProgramas={cursosArray}/>
+            <Formulario />
         </div>
     </section>
 </Layout>

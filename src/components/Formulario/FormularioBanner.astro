@@ -12,7 +12,7 @@ Cursos.map(({ titulo }) => {
 
 <FormBanner client:load itemsProgramas={cursosArray}>
     <Icon name="CheckIcon" size={50} color="#12CB54" slot="iconCheck" />
-    <div slot="redes">
+    <div slot="redes" class="Redes-Container">
         <a
             class="RedesSociales-Icon"
             href="https://www.facebook.com/people/Instituto-de-Formaci%C3%B3n-Tecnol%C3%B3gica-IFT/61555145250465/"
@@ -20,7 +20,7 @@ Cursos.map(({ titulo }) => {
             target="_blank"
             rel="noopener noreferrer"
         >
-            <Icon name="facebook" size={30} color="blue"/>
+            <Icon name="facebook" size={30} color="#3774f6"/>
         </a>
         <a
             class="RedesSociales-Icon"
@@ -29,7 +29,7 @@ Cursos.map(({ titulo }) => {
             target="_blank"
             rel="noopener noreferrer"
         >
-            <Icon name="Youtube" size={30} color="red"/>
+            <Icon name="Youtube" size={30} color="#ff0808"/>
         </a>
         <a
             class="RedesSociales-Icon"
@@ -38,7 +38,16 @@ Cursos.map(({ titulo }) => {
             target="_blank"
             rel="noopener noreferrer"
         >
-            <Icon name="instagram-2016" size={28} stroke="linear-gradient(to right, red, blue);">
+            <Icon name="instagram-2016" size={26}>
+        </a>
+        <a
+            class="RedesSociales-Icon"
+            href="https://www.tiktok.com/@instituto.ift"
+            aria-label=`Ir a la nuestro Instagram`
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <Icon name="Tiktok" size={30} color="#080808">
         </a>
     </div>
 </FormBanner>
@@ -46,6 +55,8 @@ Cursos.map(({ titulo }) => {
 <style>
     .Redes-Container {
         display: flex;
-        gap: 1rem;
+        gap: .5rem;
+        justify-content: center;
+        align-items: center;
     }
 </style>

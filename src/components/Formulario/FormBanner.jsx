@@ -54,8 +54,8 @@ export default function Form(props) {
                 placeholder="Nombre Completo" />
             <input className={Styles.input}
                 type="tel"
-                aria-label="numero de celular"
-                name="apellido"
+                aria-label="numero de contacto"
+                name="numero de contacto"
                 id="apellido"
                 required
                 placeholder="Número de contacto" />

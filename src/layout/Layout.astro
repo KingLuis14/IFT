@@ -20,27 +20,12 @@ const { titulo, descripction } = Astro.props;
         <meta name="description" content={descripction} />
         <link rel="icon" type="image/png" href="/img/ift.svg" />
         <title>{titulo} - Instituto de Formación Tecnologica</title>
+        <link rel="sitemap" href="/sitemap-index.xml" />
         <link
             fetchpriority="high"
             rel="preload"
             as="font"
-            href="/fonts/poppins-regular-webfont.woff2"
-            type="font/woff2"
-            crossorigin="anonymous"
-        />
-        <link
-            fetchpriority="high"
-            rel="preload"
-            as="font"
-            href="/fonts/poppins-bold-webfont.woff2"
-            type="font/woff2"
-            crossorigin="anonymous"
-        />
-        <link
-            fetchpriority="high"
-            rel="preload"
-            as="font"
-            href="/fonts/poppins-extrabold-webfont.woff2"
+            href="/fonts/inter-latin-variable-full-normal.woff2"
             type="font/woff2"
             crossorigin="anonymous"
         />
@@ -55,41 +40,26 @@ const { titulo, descripction } = Astro.props;
         <BtnWhatsApp />
         <MiFooter />
         <style is:global lang="scss">
+
             @font-face {
-                font-family: "poppins";
-                src: url("/fonts/poppins-regular-webfont.woff2") format("woff2");
-                font-weight: 400;
-                font-style: normal;
-                font-display: swap;
-            }
-            @font-face {
-                font-family: "poppins";
-                src: url("/fonts/poppins-bold-webfont.woff2") format("woff2");
-                font-weight: 700;
-                font-style: normal;
-                font-display: swap;
-            }
-            @font-face {
-                font-family: "poppins";
-                src: url("/fonts/poppins-extrabold-webfont.woff2")
-                    format("woff2");
-                font-weight: 800;
-                font-style: normal;
+                font-family: "Inter";
+                src: url("/fonts/inter-latin-variable-full-normal.woff2")
+                    format("woff2-variations");
+                font-weight: 100 1000;
                 font-display: swap;
             }
 
             :root {
-                --step--2: clamp(0.651rem, 0.6324rem + 0.0827vi, 0.6944rem);
-  --step--1: clamp(0.7813rem, 0.7589rem + 0.0992vi, 0.8333rem);
-  --step-0: clamp(0.9375rem, 0.9107rem + 0.119vi, 1rem);
-  --step-1: clamp(1.125rem, 1.0929rem + 0.1429vi, 1.2rem);
-  --step-2: clamp(1.35rem, 1.3114rem + 0.1714vi, 1.44rem);
-  --step-3: clamp(1.62rem, 1.5737rem + 0.2057vi, 1.728rem);
-  --step-4: clamp(1.944rem, 1.8885rem + 0.2469vi, 2.0736rem);
-  --step-5: clamp(2.3328rem, 2.2661rem + 0.2962vi, 2.4883rem);
+                --step--2: clamp(0.7378rem, 0.8125rem + -0.0996vi, 0.7901rem);
+                --step--1: clamp(0.8854rem, 0.8904rem + -0.0066vi, 0.8889rem);
+                --step-0: clamp(1rem, 0.9732rem + 0.119vi, 1.0625rem);
+                --step-1: clamp(1.125rem, 1.0607rem + 0.2857vi, 1.275rem);
+                --step-2: clamp(1.2656rem, 1.1523rem + 0.5036vi, 1.53rem);
+                --step-3: clamp(1.4238rem, 1.2472rem + 0.7851vi, 1.836rem);
+                --step-4: clamp(1.6018rem, 1.3441rem + 1.1455vi, 2.2032rem);
+                --step-5: clamp(1.802rem, 1.4413rem + 1.6034vi, 2.6438rem);
 
-
-                --step-6: clamp(2.5rem, 2.1739rem + 1.6304vi, 3.375rem);
+                --step-6: clamp(2.7rem, 2.1739rem + 1.6304vi, 3.375rem);
 
                 --alto-header: clamp(4rem, 6.531vw + 1.694rem, 4.5rem);
                 --section-padding: clamp(2rem, 1.2727rem + 3.6364vw, 5rem);
@@ -109,6 +79,11 @@ const { titulo, descripction } = Astro.props;
                 --bg-color: #e5eaff;
                 --color-Secondary: #282829;
                 color-scheme: light;
+            }
+
+            html{
+                scroll-behavior: smooth;
+                scroll-padding-top: 3rem;
             }
 
             *,
@@ -138,7 +113,7 @@ const { titulo, descripction } = Astro.props;
                 min-height: 100svh;
                 margin-top: var(--alto-header);
                 font-size: var(--step-0);
-                font-family: "poppins", sans-serif, Arial, sans-serif;
+                font-family: "Inter", Arial, sans-serif;
                 font-weight: 400;
                 font-style: normal;
                 line-height: 1.45;

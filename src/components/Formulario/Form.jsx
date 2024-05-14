@@ -49,9 +49,9 @@ export default function Form(props) {
             </label>
             <input className={Styles.input} name="nombre" id="nombre" required />
             <label className={Styles.label} htmlFor="apellido">
-                Apellido
+                Número de contacto
             </label>
-            <input className={Styles.input} name="apellido" id="apellido" required />
+            <input className={Styles.input} name="numero de contacto" id="numero de contacto" required />
             <label className={Styles.label} htmlFor="email">
                 Correo
             </label>

@@ -5,11 +5,15 @@ import HeroImg from "../components/HeroImg.astro";
 import FormularioBanner from "../components/Formulario/FormularioBanner.astro";
 import BannerData from "../data/BannerData";
 import InfoCursos from "../sections/InfoCursos.astro";
-const {description, titulo, textButton} = BannerData.cursos;
-const {imagen } = BannerData.cursos.imagenesBanner;
+import BannerNew from "../components/BannerNew.astro";
+const { description, titulo, textButton, imagenesBanner } = BannerData.cursos;
+const { imagen } = imagenesBanner;
 ---
 
-<Layout titulo="cursos" descripction="Ofrecemos los mejores cursos virtuales mas demandados en el area tecnologica">
+<Layout
+    titulo="cursos"
+    descripction="Ofrecemos los mejores cursos virtuales mas demandados en el area tecnologica"
+>
     <link
         slot="preload"
         fetchpriority="high"
@@ -28,23 +32,17 @@ const {imagen } = BannerData.cursos.imagenesBanner;
         media="(min-width: 641px)"
         type="image/webp"
     />
-    <HeroImg imagenesBanner={BannerData.cursos.imagenesBanner} slot="Banner">
-        <div slot="Contenido" class="wrapper container">
-            <div class="contenido">
-                <h1 class="superTitulo">{titulo}</h1>
-                <p>{description}</p>
-                <a href="/contacto" 
-                    class="contenido__boton" 
-                    aria-label="Inscribete en uno de nuestros cursos y se todo un profesional"
-                    >
-                    {textButton}
-                </a>
-            </div>
-            <FormularioBanner />
-        </div>
-    </HeroImg>
+    <BannerNew
+        titulo={titulo}
+        descripcion={description}
+        textoBoton={textButton}
+        imagenesBanner={imagenesBanner}
+        columnas={2}
+    >
+        <FormularioBanner slot="Columna2" />
+    </BannerNew>
     <InfoCursos />
-    <Cta slot="CTA"/>
+    <Cta slot="CTA" />
 </Layout>
 
 <style lang="scss">
@@ -58,8 +56,8 @@ const {imagen } = BannerData.cursos.imagenesBanner;
         color: white;
         padding-block: 2rem;
 
-        @media (width > 640px) {
-            grid-template-columns: 6fr 4fr;
+        @media (width > 700px) {
+            grid-template-columns: 5fr 4fr;
         }
     }
 
@@ -70,13 +68,13 @@ const {imagen } = BannerData.cursos.imagenesBanner;
         justify-content: center;
         align-items: center;
 
-        @media (width > 640px) {
+        @media (width > 700px) {
             align-items: start;
         }
 
         & > .superTitulo {
             text-align: center;
-            @media (width > 640px) {
+            @media (width > 700px) {
                 text-align: start;
             }
         }
@@ -88,6 +86,7 @@ const {imagen } = BannerData.cursos.imagenesBanner;
             border-radius: 0.4rem;
             background-color: var(--color-Primary500);
             font-weight: 700;
+            margin-top: 0.5rem;
 
             &:hover {
                 background-color: var(--color-Primary600);
@@ -97,7 +96,7 @@ const {imagen } = BannerData.cursos.imagenesBanner;
         > p {
             text-align: center;
             color: #ececec;
-            @media (width > 640px) {
+            @media (width > 700px) {
                 text-align: start;
             }
         }

@@ -1,4 +1,4 @@
-import Data from './CursosData.json';
+import Data from './CursosData.ts';
 
 interface Curso {
     id: string;

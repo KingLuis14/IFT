@@ -1,61 +1,59 @@
 ---
-
 interface imagenesBanner {
     base64: string;
     imagen: string;
 }
 
 interface Props {
-    titulo : string;
+    titulo: string;
     description: string;
     textButton: string;
-    imagenesBanner : imagenesBanner;
-    
+    imagenesBanner: imagenesBanner;
 }
 
-const {titulo, description, textButton, imagenesBanner} = Astro.props;
+const { titulo, description, textButton, imagenesBanner } = Astro.props;
 
-const {base64, imagen} = imagenesBanner;
+const { base64, imagen } = imagenesBanner;
 ---
 
-<div 
+<div
     class="HeroImgContainer"
     style={`--base64: url(${base64});
             --small-lcpi: url(/img/${imagen}-small-lcpi.avif);
             --small: url(/img/${imagen}.avif);
             --large-lcpi: url(/img/${imagen}-large-lcpi.avif);
-            --large: url(/img/${imagen}.avif);`
-            } 
-    >
+            --large: url(/img/${imagen}.avif);`}
+>
     <article class="contenido">
-        <div class="wrapper" style="gap: 1.5rem;" >
-            <h1 class="superTitulo">{ titulo }</h1>
-            <p>{description}
-            </p>
-            <a href="/contacto" class="contenido__boton" >{ textButton }</a>
+        <div class="wrapper" style="gap: 1.5rem;">
+            <h1 class="superTitulo">{titulo}</h1>
+            <p>{description}</p>
+            <a
+                href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
+                target="_blank"
+                class="contenido__boton">{textButton}</a
+            >
         </div>
     </article>
 </div>
 
 <style lang="scss">
-
     .HeroImgContainer {
-        --Ibase64 : var(--base64);
-        --lcpi : var(--small-lcpi);
-        --original : var(--small);
+        --Ibase64: var(--base64);
+        --lcpi: var(--small-lcpi);
+        --original: var(--small);
         display: grid;
         min-height: calc(100vh - var(--alto-header));
         min-height: calc(100svh - var(--alto-header));
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
-        background-image: var(--original), var(--lcpi), var(--Ibase64) ;
+        background-image: var(--original), var(--lcpi), var(--Ibase64);
 
         @media (width > 640px) {
-            --lcpi : var(--large-lcpi);
-            --original : var(--large);
+            --lcpi: var(--large-lcpi);
+            --original: var(--large);
         }
-        
     }
 
     .contenido {
@@ -67,23 +65,23 @@ const {base64, imagen} = imagenesBanner;
         color: white;
         background-color: #100077c3;
 
-        &__boton{
+        &__boton {
             color: rgb(255, 255, 255);
             justify-self: center;
-            padding: .5rem 1rem;
-            border-radius: .4rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.4rem;
             background-color: var(--color-Primary500);
             font-weight: 700;
+            margin-top: 0.5rem;
 
-            &:hover{
+            &:hover {
                 background-color: var(--color-Primary600);
             }
         }
     }
 
-    p{
+    p {
         width: min(100%, 75ch);
         margin-inline: auto;
     }
-    
 </style>
