@@ -1,8 +1,8 @@
-import { BaseDatos, DiseñoGrafico, DiseñoWeb, Excel, Ofimatica, Programacion } from "./cursos";
+import { BaseDatos, DiseñoGrafico, DiseñoWeb, Excel, Ofimatica, Programacion , WordPress} from "./cursos";
 
 
 const DataCursos = [
-    Ofimatica, DiseñoGrafico, DiseñoWeb, BaseDatos, Programacion, Excel
+    WordPress,Programacion, DiseñoWeb, Ofimatica, DiseñoGrafico, BaseDatos , Excel
 ]
 
 export default DataCursos;
