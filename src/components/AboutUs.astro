@@ -1,44 +1,39 @@
 ---
-import SplitLayout from "./SpliLayout.astro";
+import Button from "./Button.astro";
+import SectionPage from "./SectionPage.astro";
 import Typografic from "./Typografic.astro";
 import Wrapper from "./Wrapper.astro";
 ---
 
-<section>
-    <Wrapper>
-        <Typografic as="h2" variant="colorBlue" size="title1" aling="center" weigth="700">Sobre Nosotros</Typografic>
-        <SplitLayout imagen="about" >
-            <Typografic as="p" variant="colorBlack">
-                IFT es una empresa especializada en capacitaciones tecnológicas.
-                Con nuestro RUC 20611910224, ofrecemos programas de formación de
-                vanguardia en diversas áreas de la tecnología, desde desarrollo
-                de software hasta ciberseguridad.
-            </Typografic>
-            <a
-                href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
-                aria-label={`Click para abrir el whatsapp`}
-                class="boton--primary"
-                target="_blank"
-                >Contactanos
-            </a>
-        </SplitLayout>
-        <SplitLayout orderContainer="Right" imagen="about2">
-            <p class="parrafo">
-                Nuestros cursos, impartidos por expertos en la materia, están
-                diseñados para satisfacer las demandas del mercado laboral
-                actual y proporcionar a nuestros estudiantes las habilidades
-                necesarias para destacarse en la industria.
-            </p>
-            <a
-                href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
-                aria-label={`Click para abrir el whatsapp`}
-                class="boton--primary"
-                target="_blank"
-                >Contactanos
-            </a>
-        </SplitLayout>
+<SectionPage variant="theme2">
+    <Wrapper classBlock="split split--bottom-rigth" colors="white" variant="medium">
+        <div class="textFlow">
+            <Typografic as="h2" size="title1" weigth="700" variant="colorBlue">25 Años De Experiencia en Balanzas</Typografic>
+            <Typografic as="p" variant="colorBlack">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit natus aperiam, obcaecati veniam autem pariatur est aspernatur deleniti voluptatibus recusandae atque, maiores ducimus. Quibusdam recusandae expedita deserunt maxime, incidunt magnam!</Typografic>
+            <Button href="https://ift.pe/" target="_blank" variant="theme1" size="content" >Ver malla</Button>
+        </div>
+        <picture>
+            <img src="/img/about2.avif" alt="about1" style="aspect-ratio: 1" />
+        </picture>
     </Wrapper>
-</section>
+</SectionPage>
+
+<SectionPage variant="theme1">
+    <Wrapper classBlock="split split--bottom-left" colors="white" variant="medium">
+        <div class="textFlow">
+            <Typografic as="h2" size="title1" weigth="700" variant="colorBlue">25 Años De Experiencia en Balanzas</Typografic>
+            <Typografic as="p" variant="colorBlack">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit natus aperiam, obcaecati veniam autem pariatur est aspernatur deleniti voluptatibus recusandae atque, maiores ducimus. Quibusdam recusandae expedita deserunt maxime, incidunt magnam!</Typografic>
+            <Button href="https://ift.pe/" target="_blank" variant="theme1" size="content" >Ver malla</Button>
+        </div>
+        <picture>
+            <img src="/img/about2.avif" alt="" style="aspect-ratio: 1" />
+        </picture>
+    </Wrapper>
+</SectionPage>
+
+
+
+
 
 <style lang="scss">
     .parrafo {

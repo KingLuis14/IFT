@@ -1,36 +1,41 @@
 ---
+import { Icon } from "astro-icon/components";
 import HabilidadesData from "../data/Habilidades.json";
-import ItemBeneficio from "./ItemBeneficio.astro";
+import Typografic from "./Typografic.astro";
 import Wrapper from "./Wrapper.astro";
+import SectionPage from "./SectionPage.astro";
 ---
 
-<section class="sectionColor2">
-    <Wrapper>
-        <h2 class="titleSection">Beneficios</h2>
-        <div class="Habilidades-Container">
+<SectionPage>
+    <Wrapper align="center">
+        <header class="text-center">
+            <Typografic as="h1" variant="colorBlue" size="title1" weigth="700"
+                >Mira tus Beneficios</Typografic
+            >
+        </header>
+        <div class="padding-section grid grid-col:2 @lg:grid-col:4">
             {
-                HabilidadesData.map(({ icono, texto }, index) => {
-                    return (
-                        <ItemBeneficio
-                            nameIcon={icono}
-                            texto={texto}
-                            styleSplit="Scroll-Fade"
-                            inlineStyle={`--delay: ${index * 220}ms`}
+                HabilidadesData.map(({ icono, texto, textoBottom }, index) => (
+                    <div
+                        class={`grid padding-16 ${index === 1 ? "bg-color-green-500" : "bg-color-white-000"}`}
+                    >
+                        <Icon
+                            name={icono}
+                            size={60}
+                            class={`${index === 1 ? "color-white-000" : "color-green-500"}`}
                         />
-                    );
-                })
+                        <Typografic
+                            as="p"
+                            {...((index === 1) && { variant: "colorWhite" })}
+                        >
+                            {texto}
+                            <Typografic as="span" style="display : block">
+                                {textoBottom}
+                            </Typografic>
+                        </Typografic>
+                    </div>
+                ))
             }
         </div>
     </Wrapper>
-</section>
-
-<style lang="scss">
-    .Habilidades-Container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        justify-content: center;
-        width: 100%;
-        margin-inline: auto;
-    }
-</style>
+</SectionPage>

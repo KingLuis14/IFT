@@ -1,5 +1,7 @@
 ---
 import Wrapper from './Wrapper.astro';
+import Button from './Button.astro';
+import Typografic from './Typografic.astro';
 
 interface imagenesBanner {
     base64: string;
@@ -30,13 +32,12 @@ const { base64, imagen } = imagenesBanner;
 >
     <Wrapper classBlock="Banner-wrapper" data-columns={columnas}>
         <article class="Banner__Contenido" data-columns={columnas}>
-            <h1 class="superTitulo">{titulo}</h1>
+            <Typografic as='h1' size='superTitle' weigth='700'>{titulo}</Typografic>
             <p>{descripcion}</p>
-            <a
+            <Button
                 href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
                 target="_blank"
-                class="boton--primary">{textoBoton}</a
-            >
+                class="boton--primary">{textoBoton}</>
         </article>
         <slot name="Columna2" />
     </Wrapper>

@@ -9,9 +9,9 @@
 //     padding-block-end: $padding-section;
 // }
 
-// .fs-superTitle{
-//     @include titles( $fs-superTitle , $color-neutral-000 , normal );
-// }
+.fs-superTitle{
+    font-size:  $fs-superTitle ;
+}
 
 .fw-400{
     font-weight: $fw-400;

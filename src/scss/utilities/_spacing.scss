@@ -3,6 +3,9 @@
 
 @each $sizes, $valueSizes in $sizes{
     .margin{
+        &-#{$sizes}{
+            margin: $valueSizes;
+        }
         &-block-#{$sizes}{
             margin-block: $valueSizes;
         }
@@ -21,6 +24,34 @@
         &-inline-end-#{$sizes}{
             margin-inline-end: $valueSizes;
         }
+    }
+
+    .padding{
+        &-#{$sizes}{
+            padding: $valueSizes;
+        }
+        &-block-#{$sizes}{
+            padding-block: $valueSizes;
+        }
+        &-block-start-#{$sizes}{
+            padding-block-start: $valueSizes;
+        }
+        &-block-end-#{$sizes}{
+            padding-block-end: $valueSizes;
+        }
+        &-inline-#{$sizes}{
+            padding-inline: $valueSizes;
+        }
+        &-inline-start-#{$sizes}{
+            padding-inline-start: $valueSizes;
+        }
+        &-inline-end-#{$sizes}{
+            padding-inline-end: $valueSizes;
+        }
+    }
+
+    .gap\:#{$sizes}{
+        gap: $valueSizes;
     }
 
 }

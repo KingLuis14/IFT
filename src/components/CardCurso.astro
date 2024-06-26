@@ -1,4 +1,7 @@
 ---
+import Button from './Button.astro';
+import Typografic from './Typografic.astro';
+
 interface Props {
     titulo: string;
     descripcion: string;
@@ -25,12 +28,14 @@ const { original } = imagenes;
         />
     </a>
     <div class="Bento__Contenido">
-        <h3 class="Bento__titulo">{titulo}</h3>
+        <Typografic as='h3' variant='colorBlue' weigth='600'>{titulo}</Typografic>
         <p class="Bento__texto">{descripcion}</p>
-        <a 
+        <Button 
+                variant='theme1'
+                size='content'
             href={`${url}/#malla-curricular`} 
             aria-label={`Ir a la pagina del curso de ${titulo}`}
-            class="boton--primary" >Más información</a>
+             >Más información</Button>
     </div>
 </article>
 
@@ -54,9 +59,7 @@ const { original } = imagenes;
 
         }
 
-        &__titulo{
-             color: #494b54;
-        }
+    
 
         &__texto {
             display: -webkit-box;

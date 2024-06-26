@@ -1,18 +1,22 @@
 [
     {
         "icono": "certificado",
-        "texto": "Certificacion \nProgresiva"
+        "texto": "Certificacion",
+        "textoBottom" : "Progresiva"
     },
     {
         "icono": "clasesVivo",
-        "texto": "Clases en \nVivo"
+        "texto": "Clases en",
+        "textoBottom" : "Vivo"
     },
     {
         "icono": "libro",
-        "texto": "Materiales por \nCurso"
+        "texto": "Materiales por",
+        "textoBottom" : "Curso"
     },
     {
         "icono": "plataformaVirtual",
-        "texto": "Plataforma \nVirtual"
+        "texto": "Plataforma",
+        "textoBottom" : "Virtual"
     }
 ]
