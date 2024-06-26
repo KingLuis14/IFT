@@ -1,8 +1,16 @@
+const autoprefixer = require('autoprefixer');
+const postcssPresetEnv = require('postcss-preset-env');
+ 
 module.exports = {
-	plugins: [
-		require("postcss-import"),
-		require("postcss-url"),
-		require("autoprefixer"),
-		require("postcss-reporter")
-	]
-  };
+ 	plugins: [
+ 		postcssPresetEnv({
+ 			stage: 2,
+ 			features: {
+ 				'nesting-rules': true,
+ 				'custom-media-queries': true,
+ 				'media-query-ranges': true,
+ 			},
+ 		}),
+ 		autoprefixer(),
+ 	],
+ };

@@ -1,5 +1,9 @@
+---
+import Wrapper from "./Wrapper.astro";
+---
+
 <section class="animation-loader" data-cta>
-    <div class="wrapper Cta">
+    <Wrapper classBlock="Cta">
         <h2 class="superTitulo Cta-Titulo">Habla con nosotros</h2>
         <p class="Cta__parrafo">
             ¿Tiene alguna pregunta? Siempre estamos abiertos a hablar sobre su
@@ -9,7 +13,7 @@
         <a href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0" class="Cta__btnContacto boton--primary" target="_blank">
             WhatsApp
         </a>
-    </div>
+    </Wrapper>
 </section>
 
 <style lang="scss">

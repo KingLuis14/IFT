@@ -15,9 +15,4 @@ export default defineConfig({
     enabled: false
   },
   integrations: [icon(), react(), sitemap()],
-  vite: {
-    build: {
-      cssMinify: 'lightningcss'
-    }
-  }
 });

@@ -1,38 +1,36 @@
 ---
+import { Icon } from "astro-icon/components";
 import DataCursos from "../data/GetDataCursos";
 import CardCurso from "./CardCurso.astro";
+import Wrapper from "./Wrapper.astro";
 ---
 
-
 <section>
-    <div class="wrapper">
+    <Wrapper>
         <h2 class="titleSection">Cursos</h2>
-        <div class="Cursos-Container">
-            {
-             DataCursos.map(({titulo, descripcion, url, imagenes}) =>{
-                return <CardCurso 
-                            titulo={titulo} 
-                            descripcion={descripcion} 
-                            url={url} 
-                            imagenes={imagenes}
-                        />
-                })   
-            }
+        <div class="carrusel-product">
+            <button class="carrusel-product__btnPrev">
+                <Icon name="ArrowIcon" size={18} />
+            </button>
+            <div class="carrusel-product__track">
+                
+                {
+                    DataCursos.map(({ titulo, descripcion, url, imagenes }) => {
+                        return (
+                            <CardCurso
+                                titulo={titulo}
+                                descripcion={descripcion}
+                                url={url}
+                                imagenes={imagenes}
+                            />
+                        );
+                    })
+                }
+                
+            </div>
+            <button class="carrusel-product__btnNext">
+                <Icon name="ArrowIcon" size={18} />
+            </button>
         </div>
-    </div>
+    </Wrapper>
 </section>
-
-<style lang="scss" >
-    .Cursos-Container {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-
-        @media (width > 768px) {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        @media (width > 1024px) {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-</style>

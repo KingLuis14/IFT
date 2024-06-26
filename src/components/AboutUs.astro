@@ -1,17 +1,19 @@
 ---
 import SplitLayout from "./SpliLayout.astro";
+import Typografic from "./Typografic.astro";
+import Wrapper from "./Wrapper.astro";
 ---
 
 <section>
-    <div class="wrapper">
-        <h2 class="titleSection">Sobre Nosotros</h2>
+    <Wrapper>
+        <Typografic as="h2" variant="colorBlue" size="title1" aling="center" weigth="700">Sobre Nosotros</Typografic>
         <SplitLayout imagen="about" >
-            <p class="parrafo">
+            <Typografic as="p" variant="colorBlack">
                 IFT es una empresa especializada en capacitaciones tecnológicas.
                 Con nuestro RUC 20611910224, ofrecemos programas de formación de
                 vanguardia en diversas áreas de la tecnología, desde desarrollo
                 de software hasta ciberseguridad.
-            </p>
+            </Typografic>
             <a
                 href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
                 aria-label={`Click para abrir el whatsapp`}
@@ -35,7 +37,7 @@ import SplitLayout from "./SpliLayout.astro";
                 >Contactanos
             </a>
         </SplitLayout>
-    </div>
+    </Wrapper>
 </section>
 
 <style lang="scss">

@@ -1,10 +1,11 @@
 ---
 import HabilidadesData from "../data/Habilidades.json";
 import ItemBeneficio from "./ItemBeneficio.astro";
+import Wrapper from "./Wrapper.astro";
 ---
 
 <section class="sectionColor2">
-    <div class="wrapper">
+    <Wrapper>
         <h2 class="titleSection">Beneficios</h2>
         <div class="Habilidades-Container">
             {
@@ -20,7 +21,7 @@ import ItemBeneficio from "./ItemBeneficio.astro";
                 })
             }
         </div>
-    </div>
+    </Wrapper>
 </section>
 
 <style lang="scss">
