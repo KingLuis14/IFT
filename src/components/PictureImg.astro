@@ -1,38 +1,60 @@
 ---
+import type { HTMLAttributes } from "astro/types";
 import type { ImagenOriginal } from "../data/GetDataCursos";
 
-interface Props extends ImagenOriginal {}
+const Picture = {
+    variants: {
+        aspectRatio: {
+            Auto: "aspect-ratio-auto",
+            Box: "aspect-ratio-box",
+            Video: "aspect-ratio-video",
+            poster: "aspect-ratio-poster",
+        },
+    },
+};
 
-const { imagen, alt} = Astro.props;
+interface Props extends HTMLAttributes<"picture">, ImagenOriginal {
+    classImg?: string;
+    aspectRatio?: keyof typeof Picture.variants.aspectRatio;
+}
+
+const { imagen, alt, aspectRatio = 'Box', classImg, class : classes, ...attrs } = Astro.props;
 ---
 
-<picture class="lazy-picture aspect-ratio-box animation-loader">
+<picture
+    class:list={[
+        Picture.variants.aspectRatio[aspectRatio],
+        "lazy-picture animation-loader", classes
+    ]}
+    {...attrs}
+>
     {
         imagen.map(({ url, type }) => (
             <source data-srcset={`/img/${url}`} type={`image/${type}`} />
         ))
     }
-    <img class="aspect-ratio-box border-radius-2" alt={alt} />
+    <img  class:list={[Picture.variants.aspectRatio[aspectRatio], classImg]} alt={alt} />
 </picture>
 
-
 <script>
-    const lazyImages = document.querySelectorAll(".lazy-picture");
+    document.addEventListener("astro:page-load", function () {
 
-const observer = new IntersectionObserver(
-    (entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                const picture = entry.target;
-                const sources = picture.querySelectorAll("source");
-                const img = picture.querySelector("img");
+        const lazyImages = document.querySelectorAll(".lazy-picture");
 
-                sources.forEach((source) => {
-                    source.srcset = source.dataset.srcset;
-                    img.srcset = source.dataset.srcset;
-                });
+    const observer = new IntersectionObserver(
+        (entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const picture = entry.target;
+                    const sources = picture.querySelectorAll("source");
+                    const img = picture.querySelector("img");
 
-                img.addEventListener("load", () => {
+                    sources.forEach((source) => {
+                        source.srcset = source.dataset.srcset;
+                        img.srcset = source.dataset.srcset;
+                    });
+
+                    img.addEventListener("load", () => {
                         setTimeout(() => {
                             img.parentElement.classList.remove(
                                 "animation-loader",
@@ -40,16 +62,17 @@ const observer = new IntersectionObserver(
                             img.parentElement.classList.add("loaderOk");
                         }, 500);
                     });
-                
-                
-                observer.unobserve(picture);
-            }
-        });
-    },
-    { rootMargin: "0px 0px 0px 0px" },
-);
 
-lazyImages.forEach((lazyImage) => {
-    observer.observe(lazyImage);
-});
+                    observer.unobserve(picture);
+                }
+            });
+        },
+        { rootMargin: "0px 0px 0px 0px" },
+    );
+
+    lazyImages.forEach((lazyImage) => {
+        observer.observe(lazyImage);
+    });
+    });
+    
 </script>

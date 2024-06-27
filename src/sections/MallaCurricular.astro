@@ -1,25 +1,36 @@
-<section id="malla-curricular">
-    <div class="Acordeon-Container wrapper">
-        <h2 class="titleSection" style="grid-area:titulo;">Malla Curricular</h2>
-        <div style="grid-area:malla ; display: grid; gap: 1rem;">
-            <slot />
+---
+import SectionPage from "../components/SectionPage.astro";
+import Typografic from "../components/Typografic.astro";
+import Wrapper from "../components/Wrapper.astro";
+---
+
+<SectionPage id="malla-curricular">
+    <Wrapper>
+        <Typografic as="h2" size="titleSection" weigth="700" variant="colorBlue" aling="center">Malla Curricular</Typografic>
+        <div class="Acordeon-Container">
+            <div style="grid-area:malla ; display: grid; gap: 1rem;">
+                <slot />
+                
+            </div>
+            <slot name="Poster"/>
         </div>
-        <slot name="Poster"/>
-    </div>
-</section>
+        
+    </Wrapper>
+</SectionPage>
 
 <style lang="scss">
     .Acordeon-Container{
         display: grid;
+        gap: 1.5rem;
         grid-template-columns: 1fr;
-        grid-template-areas: "titulo"
+        grid-template-areas: 
                              "malla"
                              "poster";
 
         @media (width > 640px) {
 
             grid-template-columns: 6fr 4fr;
-            grid-template-areas: "titulo titulo"
+            grid-template-areas: 
                              "malla poster";
         }
     }

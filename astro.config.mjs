@@ -14,5 +14,14 @@ export default defineConfig({
   devToolbar: {
     enabled: false
   },
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          assetFileNames: 'assets/asset.[hash][extname]',
+        }
+      }
+    }
+  },
   integrations: [icon(), react(), sitemap()],
 });

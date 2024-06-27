@@ -1,46 +1,52 @@
 ---
-import SplitLayout from "./SpliLayout.astro";
+import Button from "./Button.astro";
+import PictureImg from "./PictureImg.astro";
+import SectionPage from "./SectionPage.astro";
+import Typografic from "./Typografic.astro";
+import Wrapper from "./Wrapper.astro";
+
+const AboutNosotros = {
+    imgName: "about",
+    alt: "imagen de about 1",
+    type: ["avif", "webp"],
+    get imagen(): { url: string, type: string }[] {
+        return this.type.map((ty: string) => {
+            return { url: `${this.imgName}.${ty}`, type: ty };
+        });
+    }
+};
+const AboutCursos = {
+    imgName: "about2",
+    alt: "imagen de about 2",
+    type: ["avif", "webp"],
+    get imagen(): { url: string, type: string }[] {
+        return this.type.map((ty: string) => {
+            return { url: `${this.imgName}.${ty}`, type: ty };
+        });
+    }
+};
 ---
 
-<section>
-    <div class="wrapper">
-        
-        <SplitLayout imagen="about">
-            <h2 class="titleSection" style="text-align: start;">Vision</h2>
-            <p class="parrafo">
-                En IFT, nos comprometemos a ser líderes en la capacitación tecnológica, proporcionando cursos y talleres de alta calidad que impulsen el desarrollo profesional y personal de nuestros clientes y estudiante.
-            </p>
-            <a
-                href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
-                aria-label={`Click para abrir el whatsapp`}
-                class="boton--primary"
-                target="_blank"
-                >Contactanos
-            </a>
-        </SplitLayout>
-    </div>
-</section>
-<section>
-    <div class="wrapper">
-        
-        <SplitLayout imagen="about2" orderContainer="Right">
-            <h2 class="titleSection" style="text-align: start;">Mision</h2>
-            <p class="parrafo">
-                Nuestra misión es brindar una experiencia educativa innovadora y accesible, adaptada a las necesidades del mundo moderno, que permita a individuos y organizaciones adquirir y mejorar sus habilidades tecnológicas de manera efectiva.
-            </p>
-            <a
-                href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
-                aria-label={`Click para abrir el whatsapp`}
-                class="boton--primary"
-                target="_blank"
-                >Contactanos
-            </a>
-        </SplitLayout>
-    </div>
-</section>
 
-<style lang="scss">
-    .parrafo {
-        color: rgb(69, 79, 95);
-    }
-</style>
+<SectionPage variant="theme2">
+    <Wrapper classBlock="split split--bottom-rigth" colors="white" variant="medium">
+        <div class="textFlow">
+            <Typografic as="h2" size="title1" weigth="700" variant="colorBlue">Sobre Nosotros</Typografic>
+            <Typografic as="p" variant="colorBlack">En IFT, nos comprometemos a ser líderes en la capacitación tecnológica, proporcionando cursos y talleres de alta calidad que impulsen el desarrollo profesional y personal de nuestros clientes y estudiante.</Typografic>
+            <Button href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0" target="_blank" variant="theme1" size="content" >Contactanos</Button>
+        </div>
+        <PictureImg {...AboutNosotros}/>
+           
+    </Wrapper>
+</SectionPage>
+
+<SectionPage variant="theme1">
+    <Wrapper classBlock="split split--bottom-left" colors="white" variant="medium">
+        <div class="textFlow">
+            <Typografic as="h2" size="title1" weigth="700" variant="colorBlue">Nuestros Cursos</Typografic>
+            <Typografic as="p" variant="colorBlack">Nuestra misión es brindar una experiencia educativa innovadora y accesible, adaptada a las necesidades del mundo moderno, que permita a individuos y organizaciones adquirir y mejorar sus habilidades tecnológicas de manera efectiva.</Typografic>
+            <Button href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0" target="_blank" variant="theme1" size="content" >Contactanos</Button>
+        </div>
+        <PictureImg {...AboutCursos}/>
+    </Wrapper>
+</SectionPage>

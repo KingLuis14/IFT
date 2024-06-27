@@ -23,7 +23,7 @@ const { original } = imagenes;
         href={`${url}/#malla-curricular`}
         style="overflow: hidden; display: block; max-width: 100%;"
     >
-    <PictureImg {...original}/>
+    <PictureImg {...original} aspectRatio='poster'/>
     </a>
     <div class="Bento__Contenido">
         <Typografic as='h3' variant='colorBlue' weigth='600'>{titulo}</Typografic>
@@ -74,7 +74,6 @@ const { original } = imagenes;
 
     .Imagen-Container{
         position: relative;
-        aspect-ratio: 2/2.5;
 
         &.animation-loader{
 

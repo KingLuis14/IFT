@@ -5,7 +5,8 @@ import MallaCurricular from "../sections/MallaCurricular.astro";
 import Acordeon from "../components/Acordeon.astro";
 import FormularioBanner from "../components/Formulario/FormularioBanner.astro";
 import BannerNew from "../components/BannerNew.astro";
-
+import PictureImg from "../components/PictureImg.astro";
+import Typografic from "../components/Typografic.astro";
 
 export async function getStaticPaths() {
     return DataCursos.map((curso) => {
@@ -16,7 +17,7 @@ export async function getStaticPaths() {
     });
 }
 
-const {descripcion, titulo, imagenes, modulos, imagenesBanner } = Astro.props;
+const { descripcion, titulo, imagenes, modulos, imagenesBanner } = Astro.props;
 
 const { original } = imagenes;
 ---
@@ -54,7 +55,12 @@ const { original } = imagenes;
             modulos.map(({ id, semanas }, i) => {
                 return (
                     <>
-                        <h3 style="padding-block: 1rem;">{`Modulo ${i + 1} : ${id}`}</h3>
+                        <Typografic
+                            as="h3"
+                            weigth="700"
+                            variant="colorBlue"
+                            style="padding-block: 1rem;"
+                        >{`Modulo ${i + 1} : ${id}`}</Typografic>
                         {semanas.map((semana, index) => {
                             return (
                                 <Acordeon
@@ -69,38 +75,22 @@ const { original } = imagenes;
             })
         }
 
-        <div slot="Poster" class="Poster animation-loader">
-            <img data-srcx={`${original}.avif`} alt={`${titulo} - IFT`} />
-        </div>
+        <PictureImg
+            slot="Poster"
+            class="Poster"
+            {...original}
+            aspectRatio="poster"
+        />
     </MallaCurricular>
 </Layout>
 
 <style lang="scss">
     .Poster {
-        aspect-ratio: 2/2.5;
         grid-area: poster;
         align-self: start;
         position: sticky;
-        top: var(--alto-header);
+        top: var(--header-heigth);
         overflow: hidden;
         border-radius: 0.5rem;
-
-        &.animation-loader {
-            background-color: #d7e1e7;
-            animation: loader 1.5s infinite alternate;
-        }
-
-        &::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #d7e1e7;
-        }
-
-        &.loaderOk::before {
-            content: none;
-        }
     }
 </style>
