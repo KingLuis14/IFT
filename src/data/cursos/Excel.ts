@@ -1,3 +1,5 @@
+import type { ImageType } from "../../interface/Image";
+
 const Excel = {
     id: "excel",
     titulo: "Microsoft Excel",
@@ -9,7 +11,16 @@ const Excel = {
       },
     imagenes: {
       "base64": "",
-      original: "/img/Microsoft-Excel"
+      original: {
+        imgName: 'Diseño-grafico',
+        alt: 'imagen de about 1',
+        type: ['avif', 'webp'],
+        get imagen(): ImageType[] {
+          return this.type.map((ty: string) => {
+            return { url: `${this.imgName}.${ty}`, type: ty };
+          })
+        }
+      }
     },
     modulos: [
       {

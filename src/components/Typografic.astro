@@ -10,6 +10,7 @@ const typogtafic = {
     },
     size: {
         superTitle: 'fs-superTitle line-heigth',
+        titleSection: 'fs-title1 line-heigth padding-section-bottom',
         title1: 'fs-title1 line-heigth',
         title2: 'fs-title2',
         title3: 'fs-title3',
@@ -41,11 +42,12 @@ type Props<Tag extends HTMLTag> = Polymorphic<{
     size? : SizeVariants;
     aling? : AlignVariants ;
     weigth? : WeigthVariants ;
+    classBlock? : string;
 }>;
 
-const { as: Tag, variant, size, aling , weigth, ...props } = Astro.props as Props<HTMLTag>;
+const { as: Tag, variant, size, aling , weigth, classBlock, ...props } = Astro.props as Props<HTMLTag>;
 ---
 
-<Tag class:list={[typogtafic.variants[variant] , typogtafic.size[size] , typogtafic.align[aling] , typogtafic.weigth[weigth]]}  {...props} >
+<Tag class:list={[classBlock ,typogtafic.variants[variant] , typogtafic.size[size] , typogtafic.align[aling] , typogtafic.weigth[weigth]]}  {...props} >
     <slot/>
 </Tag>

@@ -29,7 +29,7 @@ const { ArrayItems } = Astro.props;
                     return (
                         <li class="menu__item">
                             <a
-                                class="menu__link"
+                                class="menu__link color-white-000"
                                 href={url}
                                 target={
                                     url === "https://www.ift.pe/virtual/" &&
@@ -59,8 +59,8 @@ const { ArrayItems } = Astro.props;
 <style lang="scss">
     .navbar-container {
         position: fixed;
-        height: var(--alto-header);
-        background-color: #fff;
+        height: var(--header-heigth);
+        // background-color: #fff;
         top: 0;
         z-index: 1000;
         width: 100%;
@@ -104,7 +104,7 @@ const { ArrayItems } = Astro.props;
             color: #fff;
 
             @media (width > 840px) {
-                color: #000;
+                // color: #000;
             }
         }
 

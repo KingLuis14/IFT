@@ -1,4 +1,5 @@
 import Data from './CursosData.ts';
+import type { ImageType } from "../interface/Image";
 
 interface Curso {
     id: string;
@@ -8,7 +9,7 @@ interface Curso {
     imagenesBanner : imagenesBanner;
     imagenes: {
       base64: string;
-      original: string;
+      original: ImagenOriginal;
     };
     modulos: Modulo[];
   }
@@ -16,6 +17,13 @@ interface Curso {
   interface imagenesBanner {
     base64: string;
     imagen: string;
+}
+
+export interface ImagenOriginal {
+  imgName: string;
+  alt: string;
+  type: string[];
+  imagen: ImageType[];
 }
   
  interface Modulo {

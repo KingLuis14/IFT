@@ -2,10 +2,11 @@
 import FooterList from "./FooterList.astro";
 import Cursos from "../data/GetDataCursos";
 import { Icon } from "astro-icon/components";
+import Wrapper from "./Wrapper.astro";
 ---
 
-<footer>
-    <div class="wrapper">
+<footer class="bg-color-blue-900 color-white-000">
+    <Wrapper>
         <div class="Footer-Container">
             <FooterList titulo="Cursos">
                 <ul class="ListaCursos">
@@ -84,16 +85,13 @@ import { Icon } from "astro-icon/components";
                 </a>
             </FooterList>
         </div>
-        <p>©2024 IFT. Todos los derechos reservados.</p>
-    </div>
+        <p class="padding-block-start-32">©2024 IFT. Todos los derechos reservados.</p>
+    </Wrapper>  
 </footer>
 
 <style lang="scss">
     footer {
         padding-block: 2rem;
-
-        background-color: #282829;
-        color: white;
     }
 
     .Footer-Container {

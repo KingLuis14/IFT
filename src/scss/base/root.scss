@@ -4,5 +4,6 @@
 :root {
     @include generate-css-variables($colors,"color", $global: true);
     @include generate-css-variables($font-sizes,"fs", $global: true);
+    --header-heigth: clamp(3rem, 4vw + 2rem, 5rem);
 }
 

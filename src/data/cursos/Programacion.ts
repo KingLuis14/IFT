@@ -1,5 +1,7 @@
 // Modulos ...
 
+import type { ImageType } from "../../interface/Image";
+
 const moduloPython = {
   id: "Python",
   semanas: [
@@ -164,7 +166,16 @@ const Programacion = {
   },
   imagenes: {
     base64: "",
-    original: "/img/Programacion"
+    original: {
+      imgName: 'Diseño-grafico',
+      alt: 'imagen de about 1',
+      type: ['avif', 'webp'],
+      get imagen(): ImageType[] {
+        return this.type.map((ty: string) => {
+          return { url: `${this.imgName}.${ty}`, type: ty };
+        })
+      }
+    }
   },
   modulos: [
     moduloPython,

@@ -60,7 +60,15 @@
 
 .padding-section{
     padding-block: $padding-section;
+
+    &-bottom{
+        padding-block-end: $padding-section;
+    }
 }
 .mx-auto{
     margin-inline: auto;
+}
+
+.header-heigth{
+    height: $header-heigth;
 }

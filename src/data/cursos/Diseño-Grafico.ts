@@ -1,3 +1,5 @@
+import type { ImageType } from "../../interface/Image";
+
 const DiseñoGrafico = {
       id: "diseño-grafico",
       titulo: "Diseño Gráfico",
@@ -9,7 +11,16 @@ const DiseñoGrafico = {
         },
       imagenes: {
         "base64": "",
-        original: "/img/Diseno-grafico"
+        original: {
+          imgName: 'Diseño-grafico',
+          alt: 'imagen de about 1',
+          type: ['avif', 'webp'],
+          get imagen(): ImageType[] {
+            return this.type.map((ty: string) => {
+              return { url: `${this.imgName}.${ty}`, type: ty };
+            })
+          }
+        }
       },
       modulos: [
         {

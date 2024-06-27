@@ -1,12 +1,14 @@
 ---
+import type { ImagenOriginal } from '../data/GetDataCursos';
 import Button from './Button.astro';
+import PictureImg from './PictureImg.astro';
 import Typografic from './Typografic.astro';
 
 interface Props {
     titulo: string;
     descripcion: string;
     url: string;
-    imagenes: { base64: string; original: string };
+    imagenes: { base64: string; original: ImagenOriginal };
 }
 
 const { titulo, descripcion, imagenes, url } = Astro.props;
@@ -16,16 +18,12 @@ const { original } = imagenes;
 
 <article class=`Bento`>
     <a
-        class="Imagen-Container animation-loader"
+        class="Imagen-Container"
         aria-label={`Ir a la pagina del curso de ${titulo}`}
         href={`${url}/#malla-curricular`}
         style="overflow: hidden; display: block; max-width: 100%;"
     >
-        <img
-            class="Bento__imagen"
-            data-srcx={`${original}.avif`}
-            alt={`${titulo} - IFT`}
-        />
+    <PictureImg {...original}/>
     </a>
     <div class="Bento__Contenido">
         <Typografic as='h3' variant='colorBlue' weigth='600'>{titulo}</Typografic>
@@ -76,6 +74,7 @@ const { original } = imagenes;
 
     .Imagen-Container{
         position: relative;
+        aspect-ratio: 2/2.5;
 
         &.animation-loader{
 
