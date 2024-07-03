@@ -6,7 +6,7 @@
     &__track {
         display: grid;
         grid-auto-flow: column;
-        grid-auto-columns: 70%;
+        grid-auto-columns: 75%;
         overflow-x: scroll;
         scroll-snap-type: x mandatory;
         scroll-behavior: smooth;

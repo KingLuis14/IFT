@@ -1,6 +1,6 @@
 ---
-import Button from './Button.astro';
-import Wrapper from './Wrapper.astro';
+import Button from "./Button.astro";
+import Wrapper from "./Wrapper.astro";
 
 interface Props {
     ArrayItems: { item: string; url: string }[];
@@ -9,7 +9,7 @@ interface Props {
 const { ArrayItems } = Astro.props;
 ---
 
-<header class="navbar-container">
+<header class="navbar-container" id="header-main">
     <Wrapper classBlock="navbar">
         <a
             class="navbar__logo"
@@ -32,8 +32,9 @@ const { ArrayItems } = Astro.props;
                                 class="menu__link color-white-000"
                                 href={url}
                                 target={
-                                    url === "https://www.ift.pe/virtual/" &&
-                                    "_blank"
+                                    url === "https://www.ift.pe/virtual/"
+                                        ? "_blank"
+                                        : "_parent"
                                 }
                                 rel={
                                     url === "https://www.ift.pe/virtual/"
@@ -58,14 +59,25 @@ const { ArrayItems } = Astro.props;
 
 <style lang="scss">
     .navbar-container {
+        --_bg-color-header: var(--bg-color-header, transparent);
+        --_color-link: var(--color-link, #fff);
+        --_color-icon: var(--color-icon, #fff);
+
         position: fixed;
         height: var(--header-heigth);
-        // background-color: #fff;
         top: 0;
         z-index: 1000;
         width: 100%;
         padding-block: 0.7rem;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+        transition: background-color 0.5s;
+        background-color: var(--_bg-color-header);
+
+        &.active {
+            --bg-color-header: #fff;
+            --color-link: #000;
+            --color-icon: #000;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
     }
 
     .navbar {
@@ -83,14 +95,14 @@ const { ArrayItems } = Astro.props;
     }
 
     .menu {
-        background-color: #323232;
+        background-color: var(--color-white-000);
         position: fixed;
         display: flex;
         flex-direction: column;
         gap: 0;
-        top: var(--alto-header);
+        top: var(--header-heigth);
         width: 100%;
-        height: 100%;
+        height: 100vh;
         will-change: right;
         right: -100%;
         transition: right 0.5s;
@@ -101,10 +113,10 @@ const { ArrayItems } = Astro.props;
         }
 
         &__link {
-            color: #fff;
+            color: black;
 
             @media (width > 840px) {
-                // color: #000;
+                color: var(--_color-link);
             }
         }
 
@@ -112,6 +124,7 @@ const { ArrayItems } = Astro.props;
             background-color: transparent;
             position: static;
             width: auto;
+            height: auto;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -149,14 +162,12 @@ const { ArrayItems } = Astro.props;
         border: none;
         width: 2.5rem;
         aspect-ratio: 1/1;
-        background-color: var(--color-Primary700);
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         border-radius: 50%;
         gap: 0.25rem;
-        color: white;
         cursor: pointer;
 
         &.active .raya-top {
@@ -177,7 +188,7 @@ const { ArrayItems } = Astro.props;
     %raya {
         width: 60%;
         display: block;
-        background-color: #fff;
+        background-color: var(--_color-icon);
         height: 2.3px;
         border-radius: 9999px;
         transform-origin: left;
@@ -205,9 +216,44 @@ const { ArrayItems } = Astro.props;
         const MenuHamburguesa = document.getElementById("BtnToogle");
         const MainMenu = document.getElementById("main-menu");
 
-        MenuHamburguesa.addEventListener("click", () => {
-            MainMenu.classList.toggle("active");
+        MenuHamburguesa?.addEventListener("click", () => {
+            MainMenu?.classList.toggle("active");
             MenuHamburguesa.classList.toggle("active");
+
+            if(window.scrollY <= 0){
+                $HeaderMain?.classList.toggle("active");
+            }
         });
+
+        const $HeaderMain = document.getElementById("header-main");
+        let lastKnownScrollPosition = 0;
+        let ticking = false;
+
+        function handleScroll(scrollPos) {
+            if (scrollPos > 0) {
+                $HeaderMain?.classList.add("active");
+            } else {
+                if(!(MainMenu?.classList.contains('active'))){
+                    $HeaderMain?.classList.remove("active");
+                }
+            }
+        }
+
+        
+        document.addEventListener("scroll", () => {
+            lastKnownScrollPosition = window.scrollY;
+
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    handleScroll(lastKnownScrollPosition);
+                    ticking = false;
+                });
+
+                ticking = true;
+            }
+        });
+        handleScroll(window.scrollY);
     });
+
+    
 </script>

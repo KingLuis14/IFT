@@ -5,21 +5,25 @@ import MallaCurricular from "../sections/MallaCurricular.astro";
 import Acordeon from "../components/Acordeon.astro";
 import FormularioBanner from "../components/Formulario/FormularioBanner.astro";
 import BannerNew from "../components/BannerNew.astro";
-import PictureImg from "../components/PictureImg.astro";
+import PictureImg from "@/components/atoms/PictureImg.astro";
 import Typografic from "../components/Typografic.astro";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-    return DataCursos.map((curso) => {
+    const colectionCurso = await getCollection('curso');
+
+
+    return colectionCurso.map((curso) => {
         return {
             params: { curso: curso.id },
-            props: curso,
+            props: curso.data,
         };
     });
 }
 
-const { descripcion, titulo, imagenes, modulos, imagenesBanner } = Astro.props;
+const { descripcion, titulo, images, modulos, imagenesBanner } = Astro.props;
 
-const { original } = imagenes;
+const { original } = images;
 ---
 
 <Layout titulo={titulo} descripction={descripcion}>
@@ -75,11 +79,12 @@ const { original } = imagenes;
             })
         }
 
-        <PictureImg
+        <PictureImg 
             slot="Poster"
             class="Poster"
-            {...original}
-            aspectRatio="poster"
+            placeholder={images.placeholder}
+            original={images.original}
+
         />
     </MallaCurricular>
 </Layout>

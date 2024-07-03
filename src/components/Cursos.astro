@@ -1,34 +1,41 @@
 ---
 import { Icon } from "astro-icon/components";
-import DataCursos from "../data/GetDataCursos";
 import CardCurso from "./CardCurso.astro";
 import Wrapper from "./Wrapper.astro";
 import SectionPage from "./SectionPage.astro";
 import Typografic from "./Typografic.astro";
+import { getCollection } from "astro:content";
+
+const colectionCurso = await getCollection("curso");
 ---
+
 
 <SectionPage variant="theme2">
     <Wrapper>
-        <Typografic as="h2" variant="colorBlue" aling="center" size="titleSection" weigth="700">Cursos</Typografic>
+        <Typografic
+            as="h2"
+            variant="colorBlue"
+            aling="center"
+            size="titleSection"
+            weigth="700">Cursos</Typografic
+        >
         <div class="carrusel-product">
             <button class="carrusel-product__btnPrev">
                 <Icon name="ArrowIcon" size={18} />
             </button>
             <div class="carrusel-product__track">
-                
                 {
-                    DataCursos.map(({ titulo, descripcion, url, imagenes }) => {
+                    colectionCurso.map(({ data }) => {
                         return (
                             <CardCurso
-                                titulo={titulo}
-                                descripcion={descripcion}
-                                url={url}
-                                imagenes={imagenes}
+                                titulo={data.titulo}
+                                descripcion={data.descripcion}
+                                url={data.url}
+                                imagenes={data.images}
                             />
                         );
                     })
                 }
-                
             </div>
             <button class="carrusel-product__btnNext">
                 <Icon name="ArrowIcon" size={18} />

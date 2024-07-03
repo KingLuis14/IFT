@@ -1,30 +1,36 @@
 ---
-import type { ImagenOriginal } from '../data/GetDataCursos';
 import Button from './Button.astro';
-import PictureImg from './PictureImg.astro';
+import PictureImg from "@/components/atoms/PictureImg.astro";
 import Typografic from './Typografic.astro';
+
+interface Image {
+    placeholder: {
+        imgName: string;
+        formats: string;
+    };
+    original: {
+        imgName: string;
+        alt: string;
+        formats: string[];
+    };
+}
 
 interface Props {
     titulo: string;
     descripcion: string;
     url: string;
-    imagenes: { base64: string; original: ImagenOriginal };
+    imagenes: Image;
 }
 
 const { titulo, descripcion, imagenes, url } = Astro.props;
 
-const { original } = imagenes;
+const { original, placeholder } = imagenes;
 ---
 
 <article class=`Bento`>
-    <a
-        class="Imagen-Container"
-        aria-label={`Ir a la pagina del curso de ${titulo}`}
-        href={`${url}/#malla-curricular`}
-        style="overflow: hidden; display: block; max-width: 100%;"
-    >
-    <PictureImg {...original} aspectRatio='poster'/>
-    </a>
+    
+    <PictureImg {placeholder} {original} aspectRatio='poster' ratioNatural={false} style="position:relative"/>
+    
     <div class="Bento__Contenido">
         <Typografic as='h3' variant='colorBlue' weigth='600'>{titulo}</Typografic>
         <p class="Bento__texto">{descripcion}</p>
@@ -35,29 +41,14 @@ const { original } = imagenes;
             aria-label={`Ir a la pagina del curso de ${titulo}`}
              >Más información</Button>
     </div>
-</article>
+</article> 
 
 <style lang="scss">
     .Bento {
         display: grid;
         border-radius: .35rem;
         overflow: hidden;
-        background-color: #ffffff;
         box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-
-        &__imagen {
-            
-            aspect-ratio: 2/2.5;
-            transition: transform 0.2s;
-            background-color: #d7e1e7;
-
-            &:hover {
-                transform: scale(.95);
-            }
-
-        }
-
-    
 
         &__texto {
             display: -webkit-box;
@@ -72,32 +63,7 @@ const { original } = imagenes;
         }
     }
 
-    .Imagen-Container{
-        position: relative;
-
-        &.animation-loader{
-
-            background-color: #d7e1e7;
-            animation: loader 1.5s infinite alternate;
-        }
-
-        &::before{
-            content: "";
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #d7e1e7;
-           
-        }
-
-        &.loaderOk::before{
-            content: none;
-        }
-    }
-
     .Bento__Contenido {
-        
         display: flex;
         flex-direction: column;
         padding: 1rem;

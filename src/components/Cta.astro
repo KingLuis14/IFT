@@ -55,3 +55,33 @@ import Wrapper from "./Wrapper.astro";
         white-space: pre-line;
     }
 </style>
+
+<script>
+    document.addEventListener("astro:page-load", function () {
+        const sectionCTA =
+            document.querySelectorAll<HTMLImageElement>(
+                "section[data-cta]",
+            );
+
+        const imgOptionsCTA = {
+            rootMargin: `0px 0px 700px 0px`,
+        };
+        const imgObserverCTA = new IntersectionObserver(
+            (entries, imgObserver) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+
+                    const CTA = entry.target as HTMLElement;
+                    CTA.classList.remove("animation-loader");
+                    CTA.classList.add("background");
+                    imgObserver.unobserve(entry.target);
+                });
+            },
+            imgOptionsCTA,
+        );
+
+        sectionCTA.forEach((img) => {
+            imgObserverCTA.observe(img);
+        });
+    });
+</script>

@@ -1,5 +1,5 @@
 ---
-import '../scss/index.scss';
+import "../scss/index.scss";
 import { ViewTransitions } from "astro:transitions";
 import BtnWhatsApp from "../components/BtnWhatsApp.astro";
 import MiFooter from "../components/Footer.astro";
@@ -19,6 +19,7 @@ const { titulo, descripction } = Astro.props;
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content={descripction} />
+        <meta name="theme-color" content="#0610cc" />
         <link rel="icon" type="image/png" href="/img/ift.svg" />
         <title>{titulo} - Instituto de Formación Tecnologica</title>
         <link rel="sitemap" href="/sitemap-index.xml" />
@@ -40,105 +41,14 @@ const { titulo, descripction } = Astro.props;
         <slot name="CTA" />
         <BtnWhatsApp />
         <MiFooter />
-        <script>
-            document.addEventListener("astro:page-load", function () {
-                const images =
-                    document.querySelectorAll<HTMLImageElement>(
-                        "img[data-srcx]",
-                    );
-                const sectionCTA =
-                    document.querySelectorAll<HTMLImageElement>(
-                        "section[data-cta]",
-                    );
-
-                const imgOptions = {
-                    rootMargin: `0px 0px 200px 0px`,
-                };
-                const imgObserver = new IntersectionObserver(
-                    (entries, imgObserver) => {
-                        entries.forEach((entry) => {
-                            if (!entry.isIntersecting) return;
-                            const img = entry.target as HTMLImageElement;
-                            img.src = img.getAttribute("data-srcx");
-                            imgObserver.unobserve(entry.target);
-
-                            img.addEventListener("load", () => {
-                                setTimeout(() => {
-                                    img.parentElement.classList.remove(
-                                        "animation-loader",
-                                    );
-                                    img.parentElement.classList.add("loaderOk");
-                                }, 5000);
-                            });
-                        });
-                    },
-                    imgOptions,
-                );
-
-                const imgOptionsCTA = {
-                    rootMargin: `0px 0px 700px 0px`,
-                };
-                const imgObserverCTA = new IntersectionObserver(
-                    (entries, imgObserver) => {
-                        entries.forEach((entry) => {
-                            if (!entry.isIntersecting) return;
-
-                            const CTA = entry.target as HTMLElement;
-                            CTA.classList.remove("animation-loader");
-                            CTA.classList.add("background");
-                            imgObserver.unobserve(entry.target);
-                        });
-                    },
-                    imgOptionsCTA,
-                );
-
-                images.forEach((img) => {
-                    imgObserver.observe(img);
-                });
-
-                sectionCTA.forEach((img) => {
-                    imgObserverCTA.observe(img);
-                });
-
-                //articles scroll fade
-
-                const $SectionFade =
-                    document.querySelectorAll<HTMLImageElement>(
-                        'article[class*="Scroll-Fade"]',
-                    );
-
-                const imgOptionsFade = {
-                    rootMargin: `0px`,
-                    threshold: 0.3,
-                };
-                const imgObserverFadeScroll = new IntersectionObserver(
-                    (entries, imgObserver) => {
-                        entries.forEach((entry) => {
-                            if (!entry.isIntersecting) return;
-
-                            const CTA = entry.target as HTMLElement;
-                            CTA.classList.add("loader");
-                            console.log("section fade insertada");
-                            // CTA.classList.add("background");
-                            imgObserver.unobserve(entry.target);
-                        });
-                    },
-                    imgOptionsFade,
-                );
-
-                $SectionFade.forEach((img) => {
-                    imgObserverFadeScroll.observe(img);
-                });
-            });
-        </script>
+        
     </body>
+    <script>
+        import { carruselProduct } from "../scripts/Carrusel-Product";
+
+        document.addEventListener("astro:page-load", () => {
+            carruselProduct();
+        });
+    </script>
+    
 </html>
-
-
-<script>
-    import { carruselProduct } from "../scripts/Carrusel-Product";
-
-    document.addEventListener("astro:page-load", () => {
-        carruselProduct();
-    })
-</script>

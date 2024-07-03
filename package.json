@@ -31,6 +31,7 @@
     "@types/postcss-reporter": "^7.0.5",
     "@types/postcss-url": "^10.0.4",
     "autoprefixer": "^10.4.19",
+    "image-size": "^1.1.1",
     "lightningcss": "^1.24.1",
     "postcss": "^8.4.38",
     "postcss-import": "^16.1.0",

@@ -34,8 +34,8 @@ const { variant = "large", classBlock, align, colors, ...attrs } = Astro.props;
         wrapper.defaultClass,
         classBlock,
         wrapper.variants[variant],
-        wrapper.align[align],
-        wrapper.colors[colors],
+        align && wrapper.align[align],
+        colors && wrapper.colors[colors],
     ]}
     {...attrs}
 >

@@ -1,5 +1,5 @@
 ---
-import PictureImg from "./PictureImg.astro";
+import PictureImg from "@/components/atoms/PictureImg.astro";
 import Button from "./Button.astro";
 import SectionPage from "./SectionPage.astro";
 import Typografic from "./Typografic.astro";
@@ -9,50 +9,79 @@ import type { ImageType } from "../interface/Image";
 /*  =========== */
 
 const AboutNosotros = {
-    imgName: "about",
-    alt: "imagen de about 1",
-    type: ["avif", "webp"],
-    get imagen(): { url: string, type: string }[] {
-        return this.type.map((ty: string) => {
-            return { url: `${this.imgName}.${ty}`, type: ty };
-        });
-    }
+    placeholder: {
+        imgName: "about",
+        formats: "webp"
+    },
+    original: {
+        imgName: "about",
+        alt: "imagen de about 1",
+        formats: ["webp"]
+    },
 };
 const AboutCursos = {
-    imgName: "about2",
-    alt: "imagen de about 2",
-    type: ["avif", "webp"],
-    get imagen(): { url: string, type: string }[] {
-        return this.type.map((ty: string) => {
-            return { url: `${this.imgName}.${ty}`, type: ty };
-        });
-    }
+    placeholder: {
+        imgName: "about2",
+        formats: "webp"
+    },
+    original: {
+        imgName: "about2",
+        alt: "imagen de about 1",
+        formats: ["webp"]
+    },
 };
-
-
 ---
 
 <SectionPage variant="theme2">
-    <Wrapper classBlock="split split--bottom-rigth" colors="white" variant="medium">
+    <Wrapper
+        classBlock="split split--bottom-rigth"
+        colors="white"
+        variant="medium"
+    >
         <div class="textFlow">
-            <Typografic as="h2" size="title1" weigth="700" variant="colorBlue">Sobre Nosotros</Typografic>
-            <Typografic as="p" variant="colorBlack">IFT es una empresa especializada en capacitaciones tecnológicas. Con nuestro RUC 20611910224, ofrecemos programas de formación de vanguardia en diversas áreas de la tecnología, desde desarrollo de software hasta ciberseguridad.</Typografic>
-            <Button href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0" target="_blank" variant="theme1" size="content" >Contactanos</Button>
+            <Typografic as="h2" size="title1" weigth="700" variant="colorBlue"
+                >Sobre Nosotros</Typografic
+            >
+            <Typografic as="p" variant="colorBlack"
+                >IFT es una empresa especializada en capacitaciones
+                tecnológicas. Con nuestro RUC 20611910224, ofrecemos programas
+                de formación de vanguardia en diversas áreas de la tecnología,
+                desde desarrollo de software hasta ciberseguridad.</Typografic
+            >
+            <Button
+                href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
+                target="_blank"
+                variant="theme1"
+                size="content">Contactanos</Button
+            >
         </div>
-        <PictureImg {...AboutNosotros}/>
-           
+        <PictureImg {...AboutNosotros} style={{position: 'relative'}} aspectRatio='Box' ratioNatural={false}/>
     </Wrapper>
 </SectionPage>
 
 <SectionPage variant="theme1">
-    <Wrapper classBlock="split split--bottom-left" colors="white" variant="medium">
+    <Wrapper
+        classBlock="split split--bottom-left"
+        colors="white"
+        variant="medium"
+    >
         <div class="textFlow">
-            <Typografic as="h2" size="title1" weigth="700" variant="colorBlue">Nuestros Cursos</Typografic>
-            <Typografic as="p" variant="colorBlack">Nuestros cursos, impartidos por expertos en la materia, están diseñados para satisfacer las demandas del mercado laboral actual y proporcionar a nuestros estudiantes las habilidades necesarias para destacarse en la industria.</Typografic>
-            <Button href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0" target="_blank" variant="theme1" size="content" >Contactanos</Button>
+            <Typografic as="h2" size="title1" weigth="700" variant="colorBlue"
+                >Nuestros Cursos</Typografic
+            >
+            <Typografic as="p" variant="colorBlack"
+                >Nuestros cursos, impartidos por expertos en la materia, están
+                diseñados para satisfacer las demandas del mercado laboral
+                actual y proporcionar a nuestros estudiantes las habilidades
+                necesarias para destacarse en la industria.</Typografic
+            >
+            <Button
+                href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
+                target="_blank"
+                variant="theme1"
+                size="content">Contactanos</Button
+            >
         </div>
-        <PictureImg {...AboutCursos}/>
+        <PictureImg {...AboutCursos} style={{position: 'relative'}} aspectRatio='Box' ratioNatural={false}/>
     </Wrapper>
 </SectionPage>
-
-
