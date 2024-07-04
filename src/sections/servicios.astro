@@ -1,134 +1,99 @@
 ---
-import SplitLayoutsvg from "../components/SplitLayoutsvg.astro";
+import { Icon } from "astro-icon/components";
+import SectionPage from "@/components/SectionPage.astro";
+import Wrapper from "@/components/Wrapper.astro";
+import Typografic from "@/components/Typografic.astro";
+import Button from "@/components/Button.astro";
 ---
 
-<section>
-    <div class="wrapper">
-        <SplitLayoutsvg styleSplit="Scroll-Fade">
-            <div slot="CONTENIDO" class="contenido Order-Top-Left">
-                <h3 style="text-align: start;">
-                    Diseño Personalizado
-                </h3>
-                <p class="parrafo">
-                    Creación de sitios web a medida según las necesidades y
-                    requisitos específicos del cliente.
-                </p>
-                <a
-                    href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
-                    aria-label={`Click para abrir el whatsapp`}
-                    class="boton--primary"
-                    target="_blank"
-                    >Solicitar
-                </a>
-            </div>
-            <img
-                slot="imagen"
-                class="Split__Imagen"
-                src={`/img/undraw_heatmap_uyye.svg`}
-                alt={`about2 - IFT`}
-            />
-        </SplitLayoutsvg>
-    </div>
-</section>
-<section class="sectionColor2">
-    <div class="wrapper">
-        <SplitLayoutsvg styleSplit="Scroll-Fade">
-            <div slot="CONTENIDO" class="contenido Order-Top-Rigth">
-                <h3 style="text-align: start;">
-                    Versión Móvil
-                </h3>
-                <p class="parrafo">
-                    Diseño web autoadministrable adaptado para visualización
-                    desde dispositivos móviles, tablets y PC
-                </p>
-                <a
-                    href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
-                    aria-label={`Click para abrir el whatsapp`}
-                    class="boton--primary"
-                    target="_blank"
-                    >Solicitar
-                </a>
-            </div>
-            <img
-                slot="imagen"
-                class="Split__Imagen"
-                src={`/img/undraw_responsive_re_e1nn.svg`}
-                alt={`about2 - IFT`}
-            />
-        </SplitLayoutsvg>
-    </div>
-</section>
-<section>
-    <div class="wrapper">
-        <SplitLayoutsvg styleSplit="Scroll-Fade">
-            <div slot="CONTENIDO" class="contenido Order-Top-Left">
-                <h3 style="text-align: start;">
-                    Redes sociales
-                </h3>
-                <p class="parrafo">
-                    Tu web estará vinculada a tus redes sociales, la cual te
-                    servirá par dar a conocer tu marca a la mayor cantidad de
-                    personas.
-                </p>
-                <a
-                    href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
-                    aria-label={`Click para abrir el whatsapp`}
-                    class="boton--primary"
-                    target="_blank"
-                    >Solicitar
-                </a>
-            </div>
-            <img
-                slot="imagen"
-                class="Split__Imagen"
-                src={`/img/undraw_social_notifications_re_xcbi.svg`}
-                alt={`about2 - IFT`}
-            />
-        </SplitLayoutsvg>
-    </div>
-</section>
-<section class="sectionColor2">
-    <div class="wrapper">
-        <SplitLayoutsvg styleSplit="Scroll-Fade">
-            <div slot="CONTENIDO" class="contenido Order-Top-Rigth">
-            <h3 style="text-align: start;">
-                Soporte continuo y personalizado
-            </h3>
-            <p class="parrafo">
-                Disfruta de asistencia dedicada para realizar cambios,
-                actualizaciones y mejoras en tu sitio web. Estamos aquí para
-                garantizar que tu presencia en línea esté siempre en su mejor
-                forma.
-            </p>
-            <a
+<SectionPage>
+    <Wrapper variant="medium" classBlock="split split--bottom-left">
+        <div class="textFlow text-center @md:text-left" style="--space: 1em;">
+            <Typografic as="h3" variant="colorBlue" size="title2" weigth="600">Diseño Personalizado</Typografic>
+            <Typografic as="p">
+                Creación de sitios web a medida según las necesidades y
+                requisitos específicos del cliente.
+            </Typografic>
+            <Button 
                 href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
                 aria-label={`Click para abrir el whatsapp`}
                 class="boton--primary"
                 target="_blank"
+                size="content"
                 >Solicitar
-            </a>
+            </Button>
         </div>
-            <img
-                slot="imagen"
-                class="Split__Imagen"
-                src={`/img/undraw_pair_programming_re_or4x.svg`}
-                alt={`about2 - IFT`}
-            />
-        </SplitLayoutsvg>
-    </div>
-</section>
+        <Icon
+            name="undraw_undraw_undraw_undraw_undraw_website_o7n3_bucy_30uo_-1-_d6br_0qfo"
+            style="height : auto;"
+        />
+    </Wrapper>
+</SectionPage>
+<SectionPage variant="theme2">
+    <Wrapper variant="medium" classBlock="split split--bottom-rigth">
+        <div class="textFlow text-center @md:text-left" style="--space: 1em;">
+            <Typografic as="h3" variant="colorBlue" size="title2" weigth="600">Versión Móvil</Typografic>
+            <Typografic as="p">
+                Diseño web autoadministrable adaptado para visualización desde dispositivos móviles, tablets y PC
+            </Typografic>
+            <Button 
+                href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
+                aria-label={`Click para abrir el whatsapp`}
+                class="boton--primary"
+                target="_blank"
+                size="content"
+                >Solicitar
+            </Button>
+        </div>
+        <Icon
+            name="undraw_responsive_re_e1nn"
+            style="height : auto;"
+        />
+    </Wrapper>
+</SectionPage>
+<SectionPage>
+    <Wrapper variant="medium" classBlock="split split--bottom-left">
+        <div class="textFlow text-center @md:text-left" style="--space: 1em;">
+            <Typografic as="h3" variant="colorBlue" size="title2" weigth="600">Redes sociales</Typografic>
+            <Typografic as="p">
+                Tu web estará vinculada a tus redes sociales, la cual te servirá par dar a conocer tu marca a la mayor cantidad de personas.
+            </Typografic>
+            <Button 
+                href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
+                aria-label={`Click para abrir el whatsapp`}
+                class="boton--primary"
+                target="_blank"
+                size="content"
+                >Solicitar
+            </Button>
+        </div>
+        <Icon
+            name="undraw_social_notifications_re_xcbi"
+            style="height : auto;"
+        />
+    </Wrapper>
+</SectionPage>
+<SectionPage variant="theme2">
+    <Wrapper variant="medium" classBlock="split split--bottom-rigth">
+        <div class="textFlow text-center @md:text-left" style="--space: 1em;">
+            <Typografic as="h3" variant="colorBlue" size="title2" weigth="600">Soporte continuo y personalizado</Typografic>
+            <Typografic as="p">
+                Disfruta de asistencia dedicada para realizar cambios, actualizaciones y mejoras en tu sitio web. Estamos aquí para garantizar que tu presencia en línea esté siempre en su mejor forma.
+            </Typografic>
+            <Button 
+                href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
+                aria-label={`Click para abrir el whatsapp`}
+                class="boton--primary"
+                target="_blank"
+                size="content"
+                >Solicitar
+            </Button>
+        </div>
+        <Icon
+            name="undraw_pair_programming_re_or4x"
+            style="height : auto;"
+        />
+    </Wrapper>
+</SectionPage>
 
-<style lang="scss">
-    .Split__Imagen {
-        height: auto;
-        min-height: auto;
-    }
 
-    .contenido {
-        min-height: 100%;
-        align-content: center;
-        display: grid;
-        gap: 1rem;
-    }
-    
-</style>

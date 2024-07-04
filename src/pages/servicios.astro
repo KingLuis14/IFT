@@ -3,6 +3,10 @@ import Layout from "../layout/Layout.astro";
 import BannerData from "../data/BannerData";
 import Servicios2 from "../sections/servicios.astro";
 import BannerNew from "../components/BannerNew.astro";
+import SectionPage from "@/components/SectionPage.astro";
+import Wrapper from "@/components/Wrapper.astro";
+import { Icon } from "astro-icon/components";
+import Typografic from "@/components/Typografic.astro";
 const { description, titulo, textButton, imagenesBanner } = BannerData.servicios;
 const { imagen } = imagenesBanner;
 ---
@@ -35,12 +39,13 @@ const { imagen } = imagenesBanner;
         textoBoton={textButton}
         imagenesBanner={imagenesBanner}
     />
-    <section>
-        <div class="wrapper">
-            <h2 class="titleSection">Creación de Paginas Web</h2>
-        </div>
-    </section>
+    <SectionPage style="padding-bottom: 0;">
+        <Wrapper>
+            <Typografic as="h2" variant="colorBlue"size="title1"  aling="center" weigth="600">Creación de Paginas Web</Typografic>
+        </Wrapper>
+    </SectionPage>
     <Servicios2 />
 </Layout>
+
 
 

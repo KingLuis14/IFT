@@ -1,19 +1,27 @@
 ---
 import Layout from "../layout/Layout.astro";
 import BannerData from "../data/BannerData";
-import Formulario from "../components/Formulario/Formulario.astro";
+import Formulario from "../components/moleculs/Formulario.astro";
 import BannerNew from "../components/BannerNew.astro";
+import Wrapper from "@/components/Wrapper.astro";
+import Typografic from "@/components/Typografic.astro";
+import SectionPage from "@/components/SectionPage.astro";
+import Button from "@/components/Button.astro";
+import RedesSociales from "@/components/moleculs/RedesSociales.astro";
 const { description, titulo, textButton, imagenesBanner } = BannerData.contacto;
 const { imagen } = imagenesBanner;
 ---
 
-<Layout titulo="contacto" descripction="contactate con nosotros, mediante nuestras redes ">
+<Layout
+    titulo="contacto"
+    descripction="contactate con nosotros, mediante nuestras redes "
+>
     <link
         slot="preload"
         fetchpriority="high"
         rel="preload"
         as="image"
-        href=`img/${imagen}-small-lcpi.avif`
+        href=`/img/${imagen}-small-lcpi.avif`
         media="(max-width: 640px)"
         type="image/webp"
     />
@@ -22,7 +30,7 @@ const { imagen } = imagenesBanner;
         fetchpriority="high"
         rel="preload"
         as="image"
-        href=`img/${imagen}-large-lcpi.avif`
+        href=`/img/${imagen}-large-lcpi.avif`
         media="(min-width: 641px)"
         type="image/webp"
     />
@@ -32,10 +40,53 @@ const { imagen } = imagenesBanner;
         textoBoton={textButton}
         imagenesBanner={imagenesBanner}
     />
-    <section>
-        <div class="wrapper" style="place-items: center;">
-            <h2 class="titleSection">Ponte en Contacto</h2>
-            <Formulario />
-        </div>
-    </section>
+    <SectionPage variant="theme2">
+        <Wrapper variant="form" style="place-items: center;">
+            <Typografic
+                as="h2"
+                size="titleSection"
+                aling="center"
+                weigth="600"
+                variant="colorBlue">Ponte en Contacto</Typografic
+            >
+            <Formulario class="form">
+                <input
+                    class="form__field"
+                    aria-label="nombre"
+                    name="nombre"
+                    id="nombre"
+                    required
+                    placeholder="Nombre Completo"
+                />
+                <input
+                    class="form__field"
+                    type="tel"
+                    aria-label="numero de contacto"
+                    name="numero de contacto"
+                    id="apellido"
+                    required
+                    placeholder="Número de contacto"
+                />
+                <input
+                    class="form__field"
+                    aria-label="email"
+                    name="email"
+                    type="email"
+                    id="email"
+                    required
+                    placeholder="Email"
+                />
+                <textarea
+                    class="form__field form__textArea"
+                    name="observacion"
+                    id="observacion"
+                    placeholder="Alguna observacion"></textarea>
+                <Button
+                    title="Registrate en el formulario"
+                    style="justify-content : center;">Inscribete</Button
+                >
+                <RedesSociales/>
+            </Formulario>
+        </Wrapper>
+    </SectionPage>
 </Layout>

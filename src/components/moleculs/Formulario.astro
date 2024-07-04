@@ -1,0 +1,28 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+const formulario = {
+    defaultClass: "form",
+    variants: {
+        banner: "form--banner",
+    },
+};
+
+interface Props extends HTMLAttributes<"form"> {
+    variant?: keyof typeof formulario.variants;
+    classBlock?: string;
+}
+
+const { variant, classBlock, ...attrs } = Astro.props;
+---
+
+<form
+    class:list={[
+        formulario.defaultClass,
+        classBlock,
+        variant && formulario.variants[variant]
+    ]}
+    {...attrs}
+>
+    <slot />
+</form>

@@ -23,6 +23,6 @@ interface Props extends HTMLAttributes<"a"> {
 const { variant = "theme1", size, ...attrs } = Astro.props;
 ---
 
-<a class:list={[button.defaultClass, button.variants.theme[variant], button.variants.size[size]  ]} {...attrs}>
+<a class:list={[button.defaultClass, button.variants.theme[variant], size && button.variants.size[size]  ]} {...attrs}>
     <slot />
 </a>

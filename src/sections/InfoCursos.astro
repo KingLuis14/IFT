@@ -1,54 +1,42 @@
 ---
-import SplitLayoutsvg from "../components/SplitLayoutsvg.astro";
-import DataCursos from "../data/GetDataCursos";
+import SectionPage from "@/components/SectionPage.astro";
+import { getCollection } from "astro:content";
+import Wrapper from "@/components/Wrapper.astro";
+import Typografic from "@/components/Typografic.astro";
+import Button from "@/components/Button.astro";
+import PictureImg from "@/components/atoms/PictureImg.astro";
+const colectionCurso = (await getCollection("curso")).map(({ data }) => data);
 ---
 
 {
-    DataCursos.map(({ titulo, descripcion, url, imagenes }, index) => (
-        <section class={`${(index + 1) % 2 === 0 && 'sectionColor2' }`}>
-            <div class="wrapper">
-                <SplitLayoutsvg>
-                    <div
-                        slot="CONTENIDO"
-                        class={`contenido ${(index + 1) % 2 === 0 ? "Order-Bottom-Left" : "Order-Bottom-Rigth"}`}
+    colectionCurso.map(({ titulo, descripcion, url, images }, index) => (
+        <SectionPage  {...((index + 1) % 2 === 0 ? {variant: 'theme1'} : {variant: 'theme2'})}>
+            <Wrapper
+                classBlock={`split ${(index + 1) % 2 === 0 ? 'split--bottom-rigth' : 'split--bottom-left'}`}
+                colors="white"
+                variant="medium"
+            >
+                <div class="textFlow">
+                    <Typografic
+                        as="h2"
+                        size="title1"
+                        weigth="700"
+                        variant="colorBlue"
                     >
-                        <h2 class="titleSection" style="text-align: start;">
-                            {titulo}
-                        </h2>
-                        <p class="parrafo">{descripcion}</p>
-                        <div>
-                            <p >
-                                <strong>Duración:</strong> 3 meses
-                            </p>
-                            <p >
-                                <strong>Modalidad:</strong> Virtual en vivo, y
-                                Asíncrono.
-                            </p>
-                            <p >
-                                <strong>Plataforma virtual 24/7</strong>
-                            </p>
-                        </div>
-                        <a
-                            href={`${url}/#malla-curricular`}
-                            aria-label={`Click para ver el temario del curso de ${titulo}`}
-                            class="boton--primary"
-                        >
-                            Ver Malla
-                        </a>
-                    </div>
-                    <div
-                        class="Imagen-Container animation-loader"
-                        slot="imagen"
+                        {titulo}
+                    </Typografic>
+                    <Typografic as="p" variant="colorBlack">{descripcion}</Typografic>
+                    <Button
+                        href={`${url}/#malla-curricular`}
+                        variant="theme1"
+                        size="content"
                     >
-                        <img
-                            class="Split__Imagen"
-                            data-srcx={`${imagenes.original}.avif`}
-                            alt={`about2 - IFT`}
-                        />
-                    </div>
-                </SplitLayoutsvg>
-            </div>
-        </section>
+                        Ver malla
+                    </Button>
+                </div>
+                <PictureImg {...images} style={{position: 'relative'}} aspectRatio='poster' ratioNatural={false}/>
+            </Wrapper>
+        </SectionPage>
     ))
 }
 
