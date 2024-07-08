@@ -3,7 +3,7 @@ import PictureImg from "@/components/atoms/PictureImg.astro";
 import Button from "./Button.astro";
 import SectionPage from "./SectionPage.astro";
 import Typografic from "./Typografic.astro";
-import Wrapper from "./Wrapper.astro";
+import SplitLayout from "./moleculs/SplitLayout.astro";
 
 const AboutNosotros = {
     placeholder: {
@@ -28,13 +28,8 @@ const AboutCursos = {
     },
 };
 ---
-
 <SectionPage variant="theme2">
-    <Wrapper
-        classBlock="split split--bottom-rigth"
-        colors="white"
-        variant="medium"
-    >
+    <SplitLayout variantWrapper="medium">
         <div class="textFlow">
             <Typografic as="h2" size="title1" weigth="700" variant="colorBlue"
                 >Sobre Nosotros</Typografic
@@ -53,15 +48,12 @@ const AboutCursos = {
             >
         </div>
         <PictureImg {...AboutNosotros} style={{position: 'relative'}} aspectRatio='Box' ratioNatural={false}/>
-    </Wrapper>
+    </SplitLayout>
 </SectionPage>
 
+
 <SectionPage variant="theme1">
-    <Wrapper
-        classBlock="split split--bottom-left"
-        colors="white"
-        variant="medium"
-    >
+    <SplitLayout directionContent="topRigth" variantWrapper="medium">
         <div class="textFlow">
             <Typografic as="h2" size="title1" weigth="700" variant="colorBlue"
                 >Nuestros Cursos</Typografic
@@ -80,5 +72,5 @@ const AboutCursos = {
             >
         </div>
         <PictureImg {...AboutCursos} style={{position: 'relative'}} aspectRatio='Box' ratioNatural={false}/>
-    </Wrapper>
+    </SplitLayout>
 </SectionPage>

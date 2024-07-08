@@ -2,13 +2,13 @@
 import Layout from "../layout/Layout.astro";
 import BannerData from "../data/BannerData";
 import Formulario from "../components/moleculs/Formulario.astro";
-import BannerNew from "../components/BannerNew.astro";
 import Wrapper from "@/components/Wrapper.astro";
 import Typografic from "@/components/Typografic.astro";
 import SectionPage from "@/components/SectionPage.astro";
 import Button from "@/components/Button.astro";
 import RedesSociales from "@/components/moleculs/RedesSociales.astro";
-const { description, titulo, textButton, imagenesBanner } = BannerData.contacto;
+import Banner from "@/components/moleculs/Banner.astro";
+const { description, titulo, imagenesBanner } = BannerData.contacto;
 const { imagen } = imagenesBanner;
 ---
 
@@ -34,12 +34,20 @@ const { imagen } = imagenesBanner;
         media="(min-width: 641px)"
         type="image/webp"
     />
-    <BannerNew
-        titulo={titulo}
-        descripcion={description}
-        textoBoton={textButton}
-        imagenesBanner={imagenesBanner}
-    />
+    <Banner {imagenesBanner}>
+        <Wrapper style={{display: 'grid' , placeItems: 'center', position: 'relative'}} align="center" colors="white" >
+            <article class="banner__contenido textFlow">
+                <Typografic as="h1" size="superTitle" weigth="700">{titulo}</Typografic>
+                <Typografic as="p" style="text-wrap: balance;" >{description}</Typografic>
+                <Button
+                    href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
+                    target="_blank"
+                    variant="theme2">Mas Información</Button
+                >
+            </article>
+            
+        </Wrapper>
+    </Banner>
     <SectionPage variant="theme2">
         <Wrapper variant="form" style="place-items: center;">
             <Typografic

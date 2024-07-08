@@ -2,22 +2,14 @@
 import Layout from "../layout/Layout.astro";
 import Cta from "../components/Cta.astro";
 import Nosotros2 from "../components/Nosotros2.astro";
-import HeroImg from "../components/HeroImg.astro";
 import BannerData from "../data/BannerData";
-import BannerNew from "../components/BannerNew.astro";
-import { Icon } from "astro-icon/components";
 import Button from "@/components/Button.astro";
-import Formulario from "@/components/moleculs/Formulario.astro";
 import Typografic from "@/components/Typografic.astro";
-import { getCollection } from "astro:content";
-import RedesSociales from "@/components/moleculs/RedesSociales.astro";
 const { description, titulo, textButton, imagenesBanner } = BannerData.nosotros;
 const { imagen } = imagenesBanner;
-
-const colectionCurso = (await getCollection("curso")).map(
-    ({ data }) => data.titulo,
-);
-const cursosConPredeterminado = ["Selecciona tu curso", ...colectionCurso];
+import SplitLayout from "@/components/moleculs/SplitLayout.astro";
+import Banner from "@/components/moleculs/Banner.astro";
+import FormBanner from "@/components/organisms/FormBanner.astro";
 ---
 
 <Layout
@@ -42,64 +34,20 @@ const cursosConPredeterminado = ["Selecciona tu curso", ...colectionCurso];
         media="(min-width: 641px)"
         type="image/webp"
     />
-    <BannerNew
-        titulo={titulo}
-        descripcion={description}
-        textoBoton={textButton}
-        imagenesBanner={imagenesBanner}
-        columnas={2}
-    >
-    <Formulario class="form form--banner" slot="Columna2" variant="banner">
-        <Typografic as="h2" weigth="600" variant="colorBlue" >Inscribete aqui</Typografic>
-        <input
-            class="form__field"
-            aria-label="nombre"
-            name="nombre"
-            id="nombre"
-            required
-            placeholder="Nombre Completo"
-        />
-        <input
-            class="form__field"
-            type="tel"
-            aria-label="numero de contacto"
-            name="numero de contacto"
-            id="apellido"
-            required
-            placeholder="Número de contacto"
-        />
-        <input
-            class="form__field"
-            aria-label="email"
-            name="email"
-            type="email"
-            id="email"
-            required
-            placeholder="Email"
-        />
-        <div class="form__select-wrapper" >
-            <select
-                class="form__field form__select"
-                name="programasEstudio"
-                aria-label="seleccione su programa de estudio"
-                id="programas"
-            >
-                {
-                    cursosConPredeterminado.map((titulo) => {
-                        return <option value={titulo}>{titulo}</option>;
-                    })
-                }
-            </select>
-        </div>
-        <textarea
-            class="form__field form__textArea"
-            name="observacion"
-            id="observacion"
-            placeholder="Alguna observacion"></textarea>
-        <Button title="Registrate en el formulario" style="justify-content : center;">Inscribete</Button>
-        <RedesSociales/>
-    </Formulario>
-    </BannerNew>
+    <Banner {imagenesBanner}>
+        <SplitLayout variant="banner" colors="white" style="position: relative; padding-block: 2.5rem;" align="center" classUtilities="@md:text-left" >
+            <article class="banner__contenido textFlow">
+                <Typografic as="h1" size="superTitle" weigth="700">{titulo}</Typografic>
+                <Typografic as="p">{description}</Typografic>
+                <Button
+                    href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
+                    target="_blank"
+                    variant="theme2">Mas Información</Button
+                >
+            </article>
+            <FormBanner />
+        </SplitLayout>
+    </Banner>
     <Nosotros2 />
     <Cta slot="CTA" />
 </Layout>

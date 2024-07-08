@@ -23,7 +23,6 @@
             grid-template-areas: "content imagen";
         }
     }
-
     &--top-rigth{
         grid-template-areas: "content" "imagen" ;
         @include media-Query(tablet) {
@@ -46,7 +45,22 @@
         }
     }
 
+
+    &--banner{
+        grid-template-areas: "content" "formulario";
+        grid-template-columns: 1fr;
+
+        > :nth-child(1) {
+            grid-area: content;
+        }
     
+        > :nth-child(2) {
+            grid-area: formulario;
+        }
 
-
+        @include media-Query(tablet) {
+            grid-template-areas: "content formulario";
+            grid-template-columns: 5fr 4fr;
+        }
+    }
 }

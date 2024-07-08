@@ -1,7 +1,7 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 
-const wrapper = {
+export const wrapper = {
     defaultClass: "wrapper",
     variants: {
         large: "wrapper--lg",
@@ -20,24 +20,42 @@ const wrapper = {
     },
 };
 
-interface Props extends HTMLAttributes<"div"> {
+export interface Wrapper {
     variant?: keyof typeof wrapper.variants;
     align?: keyof typeof wrapper.align;
     colors?: keyof typeof wrapper.colors;
     classBlock?: string;
+    classVariant?: string;
+    classUtilities?: string;
 }
 
-const { variant = "large", classBlock, align, colors, ...attrs } = Astro.props;
+export interface Props extends HTMLAttributes<"div">, Wrapper {}
+
+const {
+    variant = "large",
+    classBlock,
+    classVariant,
+    align,
+    colors,
+    classUtilities,
+    ...attrs
+} = Astro.props;
+
+const combinedClass = [
+    wrapper.defaultClass,
+    classBlock,
+    wrapper.variants[variant],
+    align && wrapper.align[align],
+    colors && wrapper.colors[colors],
+    classVariant,
+    classUtilities,
+]
+    .filter(Boolean)
+    .join(" ");
 ---
 
 <div
-    class:list={[
-        wrapper.defaultClass,
-        classBlock,
-        wrapper.variants[variant],
-        align && wrapper.align[align],
-        colors && wrapper.colors[colors],
-    ]}
+    class:list={[combinedClass]}
     {...attrs}
 >
     <slot />

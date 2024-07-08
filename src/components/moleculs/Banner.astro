@@ -1,0 +1,30 @@
+---
+import SplitLayout from "@/components/moleculs/SplitLayout.astro";
+import Button from "../Button.astro";
+import Typografic from "../Typografic.astro";
+
+type imagenesBanner  = {
+    base64: string;
+    imagen: string;
+}
+
+interface Props  {
+    imagenesBanner: imagenesBanner;
+}
+
+const {imagenesBanner} = Astro.props;
+
+const { base64, imagen } = imagenesBanner;
+---
+
+<section
+    class="banner"
+    style={`--base64: url(${base64});
+    --small-lcpi: url(/img/${imagen}-small-lcpi.avif);
+    --small: url(/img/${imagen}.avif);
+    --large-lcpi: url(/img/${imagen}-large-lcpi.avif);
+    --large: url(/img/${imagen}.avif);`}
+>
+<slot/>
+    
+</section>

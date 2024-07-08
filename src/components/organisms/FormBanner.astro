@@ -1,0 +1,63 @@
+---
+import { getCollection } from "astro:content";
+import Typografic from "../Typografic.astro";
+import Formulario from "../moleculs/Formulario.astro";
+import Button from "../Button.astro";
+import RedesSociales from "../moleculs/RedesSociales.astro";
+
+const colectionCurso = (await getCollection("curso")).map(
+    ({ data }) => data.titulo,
+);
+const cursosConPredeterminado = ["Selecciona tu curso", ...colectionCurso];
+---
+
+<Formulario class="form form--banner" slot="Columna2" variant="banner">
+    <Typografic as="h2" weigth="600" variant="colorBlue" >Inscribete aqui</Typografic>
+    <input
+        class="form__field"
+        aria-label="nombre"
+        name="nombre"
+        id="nombre"
+        required
+        placeholder="Nombre Completo"
+    />
+    <input
+        class="form__field"
+        type="tel"
+        aria-label="numero de contacto"
+        name="numero de contacto"
+        id="apellido"
+        required
+        placeholder="Número de contacto"
+    />
+    <input
+        class="form__field"
+        aria-label="email"
+        name="email"
+        type="email"
+        id="email"
+        required
+        placeholder="Email"
+    />
+    <div class="form__select-wrapper" >
+        <select
+            class="form__field form__select"
+            name="programasEstudio"
+            aria-label="seleccione su programa de estudio"
+            id="programas"
+        >
+            {
+                cursosConPredeterminado.map((titulo) => {
+                    return <option value={titulo}>{titulo}</option>;
+                })
+            }
+        </select>
+    </div>
+    <textarea
+        class="form__field form__textArea"
+        name="observacion"
+        id="observacion"
+        placeholder="Alguna observacion"></textarea>
+    <Button title="Registrate en el formulario" style="justify-content : center;">Inscribete</Button>
+    <RedesSociales/>
+</Formulario>

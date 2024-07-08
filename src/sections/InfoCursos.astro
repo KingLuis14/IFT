@@ -1,20 +1,20 @@
 ---
 import SectionPage from "@/components/SectionPage.astro";
 import { getCollection } from "astro:content";
-import Wrapper from "@/components/Wrapper.astro";
 import Typografic from "@/components/Typografic.astro";
 import Button from "@/components/Button.astro";
 import PictureImg from "@/components/atoms/PictureImg.astro";
+import SplitLayout from "@/components/moleculs/SplitLayout.astro";
 const colectionCurso = (await getCollection("curso")).map(({ data }) => data);
 ---
 
 {
     colectionCurso.map(({ titulo, descripcion, url, images }, index) => (
         <SectionPage  {...((index + 1) % 2 === 0 ? {variant: 'theme1'} : {variant: 'theme2'})}>
-            <Wrapper
-                classBlock={`split ${(index + 1) % 2 === 0 ? 'split--bottom-rigth' : 'split--bottom-left'}`}
+            <SplitLayout
+                directionContent={(index + 1) % 2 === 0 ? 'bottomRigth' : 'bottomLeft'}
                 colors="white"
-                variant="medium"
+                variantWrapper="medium"
             >
                 <div class="textFlow">
                     <Typografic
@@ -34,55 +34,9 @@ const colectionCurso = (await getCollection("curso")).map(({ data }) => data);
                         Ver malla
                     </Button>
                 </div>
-                <PictureImg {...images} style={{position: 'relative'}} aspectRatio='poster' ratioNatural={false}/>
-            </Wrapper>
+                <PictureImg {...images} style={{position: 'relative'}} />
+            </SplitLayout>
         </SectionPage>
     ))
 }
 
-<style lang="scss">
-    .contenido {
-        min-height: 100%;
-        align-content: center;
-        display: grid;
-        gap: 1rem;
-    }
-    .parrafo {
-        color: rgb(49, 49, 49);
-    }
-
-    .Imagen-Container {
-        overflow: hidden;
-        border-radius: 0.5rem;
-        min-height: 100%;
-        position: relative;
-
-        &.animation-loader {
-            background-color: #d7e1e7;
-            animation: loader 1.5s infinite alternate;
-        }
-
-        &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #d7e1e7;
-        }
-
-        &.loaderOk::after {
-            content: none;
-        }
-    }
-
-    .Split__Imagen {
-        aspect-ratio: 2/2.5;
-        transition: transform 0.2s;
-        background-color: #d7e1e7;
-
-        &:hover {
-            transform: scale(0.95);
-        }
-    }
-</style>
