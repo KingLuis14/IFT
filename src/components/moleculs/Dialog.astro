@@ -1,0 +1,13 @@
+---
+import { Icon } from "astro-icon/components";
+import Typografic from "../Typografic.astro";
+---
+
+<dialog class="modal" id="Modal">
+    <div style="position: relative;" >
+        <Icon name="CheckIcon" size={50} class='modal__finish color-blue-600'  />
+        <span class="modal__loader" />
+    </div>
+    <Typografic as="h3"class="modal__parrafo" weigth="600" >Enviando ...</Typografic>
+    <Icon name="BtnClose" size={25} class="modal__btn-close" />
+</dialog>

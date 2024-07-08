@@ -8,6 +8,7 @@ import SectionPage from "@/components/SectionPage.astro";
 import Button from "@/components/Button.astro";
 import RedesSociales from "@/components/moleculs/RedesSociales.astro";
 import Banner from "@/components/moleculs/Banner.astro";
+import Dialog from "@/components/moleculs/Dialog.astro";
 const { description, titulo, imagenesBanner } = BannerData.contacto;
 const { imagen } = imagenesBanner;
 ---
@@ -35,17 +36,28 @@ const { imagen } = imagenesBanner;
         type="image/webp"
     />
     <Banner {imagenesBanner}>
-        <Wrapper style={{display: 'grid' , placeItems: 'center', position: 'relative'}} align="center" colors="white" >
+        <Wrapper
+            style={{
+                display: "grid",
+                placeItems: "center",
+                position: "relative",
+            }}
+            align="center"
+            colors="white"
+        >
             <article class="banner__contenido textFlow">
-                <Typografic as="h1" size="superTitle" weigth="700">{titulo}</Typografic>
-                <Typografic as="p" style="text-wrap: balance;" >{description}</Typografic>
+                <Typografic as="h1" size="superTitle" weigth="700"
+                    >{titulo}</Typografic
+                >
+                <Typografic as="p" style="text-wrap: balance;"
+                    >{description}</Typografic
+                >
                 <Button
                     href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
                     target="_blank"
                     variant="theme2">Mas Información</Button
                 >
             </article>
-            
         </Wrapper>
     </Banner>
     <SectionPage variant="theme2">
@@ -89,11 +101,13 @@ const { imagen } = imagenesBanner;
                     name="observacion"
                     id="observacion"
                     placeholder="Alguna observacion"></textarea>
-                <Button
+                <button
+                    class="button form__button button--theme1"
                     title="Registrate en el formulario"
-                    style="justify-content : center;">Inscribete</Button
+                    style="justify-content : center;">Inscribete</button
                 >
-                <RedesSociales/>
+                <RedesSociales />
+                <Dialog />
             </Formulario>
         </Wrapper>
     </SectionPage>

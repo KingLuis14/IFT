@@ -4,6 +4,7 @@ import Typografic from "../Typografic.astro";
 import Formulario from "../moleculs/Formulario.astro";
 import Button from "../Button.astro";
 import RedesSociales from "../moleculs/RedesSociales.astro";
+import Dialog from "../moleculs/Dialog.astro";
 
 const colectionCurso = (await getCollection("curso")).map(
     ({ data }) => data.titulo,
@@ -58,6 +59,7 @@ const cursosConPredeterminado = ["Selecciona tu curso", ...colectionCurso];
         name="observacion"
         id="observacion"
         placeholder="Alguna observacion"></textarea>
-    <Button title="Registrate en el formulario" style="justify-content : center;">Inscribete</Button>
+    <button class="button form__button button--theme1"  title="Registrate en el formulario" style="justify-content : center;">Inscribete</button>
     <RedesSociales/>
+    <Dialog />
 </Formulario>

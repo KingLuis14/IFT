@@ -17,12 +17,101 @@ const { variant, classBlock, ...attrs } = Astro.props;
 ---
 
 <form
+    id="Formulario"
     class:list={[
         formulario.defaultClass,
         classBlock,
-        variant && formulario.variants[variant]
+        variant && formulario.variants[variant],
     ]}
     {...attrs}
 >
     <slot />
 </form>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+
+        const $Modal = document.getElementById("Modal") as HTMLDialogElement;
+        const $Formulario = document.getElementById("Formulario") as HTMLFormElement;
+
+        document.addEventListener('click', (e) => {
+            const $element = e.target as HTMLElement;
+
+            if ($element.classList.contains("modal__btn-close")) {
+                $Modal.close();
+            }
+        });
+
+        // console.log($Formulario);
+        $Formulario.addEventListener('submit', (e) => {
+            e.preventDefault();
+            console.log("hola");
+            if (validateForm($Formulario)) {
+                submit($Formulario);
+            }
+        });
+
+        const submit = async (form: HTMLFormElement) => {
+            const $loader = $Modal.querySelector(".modal__loader") as HTMLElement;
+            const $ModalParrafo = $Modal.querySelector(".modal__parrafo") as HTMLElement;
+
+            $Modal.showModal();
+            $loader.classList.add("animate");
+
+            const formData = new FormData(form);
+            const response = await fetch(
+                "https://formsubmit.co/ajax/informes@ift.pe",
+                {
+                    method: "POST",
+                    body: formData,
+                }
+            );
+
+            if (response.ok) {
+                $loader.classList.add("hidden");
+                $ModalParrafo.textContent = 'Enviado';
+            } else {
+                $ModalParrafo.textContent = 'Ups, hubo un problema';
+            }
+
+            form.reset();
+        };
+
+        const validateForm = (form: HTMLFormElement): boolean => {
+            let isValid = true;
+            const formElements = form.elements as any;
+            const nombre = formElements.namedItem("nombre") as HTMLInputElement;
+            const numeroDeContacto = formElements.namedItem("numero de contacto") as HTMLInputElement;
+            const email = formElements.namedItem("email") as HTMLInputElement;
+            const programas = formElements.namedItem("programasEstudio") as HTMLSelectElement | null;
+
+            
+
+            if (!nombre.value.trim()) {
+                isValid = false;
+                alert("Por favor, ingrese su nombre completo.");
+            }
+
+            if (!numeroDeContacto.value.trim()) {
+                isValid = false;
+                alert("Por favor, ingrese su número de contacto.");
+            }
+
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!email.value.trim() || !emailPattern.test(email.value)) {
+                isValid = false;
+                alert("Por favor, ingrese un email válido.");
+            }
+
+            if (programas && !programas.value) {
+                isValid = false;
+                alert("Por favor, seleccione un programa de estudio.");
+            }
+
+            
+            return isValid;
+        };
+
+    });
+</script>
+
