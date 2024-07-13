@@ -1,8 +1,9 @@
 {
     "id": "programacion",
-    "titulo": "Programación",
+    "titulo": "Programación Junior",
     "descripcion": "Aprenda habilidades esenciales de Programción, incluyendo Python, Java Básico, Java POO y PHP.  Certificación al completar el curso que mejora las perspectivas laborales.",
     "url": "/programacion",
+    "categoria" : "new",
     "imagenesBanner": {
       "base64": "data:image/webp;base64,UklGRhABAABXRUJQVlA4TAMBAAAvCYABACfCoJEkRTP3zPz+Zb0Q3N0DGwwjSTZ1e+/b9s8/np+JjWPbSJKi2WP4tyn/kD4HRov3bv6Dup//GZgRhCAEcQQAJAiJgBDSCzmx8Bq0SKGRpBg5yUgiM31fz2NhiVaSyuxBm+DTMk3Bt6h+qTSNDEn+CWJVIFEkyDWllF/SWA4FIvHMNIBoaCVDj8xwU7oVdoL1oZvWiTGnkgWlWxSxErkh/y8mp7gE7CWvw/m33EXsIePoXENHlJTqHhwEAEC24dm2bVs3IvofzTpqAksRCBQv8+/750kUSs/np508Doft4rgPZWAAmJjXj+vW+y6ohNX7tXUOI8lWluyRrtImAA==",
       "imagen": "programacion-banner"
@@ -10,13 +11,13 @@
     "images": {
       "placeholder": {
         "imgName": "Programacion",
-        "formats": "webp"
+        "formats": "jpg"
       },
       "original": {
         "imgName": "Programacion",
         "alt": "imagen de about 1",
         "formats": [
-          "webp"
+          "jpg"
         ]
       }
     },

@@ -12,7 +12,8 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview --host",
-    "astro": "astro"
+    "astro": "astro",
+    "images": "node src/scripts/blurImage.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",

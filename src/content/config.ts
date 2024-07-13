@@ -8,6 +8,7 @@ const Curso = defineCollection({
     titulo: z.string(),
     descripcion: z.string(),
     url: z.string(),
+    categoria : z.string().optional(),
     imagenesBanner: z.object({
       base64: z.string(),
       imagen: z.string()
