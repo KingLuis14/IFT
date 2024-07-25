@@ -2,6 +2,9 @@
 dist/
 # generated types
 .astro/
+public/base64-img
+public/img-banner
+public/img-placeholder
 
 # dependencies
 node_modules/

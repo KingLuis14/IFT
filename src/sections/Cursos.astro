@@ -1,0 +1,67 @@
+---
+import { Icon } from 'astro-icon/components';
+import CardCurso from '@/components/CardCurso.astro';
+import Wrapper from '@/components/Wrapper.astro';
+import SectionPage from '@/components/SectionPage.astro';
+import Typografic from '@/components/Typografic.astro';
+import type { ApiResponse } from '@/interface/Cursos';
+
+const API = await fetch(
+  'https://script.googleusercontent.com/macros/echo?user_content_key=LbSJXfoaRtwhQ74nmJnh4a7ydCyJTd3In_uC6k7jX76q88FGLr6sUEz2QkasmToPChl5O_TQNmVcB_PQ_xMQxxwnEyyd-iaJm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnNH0oy04xHJIbzow0XPN1rera9F70O4brr3QNcT-uUM0BH2U_ReOT1-t8QNb39h51Iv6m7F_gCa40luVwEoBwXyI_D1SG56PxNz9Jw9Md8uu&lib=MuykA3xI1H7i-EXUAVvNKGpGVSsJW4Shd',
+);
+
+const { data } : ApiResponse = await API.json();
+
+const colectionCurso = data.filter((curso) => !curso.categoria);
+const colectionCursoNew = data.filter((curso) => curso.categoria);
+
+// const colectionCurso = await (async () => {
+//   return data.filter((curso) => !curso.categoria);
+// })();
+
+
+
+---
+
+<SectionPage variant="theme2">
+  <Wrapper>
+    <Typografic as="h2" variant="colorBlue" aling="center" size="titleSection" weigth="700">Nuevos Cursos</Typografic>
+    <div class="carrusel-product">
+      <button class="carrusel-product__btnPrev">
+        <Icon name="ArrowIcon" size={18} />
+      </button>
+      <div class="carrusel-product__track">
+        {
+          colectionCursoNew && colectionCursoNew.map(({ nombre, descripcion, url, imagenPlaceholder, imagenOriginal }) => {
+            return <CardCurso titulo={nombre} descripcion={descripcion} url={url} imagenes={{ original: imagenOriginal, placeholder: imagenPlaceholder }} />;
+          })
+        }
+      </div>
+      <button class="carrusel-product__btnNext">
+        <Icon name="ArrowIcon" size={18} />
+      </button>
+    </div>
+  </Wrapper>
+</SectionPage>
+
+
+<SectionPage variant="theme2">
+  <Wrapper>
+    <Typografic as="h2" variant="colorBlue" aling="center" size="titleSection" weigth="700">Cursos</Typografic>
+    <div class="carrusel-product">
+      <button class="carrusel-product__btnPrev">
+        <Icon name="ArrowIcon" size={18} />
+      </button>
+      <div class="carrusel-product__track">
+        {
+          colectionCurso.map(({ nombre, descripcion, url, imagenPlaceholder, imagenOriginal }) => {
+            return <CardCurso titulo={nombre} descripcion={descripcion} url={url} imagenes={{ original: imagenOriginal, placeholder: imagenPlaceholder }} />;
+          })
+        }
+      </div>
+      <button class="carrusel-product__btnNext">
+        <Icon name="ArrowIcon" size={18} />
+      </button>
+    </div>
+  </Wrapper>
+</SectionPage>

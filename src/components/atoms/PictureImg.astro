@@ -1,17 +1,11 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 import { getImageDimensions } from "@/utils/dimesion-Images.ts";
+import { IMAGE_FORMATS, PLACEHOLDER_FORMATS } from "@/constants.ts";
 
 interface Image {
-    placeholder: {
-        imgName: string;
-        formats: string;
-    };
-    original: {
-        imgName: string;
-        alt: string;
-        formats: string[];
-    };
+    placeholder: string;
+    original: string;
 }
 
 const Picture = {
@@ -41,8 +35,8 @@ const {
     ...attrs
 } = Astro.props;
 
-const allFormats = original.formats.map((format) => ({
-    url: `${original.imgName}.${format}`,
+const allFormats = IMAGE_FORMATS.map((format) => ({
+    url: `${original}.${format}`,
     type: format,
 }));
 
@@ -67,13 +61,13 @@ const dimensions = getImageDimensions("/img/" + imagePath);
         style={ratioNatural
             ? `aspect-ratio: ${dimensions.width} / ${dimensions.height}`
             : undefined}
-        src={`/img/placeholder_${placeholder.imgName}.${placeholder.formats}`}
+        src={`/img/placeholder_${placeholder}.${PLACEHOLDER_FORMATS}`}
         class:list={[
             "lazy-picture__placeholder",
             aspectRatio && Picture.variants.aspectRatio[aspectRatio],
             classImg,
         ]}
-        alt={original.alt}
+        alt={`IFT ${original} curso`}
     />
 </picture>
 
@@ -103,10 +97,8 @@ const dimensions = getImageDimensions("/img/" + imagePath);
                     picture.insertBefore(newImage, img);
 
                     newImage.addEventListener("load", () => {
-                       
                         setTimeout(() => {
                             img.classList.add("lazy-picture__opacityImage");
-                            
                         }, 500);
                     });
 

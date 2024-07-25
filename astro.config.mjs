@@ -1,8 +1,6 @@
 import { defineConfig } from 'astro/config';
 import icon from "astro-icon";
-import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-
 import purgecss from "astro-purgecss";
 
 // https://astro.build/config
@@ -21,9 +19,12 @@ export default defineConfig({
       }
     }
   },
-  integrations: [icon(), react(), sitemap(), purgecss({
-    safelist: {
-      greedy: [/@/, /:/]
+  integrations: [icon(), sitemap(), purgecss({
+    defaultExtractor: content => {
+      // Extrae clases que contienen ':', '@' y otras clases válidas de CSS
+      return (content.match(/[\w-/:@]+(?<!:)/g) || []);
     }
+    
+   
   })]
 });

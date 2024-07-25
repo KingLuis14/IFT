@@ -1,10 +1,10 @@
 ---
-import Beneficios from "../components/Beneficios.astro";
-import Cursos from "../components/Cursos.astro";
-import Layout from "../layout/Layout.astro";
-import BannerData from "../data/BannerData";
-import AboutUs from "../components/AboutUs.astro";
-import Cta from "../components/Cta.astro";
+import Beneficios from "@/sections/Beneficios.astro";
+import Cursos from "@/sections/Cursos.astro";
+import Layout from "@/layout/Layout.astro";
+import BannerData from "@/data/BannerData";
+import AboutUs from "@/sections/AboutUs.astro";
+import Cta from "@/sections/Cta.astro";
 import Button from "@/components/Button.astro";
 import Typografic from "@/components/Typografic.astro";
 import Banner from "@/components/moleculs/Banner.astro";
@@ -12,6 +12,7 @@ import FormBanner from "@/components/organisms/FormBanner.astro";
 const { description, titulo, imagenesBanner } = BannerData.home;
 const { imagen } = imagenesBanner;
 import SplitLayout from "@/components/moleculs/SplitLayout.astro";
+import { PLACEHOLDER_FORMATS } from "@/constants";
 
 ---
 
@@ -24,7 +25,7 @@ import SplitLayout from "@/components/moleculs/SplitLayout.astro";
         fetchpriority="high"
         rel="preload"
         as="image"
-        href=`/img/${imagen}-small-lcpi.avif`
+        href=`/img/${imagen}-banner-small-lcpi.${PLACEHOLDER_FORMATS}`
         media="(max-width: 640px)"
         type="image/webp"
     />
@@ -33,11 +34,11 @@ import SplitLayout from "@/components/moleculs/SplitLayout.astro";
         fetchpriority="high"
         rel="preload"
         as="image"
-        href=`/img/${imagen}-large-lcpi.avif`
+        href=`/img/${imagen}-banner-large-lcpi.${PLACEHOLDER_FORMATS}`
         media="(min-width: 641px)"
         type="image/webp"
     />
-    <Banner {imagenesBanner}>
+    <Banner {...imagenesBanner}>
         <SplitLayout variant="banner" colors="white" style="position: relative; padding-block: 2.5rem;" align="center" classUtilities="@md:text-left" >
             <article class="banner__contenido textFlow">
                 <Typografic as="h1" size="superTitle" weigth="700">{titulo}</Typografic>

@@ -13,20 +13,16 @@
     "build": "astro check && astro build",
     "preview": "astro preview --host",
     "astro": "astro",
-    "images": "node src/scripts/blurImage.js"
+    "img-banner": "npx tsx src/scripts/bannerImages.ts",
+    "img": "npx tsx src/scripts/cursoImages.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
-    "@astrojs/react": "^3.3.0",
     "@astrojs/sitemap": "^3.1.4",
-    "@types/react": "^18.2.79",
-    "@types/react-dom": "^18.2.25",
     "astro": "^4.6.1",
     "astro-icon": "^1.1.0",
     "astro-purgecss": "^4.1.1",
     "purgecss": "^6.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
@@ -41,7 +37,9 @@
     "postcss-preset-env": "^9.5.9",
     "postcss-reporter": "^7.1.0",
     "postcss-url": "^10.1.3",
+    "prettier": "^3.3.3",
     "sass": "^1.75.0",
-    "sharp": "^0.33.4"
+    "sharp": "^0.33.4",
+    "tsx": "^4.16.2"
   }
 }

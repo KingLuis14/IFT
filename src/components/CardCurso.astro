@@ -3,17 +3,12 @@ import Button from './Button.astro';
 import PictureImg from "@/components/atoms/PictureImg.astro";
 import Typografic from './Typografic.astro';
 
+
 interface Image {
-    placeholder: {
-        imgName: string;
-        formats: string;
-    };
-    original: {
-        imgName: string;
-        alt: string;
-        formats: string[];
-    };
+    placeholder: string;
+    original: string;
 }
+
 
 interface Props {
     titulo: string;

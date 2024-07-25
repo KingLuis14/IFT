@@ -1,10 +1,10 @@
 ---
-import "../scss/index.scss";
+import "@/scss/index.scss";
 import { ViewTransitions } from "astro:transitions";
-import BtnWhatsApp from "../components/BtnWhatsApp.astro";
-import MiFooter from "../components/Footer.astro";
-import NavBar from "../components/NavBar.astro";
-import MenuData from "../data/Menu.json";
+import BtnWhatsApp from "@/components/BtnWhatsApp.astro";
+import MiFooter from "@/sections/Footer.astro";
+import NavBar from "@/components/NavBar.astro";
+import MenuData from "@/data/Menu.json";
 
 interface Props {
     titulo: string;
@@ -41,7 +41,6 @@ const { titulo, descripction } = Astro.props;
         <slot name="CTA" />
         <BtnWhatsApp />
         <MiFooter />
-        
     </body>
     <script>
         import { carruselProduct } from "../scripts/Carrusel-Product";
