@@ -15,12 +15,6 @@ const { data } : ApiResponse = await API.json();
 const colectionCurso = data.filter((curso) => !curso.categoria);
 const colectionCursoNew = data.filter((curso) => curso.categoria);
 
-// const colectionCurso = await (async () => {
-//   return data.filter((curso) => !curso.categoria);
-// })();
-
-
-
 ---
 
 <SectionPage variant="theme2">

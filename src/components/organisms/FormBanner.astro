@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import Typografic from "../Typografic.astro";
-import Formulario from "../moleculs/Formulario.astro";
-import RedesSociales from "../moleculs/RedesSociales.astro";
-import Dialog from "../moleculs/Dialog.astro";
+import Typografic from "@/components/Typografic.astro";
+import Formulario from "@/components/moleculs/Formulario.astro";
+import RedesSociales from "@/components/moleculs/RedesSociales.astro";
+import Dialog from "@/components/moleculs/Dialog.astro";
 
 const colectionCurso = (await getCollection("curso")).map(
     ({ data }) => data.titulo,

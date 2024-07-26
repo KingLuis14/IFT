@@ -1,114 +1,86 @@
 ---
-import type { HTMLAttributes } from "astro/types";
-import { getImageDimensions } from "@/utils/dimesion-Images.ts";
-import { IMAGE_FORMATS, PLACEHOLDER_FORMATS } from "@/constants.ts";
+import type { HTMLAttributes } from 'astro/types';
+import { getImageDimensions } from '@/utils/dimesion-Images.ts';
+import { IMAGE_FORMATS, PLACEHOLDER_FORMATS } from '@/constants.ts';
 
 interface Image {
-    placeholder: string;
-    original: string;
+  placeholder: string;
+  original: string;
 }
 
 const Picture = {
-    variants: {
-        aspectRatio: {
-            Auto: "aspect-ratio-auto",
-            Box: "aspect-ratio-box",
-            Video: "aspect-ratio-video",
-            poster: "aspect-ratio-poster",
-        },
+  variants: {
+    aspectRatio: {
+      Auto: 'aspect-ratio-auto',
+      Box: 'aspect-ratio-box',
+      Video: 'aspect-ratio-video',
+      poster: 'aspect-ratio-poster',
     },
+  },
 };
 
-interface Props extends HTMLAttributes<"picture">, Image {
-    classImg?: string;
-    aspectRatio?: keyof typeof Picture.variants.aspectRatio;
-    ratioNatural?: boolean;
+interface Props extends HTMLAttributes<'picture'>, Image {
+  className?: string;
+  aspectRatio?: keyof typeof Picture.variants.aspectRatio;
+  ratioNatural?: boolean;
 }
 
-const {
-    placeholder,
-    original,
-    aspectRatio,
-    classImg,
-    ratioNatural = true,
-    class: classes,
-    ...attrs
-} = Astro.props;
+const { placeholder, original, aspectRatio, className, ratioNatural = true, class: classes, ...attrs } = Astro.props;
 
 const allFormats = IMAGE_FORMATS.map((format) => ({
-    url: `${original}.${format}`,
-    type: format,
+  url: `${original}.${format}`,
+  type: format,
 }));
 
 const imagePath = allFormats[0].url;
-const dimensions = getImageDimensions("/img/" + imagePath);
+const dimensions = getImageDimensions('/img/' + imagePath);
 ---
 
-<picture
-    class:list={[
-        "lazy-picture",
-        aspectRatio && Picture.variants.aspectRatio[aspectRatio],
-        classes,
-    ]}
-    {...attrs}
->
-    {
-        allFormats.map(({ url, type }) => (
-            <source data-srcset={`/img/${url}`} type={`image/${type}`} />
-        ))
-    }
-    <img
-        style={ratioNatural
-            ? `aspect-ratio: ${dimensions.width} / ${dimensions.height}`
-            : undefined}
-        src={`/img/placeholder_${placeholder}.${PLACEHOLDER_FORMATS}`}
-        class:list={[
-            "lazy-picture__placeholder",
-            aspectRatio && Picture.variants.aspectRatio[aspectRatio],
-            classImg,
-        ]}
-        alt={`IFT ${original} curso`}
-    />
+<picture class:list={['lazy-picture', aspectRatio && Picture.variants.aspectRatio[aspectRatio], classes]} {...attrs}>
+  {allFormats.map(({ url, type }) => <source data-srcset={`/img/${url}`} type={`image/${type}`} />)}
+  <img class:list={['originalID', className]} >
+  <img
+    style={ratioNatural ? `aspect-ratio: ${dimensions.width} / ${dimensions.height}` : undefined}
+    src={`/img/placeholder_${placeholder}.${PLACEHOLDER_FORMATS}`}
+    class:list={['lazy-picture__placeholder', aspectRatio && Picture.variants.aspectRatio[aspectRatio]]}
+    alt={`IFT ${original} curso`}
+  />
 </picture>
 
 <script>
-    document.addEventListener("astro:page-load", () => {
-        const lazyImages = document.querySelectorAll(".lazy-picture");
+  document.addEventListener('astro:page-load', () => {
+    const lazyImages = document.querySelectorAll('.lazy-picture');
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const picture = entry.target;
-                    const sources = picture.querySelectorAll("source");
-                    const img = picture.querySelector(
-                        "img",
-                    ) as HTMLImageElement;
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const picture = entry.target;
+          const sources = picture.querySelectorAll('source');
+          const img = picture.querySelector('.lazy-picture__placeholder') as HTMLImageElement;
 
-                    const newImage = document.createElement(
-                        "img",
-                    ) as HTMLImageElement;
-                    newImage.classList.add("lazy-picture__original");
-                    newImage.alt = img.alt;
+          const newImage = picture.querySelector('.originalID') as HTMLImageElement;
+          newImage.classList.add('lazy-picture__original');
+          newImage.alt = img.alt;
 
-                    sources.forEach((source) => {
-                        newImage.srcset = source.dataset.srcset || "";
-                    });
+          sources.forEach((source) => {
+            newImage.srcset = source.dataset.srcset || '';
+          });
 
-                    picture.insertBefore(newImage, img);
+          picture.insertBefore(newImage, img);
 
-                    newImage.addEventListener("load", () => {
-                        setTimeout(() => {
-                            img.classList.add("lazy-picture__opacityImage");
-                        }, 500);
-                    });
+          newImage.addEventListener('load', () => {
+            setTimeout(() => {
+              img.classList.add('lazy-picture__opacityImage');
+            }, 400);
+          });
 
-                    observer.unobserve(picture);
-                }
-            });
-        });
-
-        lazyImages.forEach((lazyImage) => {
-            observer.observe(lazyImage);
-        });
+          observer.unobserve(picture);
+        }
+      });
     });
+
+    lazyImages.forEach((lazyImage) => {
+      observer.observe(lazyImage);
+    });
+  });
 </script>
