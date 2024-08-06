@@ -51,7 +51,7 @@
     }
 
     &__textArea{
-        height: 30vmin;
+        min-height: 150px;
     }
 
 }
@@ -76,7 +76,7 @@
 
 .textarea {
     resize: none;
-    height: 35vmin;
+    min-height: 150px;
 }
 
 .boton {

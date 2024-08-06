@@ -9,12 +9,10 @@ import Button from "@/components/Button.astro";
 import SplitLayout from "@/components/moleculs/SplitLayout.astro";
 import FormBanner from "@/components/organisms/FormBanner.astro";
 import type { ApiResponse } from "@/interface/Cursos.ts";
-import { PLACEHOLDER_FORMATS } from "@/constants";
+import { API_SHEETS, PLACEHOLDER_FORMATS } from "@/constants";
 
 export async function getStaticPaths() {
-    const API = await fetch(
-    "https://script.googleusercontent.com/macros/echo?user_content_key=LbSJXfoaRtwhQ74nmJnh4a7ydCyJTd3In_uC6k7jX76q88FGLr6sUEz2QkasmToPChl5O_TQNmVcB_PQ_xMQxxwnEyyd-iaJm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnNH0oy04xHJIbzow0XPN1rera9F70O4brr3QNcT-uUM0BH2U_ReOT1-t8QNb39h51Iv6m7F_gCa40luVwEoBwXyI_D1SG56PxNz9Jw9Md8uu&lib=MuykA3xI1H7i-EXUAVvNKGpGVSsJW4Shd",
-);
+    const API = await fetch(API_SHEETS);
     const { data }: ApiResponse = await API.json();
 
     return data.map((curso) => ({
