@@ -1,12 +1,10 @@
 ---
 import CardBeneficie from '@/components/CardBeneficie.astro';
-import SectionPage from '@/components/SectionPage.astro';
 import Typografic from '@/components/Typografic.astro';
-import Wrapper from '@/components/Wrapper.astro';
 ---
 
-<SectionPage  theme={'blue-light'} >
-   <Wrapper classes="beneficie">
+<section class="section-page bg-color-blue-100"  >
+   <div class="wrapper beneficie">
       <div class="beneficie__content textFlow">
          <small class="font-bebas-neue color-blue-800">All you need</small>
          <h2 class="font-bebas-neue color-blue-800 fs-super-title-2"
@@ -23,7 +21,7 @@ import Wrapper from '@/components/Wrapper.astro';
          <CardBeneficie icon="libro" text="Materiales por Curso" />
          <CardBeneficie icon="plataformaVirtual" text="Plataforma Virtual" />
       </div>
-   </Wrapper>
+   </d>
 </SectionPage>
 
 <style lang="scss">

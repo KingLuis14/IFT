@@ -58,7 +58,6 @@ const { type = 'contact' } = Astro.props;
       flex-direction: column;
       gap: 1.2rem;
       background-color: white;
-      
 
       &__group {
          display: flex;
@@ -133,91 +132,88 @@ const { type = 'contact' } = Astro.props;
 </style>
 
 <script>
-
    import CanvaConfetti from 'canvas-confetti';
    import { baseSchema, schemaWithCurso } from '@/utils/ValidationForm.ts';
 
-   const $Formulario = document.querySelector<HTMLFormElement>('.form');
+   document.addEventListener('astro:page-load', () => {
+      const $Formulario = document.querySelector<HTMLFormElement>('.form');
 
-   $Formulario?.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const $currentForm = event.target as HTMLFormElement;
-      const formData = new FormData($currentForm);
-      const formValues = Object.fromEntries(formData);
+      $Formulario?.addEventListener('submit', async (event) => {
+         event.preventDefault();
+         const $currentForm = event.target as HTMLFormElement;
+         const formData = new FormData($currentForm);
+         const formValues = Object.fromEntries(formData);
 
-      cleanForm($currentForm);
-      
-      const currenSchema = $currentForm.hasAttribute('data-form-curso') ? schemaWithCurso : baseSchema;
+         cleanForm($currentForm);
 
-      // Validar el formulario usando Zod
-      const validationResult = currenSchema.safeParse(formValues);
+         const currenSchema = $currentForm.hasAttribute('data-form-curso') ? schemaWithCurso : baseSchema;
 
-      if (!validationResult.success) {
-         const errors = validationResult.error.format();
+         // Validar el formulario usando Zod
+         const validationResult = currenSchema.safeParse(formValues);
 
-         const filteredKeys = Object.keys(errors).filter((key) => key !== '_errors');
+         if (!validationResult.success) {
+            const errors = validationResult.error.format();
 
-         filteredKeys.forEach((key) => {
-            const fieldErrors: string = errors[key]?._errors[0];
+            const filteredKeys = Object.keys(errors).filter((key) => key !== '_errors');
 
-            const $InputError = $currentForm.querySelector(`.form__group[data-group="${key}"]`) as HTMLInputElement;
+            filteredKeys.forEach((key) => {
+               const fieldErrors: string = errors[key]?._errors[0];
 
-            $InputError.setAttribute('data-error', '');
-            const errorMessage = $InputError.querySelector('.form__error');
-            if (errorMessage) {
-               errorMessage.textContent = fieldErrors;
+               const $InputError = $currentForm.querySelector(`.form__group[data-group="${key}"]`) as HTMLInputElement;
+
+               $InputError.setAttribute('data-error', '');
+               const errorMessage = $InputError.querySelector('.form__error');
+               if (errorMessage) {
+                  errorMessage.textContent = fieldErrors;
+               }
+            });
+         } else {
+            const $SendSucces = $currentForm.querySelector('.form__send') as HTMLElement;
+
+            $SendSucces.classList.add('animation');
+
+            for (let i = 0; i < 2; i++) {
+               setTimeout(() => {
+                  CanvaConfetti({
+                     particleCount: 100,
+                     startVelocity: 45,
+                     decay: 0.9,
+                     gravity: 1,
+                     spread: 75,
+                     origin: {
+                        x: Math.random(),
+                        y: 0.5 + Math.random() * 0.5,
+                     },
+                  });
+               }, i * 1000);
             }
-         });
 
-      } else {
-         const $SendSucces = $currentForm.querySelector('.form__send') as HTMLElement;
-
-         $SendSucces.classList.add('animation');
-
-         for (let i = 0; i < 2; i++) {
-            setTimeout(() => {
-               CanvaConfetti({
-                  particleCount: 100,
-                  startVelocity: 45,
-                  decay: 0.9,
-                  gravity: 1,
-                  spread: 75,
-                  origin: {
-                     x: Math.random(),
-                     y: 0.5 + Math.random() * 0.5,
-                  },
-               });
-            }, i * 1000);
+            $SendSucces.addEventListener('animationend', () => {
+               $SendSucces.classList.remove('animation');
+            });
          }
+      });
 
-         $SendSucces.addEventListener('animationend', () => {
-            $SendSucces.classList.remove('animation');
-         });
-      }
+      document.getElementById('numero')?.addEventListener('input', function (e) {
+         const $Element = e.target as HTMLInputElement;
+         let value = $Element.value.replace(/\D/g, '');
+         let formattedValue = value.match(/.{1,3}/g)?.join(' ') || value;
+
+         $Element.value = formattedValue;
+      });
+
+      const cleanForm = ($currentForm: HTMLFormElement) => {
+         const $InputErrors = [...$currentForm.querySelectorAll('.form__group[data-error]')] as HTMLElement[];
+
+         if ($InputErrors.length > 0) {
+            $InputErrors.forEach((field) => {
+               field.removeAttribute('data-error');
+               const errorMessage = field.querySelector('.form__error');
+               if (errorMessage) {
+                  errorMessage.textContent = '';
+               }
+            });
+         }
+      };
    });
-
-   document.getElementById('numero')?.addEventListener('input', function (e) {
-      const $Element = e.target as HTMLInputElement;
-      let value = $Element.value.replace(/\D/g, '');
-      let formattedValue = value.match(/.{1,3}/g)?.join(' ') || value;
-
-      $Element.value = formattedValue;
-   });
-
-
-   const cleanForm = ( $currentForm : HTMLFormElement)=> {
-      const $InputErrors = [...$currentForm.querySelectorAll('.form__group[data-error]')] as HTMLElement[];
-
-      if ($InputErrors.length > 0) {
-         $InputErrors.forEach((field) => {
-            field.removeAttribute('data-error');
-            const errorMessage = field.querySelector('.form__error');
-            if (errorMessage) {
-               errorMessage.textContent = '';
-            }
-         });
-      }
-   }
-
-
 </script>
