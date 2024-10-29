@@ -1,0 +1,183 @@
+---
+import Button from '@/components/Button.astro';
+import Typografic from '@/components/Typografic.astro';
+---
+
+<section class="section-page">
+   <div class="wrapper">
+      <div class="container">
+         <div>
+            <img
+               class="container__img"
+               src="https://integro.ancorathemes.com/wp-content/uploads/elementor/thumbs/img-6-copyright-qk4t0xx8xp2ymywwuyacahslqwlvzmj3pz6zlvo0dc.jpg"
+               alt="img1"
+            />
+         </div>
+         <div class="container__content">
+            <small class="font-bebas-neue">All you need</small>
+            <h2 class="font-bebas-neue">Capacitación Tecnológica Especializada para un Futuro Más Innovador</h2>
+            <p>
+               Nuestros cursos, impartidos por expertos en la materia, están diseñados para satisfacer las demandas del
+               mercado laboral actual y proporcionar a nuestros estudiantes las habilidades necesarias para destacarse
+               en la industria.
+            </p>
+            <a class="button button--accent button--content"  href="#" >Button</a>
+         </div>
+      </div>
+   </div>
+</section>
+
+<section class="section-page">
+   <div class="wrapper">
+      <div class="container">
+         <div>
+            <img
+               class="container__img"
+               src="https://integro.ancorathemes.com/wp-content/uploads/elementor/thumbs/img-6-copyright-qk4t0xx8xp2ymywwuyacahslqwlvzmj3pz6zlvo0dc.jpg"
+               alt="img1"
+            />
+         </div>
+         <div class="container__content reverse">
+            <small class="font-bebas-neue">All you need</small>
+            <h2 class="font-bebas-neue">Capacitación Tecnológica Especializada para un Futuro Más Innovador</h2>
+            <p>
+               Nuestros cursos, impartidos por expertos en la materia, están diseñados para satisfacer las demandas del
+               mercado laboral actual y proporcionar a nuestros estudiantes las habilidades necesarias para destacarse
+               en la industria.
+            </p>
+            <a class="button button--accent button--content"  href="#" >Button</a>
+         </div>
+      </div>
+      <div class="counters-container font-bebas-neue">
+         <div class="counter">
+            <Typografic as="h3" weigth={'400'}>Alumnos</Typografic>
+            <Typografic as="p" size={'superTitleSub'}>
+               <span>+</span>
+               <span class="counter__number" data-target="1000">0</span>
+            </Typografic>
+         </div>
+         <div class="counter">
+            <Typografic as="h3" weigth={'400'}>Cursos</Typografic>
+            <Typografic as="p" size={'superTitleSub'}>
+               <span>+</span>
+               <span class="counter__number" data-target="20">0</span>
+            </Typografic>
+         </div>
+         <div class="counter">
+            <Typografic as="h3" weigth={'400'}>Profesores</Typografic>
+            <Typografic as="p" size={'superTitleSub'}>
+               <span>+</span>
+               <span class="counter__number" data-target="15">0</span>
+            </Typografic>
+         </div>
+      </div>
+   </div>
+</section>
+
+<style lang="scss">
+   .container {
+      display: grid;
+      grid-template-columns: minmax(auto, 1fr);
+      gap: 2rem;
+
+      &__img {
+         min-height: 100%;
+      }
+
+      &__content {
+         align-self: center;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         gap: 1rem;
+         max-width: 70ch;
+
+         > small {
+            text-transform: uppercase;
+         }
+         > h2 {
+            text-transform: uppercase;
+            font-size: clamp(2.861rem, 2.6975rem + 0.8174vw, 3.4332rem);
+         }
+
+         &.reverse {
+            @media (width >= 768px) {
+               order: -1;
+               align-items: end;
+               text-align: right;
+            }
+         }
+      }
+
+      @media (width >= 768px) {
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+   }
+
+   .counters-container {
+      margin-top: var(--padding-section);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+   }
+
+   .counter {
+      flex: 1 0 clamp(150px, 40%, 250px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-variant-numeric: tabular-nums;
+      padding-block: 1.5rem;
+      line-height: normal;
+   }
+</style>
+
+<script>
+   const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+         if (entry.isIntersecting) {
+            const counter = entry.target as HTMLElement;
+            startCounter(counter, 750);
+            observer.unobserve(counter);
+         }
+      });
+   });
+
+   const startCounter = (counter: HTMLElement, duration: number = 2500): void => {
+      const target = +counter.getAttribute('data-target')!;
+      let count = 0;
+      const startTime = performance.now();
+
+      const updateCounter = (timestamp: number) => {
+         const elapsedTime = timestamp - startTime;
+         const progress = Math.min(elapsedTime / duration, 1);
+
+         count = Math.floor(progress * target);
+         counter.innerText = numberWithCommas(count);
+
+         if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+         } else {
+            counter.innerText = numberWithCommas(target); // Asegurarse de que el valor final sea exacto
+         }
+      };
+
+      requestAnimationFrame(updateCounter);
+   };
+
+   // Función para formatear números con comas
+   const numberWithCommas = (x: number): string => {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+   };
+
+   const counterAnimationObserver = (): void => {
+      const counters = document.querySelectorAll<HTMLElement>('.counter__number');
+      counters.forEach((counter) => {
+         observer.observe(counter);
+      });
+   };
+
+   // Iniciar la función de animación
+   counterAnimationObserver();
+</script>

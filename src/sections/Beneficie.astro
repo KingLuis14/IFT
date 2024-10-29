@@ -1,0 +1,71 @@
+---
+import CardBeneficie from '@/components/CardBeneficie.astro';
+import SectionPage from '@/components/SectionPage.astro';
+import Typografic from '@/components/Typografic.astro';
+import Wrapper from '@/components/Wrapper.astro';
+---
+
+<SectionPage  theme={'blue-light'} >
+   <Wrapper classes="beneficie">
+      <div class="beneficie__content textFlow">
+         <small class="font-bebas-neue color-blue-800">All you need</small>
+         <h2 class="font-bebas-neue color-blue-800 fs-super-title-2"
+            >Our services will make your product successful
+         </h2>
+         <Typografic as="p" color={'black-text'}
+            >Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
+            dolore suscipit ipsam sed corrupti dicta?</Typografic
+         >
+      </div>
+      <div class="beneficie__cardContainer">
+         <CardBeneficie icon="certificado" text="Certificacion Progresiva" />
+         <CardBeneficie icon="clasesVivo" text="Clases en Vivo" />
+         <CardBeneficie icon="libro" text="Materiales por Curso" />
+         <CardBeneficie icon="plataformaVirtual" text="Plataforma Virtual" />
+      </div>
+   </Wrapper>
+</SectionPage>
+
+<style lang="scss">
+   .beneficie {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 2rem;
+      color: white;
+
+      @media (width >= 1200px) {
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      &__content {
+         align-self: center;
+         max-width: 70ch;
+         --_space: 1rem;
+
+         > p {
+            margin-top: 2rem;
+         }
+      }
+
+      &__cardContainer {
+         display: grid;
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+         gap: clamp(1rem, 2vw + 0.5rem, 2rem);
+
+         & :global(> :nth-child(odd)) {
+            position: relative;
+            top: clamp(1rem, 2vw + 0.5rem, 2rem);
+         }
+
+         & :global(> *) {
+            background-color: var(--white-000);
+           
+         }
+
+         & :global(:is(> :nth-child(2), > :nth-child(3))) {
+            background-color: var(--blue-600);
+            color: var(--white-100);
+         }
+      }
+   }
+</style>

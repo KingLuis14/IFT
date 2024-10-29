@@ -1,120 +1,118 @@
 ---
-import { Icon } from 'astro-icon/components';
-import FooterList from '@/components/FooterList.astro';
-import Wrapper from '@/components/Wrapper.astro';
-import { API_SHEETS } from '@/constants.ts';
-import type { FooterCourse } from '@/interface/footerCurso';
-
-const API = await fetch(`${API_SHEETS}?cursos`);
-const { data }: FooterCourse = await API.json();
+import { Icon } from "astro-icon/components";
 ---
 
-<footer class="bg-color-blue-900 color-white-000">
-   <Wrapper>
-      <div class="Footer-Container">
-         <FooterList titulo="Cursos">
-            <ul class="ListaCursos">
-               {
-                  data.map(({ curso, url }) => {
-                     return (
-                        <li>
-                           <a href={`/${url}`} aria-label={`Ir a la pagina del curso de ${curso}`} class="small" style="color: rgb(210, 210, 210);">
-                              {curso}
-                           </a>
-                        </li>
-                     );
-                  })
-               }
-            </ul>
-         </FooterList>
-         <FooterList titulo="Empresa">
-            <div style="margin-bottom: .3rem;">
-               <h4>Direccion:</h4>
-               <p class="small">Jr Hipólito Unanue N° 393 Cercado de Lima - Perú</p>
-            </div>
-            <div style="margin-bottom: .3rem;">
-               <h4>Correo:</h4>
-               <p class="small">informes@ift.pe</p>
-            </div>
-            <div style="margin-bottom: .3rem;">
-               <h4>Contacto:</h4>
-               <p class="small">980816746</p>
-            </div>
-         </FooterList>
-         <FooterList titulo="Servicios">
-            <p class="small">Educacion Online</p>
-            <a href="/servicios/"  style="color: rgb(210, 210, 210);">
-               <p class="small">Creacion de Paginas Web</p>
-            </a>
-         </FooterList>
-         <FooterList titulo="Redes Sociales" styleContent="Iconos-Container">
-            <a
-               class="RedesSociales-Icon"
-               href="https://www.facebook.com/people/Instituto-de-Formaci%C3%B3n-Tecnol%C3%B3gica-IFT/61555145250465/"
-               aria-label=`Ir a la nuestro facebook`
-               target="_blank"
-               rel="noopener noreferrer"
-            >
-               <Icon name="facebook" size={30} />
-            </a>
-            <a class="RedesSociales-Icon" href="https://www.youtube.com/channel/UCesc5xJfVHuvT6k401bGlcg" aria-label=`Ir a la nuestro canal de Youtube` target="_blank" rel="noopener noreferrer">
-               <Icon name="Youtube" size={30} />
-            </a>
-            <a class="RedesSociales-Icon" href="https://www.instagram.com/institutoift/?igsh=NTc4MTIwNjQ2YQ%3D%3D" aria-label=`Ir a la nuestro Instagram` target="_blank" rel="noopener noreferrer">
-               <Icon name="Instagram" size={30} />
-            </a>
-            <a class="RedesSociales-Icon" href="https://www.tiktok.com/@instituto.ift" aria-label=`Ir a la nuestro Tiktok` target="_blank" rel="noopener noreferrer">
-               <Icon name="Tiktok" size={30} />
-            </a>
-         </FooterList>
+<footer class="section-page bg-color-blue-600 color-white-000">
+  <div class="wrapper container">
+    <nav class="container__navigation">
+      <div class="container__logo">
+        <img src="/img/logo.png" alt="logo del intituto ift"   >
+        <!-- <p>Balanzas del Oriente</p> -->
       </div>
-      <p class="padding-block-start-32">©{new Date().getFullYear().toString()} IFT. Todos los derechos reservados.</p>
-   </Wrapper>
+
+      <div class="container__groupNav">
+        <h3>Navegación</h3>
+        <ul class="container__list">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Productos</a></li>
+          <li><a href="#">Nosotros</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+
+     
+
+      <div class="container__groupNav">
+        <h3>Empresa</h3>
+        <ul class="container__list">
+          <li>tucorreo@gmail.com</li>
+          <li>
+            <a href="#">Jr Loreto N° 145</a>
+          </li>
+          <li><a href="#">980784568</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container__copy">
+      <div>
+        <small>©2024 IFT</small><br/>
+        <small>Todos los derechos reservados</small>
+      </div>
+      <aside>
+        <a href="#">
+          <Icon name="facebook" class="color-green-500" size={25} />
+        </a>
+        <a href="#">
+          <Icon name="Instagram" class="color-green-500" size={25} />
+        </a>
+        <a href="#">
+          <Icon name="Tiktok" class="color-green-500" size={25} />
+        </a>
+        <a href="#">
+          <Icon name="Youtube" class="color-green-500" size={25} />
+        </a>
+      </aside>
+    </div>
+  </div>
 </footer>
 
 <style lang="scss">
-   footer {
-      padding-block: 2rem;
-   }
-
-   .Footer-Container {
+  .container {
+    &__navigation {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: 1rem;
-      row-gap: 2rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      padding-bottom: 4rem;
+      gap: 2rem 1rem;
 
-      @media (width > 768px) {
-         grid-template-columns: repeat(4, 1fr);
+      > :first-child {
+        grid-column: span 2;
+       
       }
-   }
 
-   .ListaCursos {
+      @media (width >= 768px) {
+        grid-template-columns: min(35%, 500px) repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    &__logo {
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
-   }
+      gap: 1.5rem;
 
-   .wrapper {
-      gap: 2rem;
-      > p {
-         text-align: center;
-         color: rgb(210, 210, 210);
+      > img {
+        width: 8rem;
       }
-   }
+    }
 
-   .Iconos-Container {
-      flex-direction: row;
-      gap: 1rem;
-      > a {
-         color: rgb(210, 210, 210);
+    &__copy {
+      padding-top: 2rem;
+      border-top: 2px var(--white-000) solid;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      // background-color: cadetblue;
+
+      > aside {
+        display: flex;
+        gap: 0.7rem;
       }
-   }
+    }
 
-   .RedesSociales-Icon {
-      transition: transform 0.2s;
+    &__groupNav {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
 
-      &:hover {
-         transform: scale(1.15);
+      > h3 {
+        font-weight: 600;
       }
-   }
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      color: var(--white-100);
+    }
+  }
 </style>

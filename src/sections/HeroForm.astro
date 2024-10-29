@@ -1,0 +1,81 @@
+---
+import FormNew from '@/components/FormNew.astro';
+import myBackground from '@/assets/home-hero-banner.webp';
+import { getImage } from 'astro:assets';
+
+const desktopImg = await getImage({
+   src: myBackground,
+   format: 'webp',
+   width: 400,
+   quality: 60,
+});
+---
+
+<section class="hero-img" style={`background-image: url(${desktopImg.src});`}>
+   <div class="wrapper container">
+      <div class="container__content color-white-000">
+         <h1 class="fs-super-title-2" style="line-height: 1;"  >Instituto de Formación Tecnologica</h1>
+         <p>
+            Una empresa especializada en capacitaciones tecnológicas, ofrecemos programas de formación de vanguardia en diversas áreas de la tecnología
+         </p>
+         <a class="button button--primary button--content" href="#">Button</a>
+      </div>
+
+      <div class="container__form">
+
+          <h2>Inscribete</h2>  
+          <FormNew type="cursos" />
+      </div>
+   </div>
+</section>
+
+<style lang="scss">
+   .hero-img {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: rgba(0, 0, 0, 0.732);
+      background-blend-mode: overlay;
+      
+
+   }
+
+   .container {
+      display: grid;
+      gap: 2.25rem;
+      border-radius: 0.5rem;
+      min-height: 100svh;
+      align-items: center;
+      padding-block: 8rem;
+
+      &__content {
+         display: flex;
+         flex-direction: column;
+         gap: 1.2rem;
+         align-items: center;
+         text-align: center;
+
+         @media (width >= 768px) {
+            align-items: start;
+            text-align: start;
+      }
+
+      }
+
+      @media (width >= 768px) {
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+         // margin-top: -250px;
+      }
+
+      &__form{
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: .5rem;
+        
+        > h2 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+      }
+   }
+</style>
