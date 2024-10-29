@@ -80,9 +80,24 @@ const { titulo, descripction, image = IMG__DEFAULT } = Astro.props;
 </html>
 
 <script>
-   import { carruselProduct } from '../scripts/Carrusel-Product';
-
-   document.addEventListener('astro:page-load', () => {
-      // carruselProduct();
+   document.addEventListener("astro:page-load", () => {
+     const animationLoadingTop = new IntersectionObserver(
+       (entries, observer) => {
+         entries.forEach((entry) => {
+           if (entry.isIntersecting) {
+             entry.target.classList.add("ok");
+             observer.unobserve(entry.target);
+           }
+         });
+       }
+     );
+ 
+     const $ElementAnimationTop = [
+       ...document.querySelectorAll<HTMLElement>(".loading-top"),
+     ];
+ 
+     if ($ElementAnimationTop.length > 0) {
+       $ElementAnimationTop.forEach((elem) => animationLoadingTop.observe(elem));
+     }
    });
-</script>
+ </script>

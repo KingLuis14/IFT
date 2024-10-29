@@ -7,12 +7,12 @@ import Typografic from '@/components/Typografic.astro';
       <div class="container">
          <div>
             <img
-               class="container__img"
+               class="container__img loading-top"
                src="https://integro.ancorathemes.com/wp-content/uploads/elementor/thumbs/img-6-copyright-qk4t0xx8xp2ymywwuyacahslqwlvzmj3pz6zlvo0dc.jpg"
                alt="img1"
             />
          </div>
-         <div class="container__content">
+         <div class="container__content loading-top">
             <small class="font-bebas-neue">All you need</small>
             <h2 class="font-bebas-neue">Capacitación Tecnológica Especializada para un Futuro Más Innovador</h2>
             <p>
@@ -20,7 +20,7 @@ import Typografic from '@/components/Typografic.astro';
                mercado laboral actual y proporcionar a nuestros estudiantes las habilidades necesarias para destacarse
                en la industria.
             </p>
-            <a class="button button--accent button--content"  href="#" >Button</a>
+            <a class="button button--primary button--content" href="#">Button</a>
          </div>
       </div>
    </div>
@@ -31,12 +31,12 @@ import Typografic from '@/components/Typografic.astro';
       <div class="container">
          <div>
             <img
-               class="container__img"
+               class="container__img loading-top"
                src="https://integro.ancorathemes.com/wp-content/uploads/elementor/thumbs/img-6-copyright-qk4t0xx8xp2ymywwuyacahslqwlvzmj3pz6zlvo0dc.jpg"
                alt="img1"
             />
          </div>
-         <div class="container__content reverse">
+         <div class="container__content reverse loading-top">
             <small class="font-bebas-neue">All you need</small>
             <h2 class="font-bebas-neue">Capacitación Tecnológica Especializada para un Futuro Más Innovador</h2>
             <p>
@@ -44,10 +44,10 @@ import Typografic from '@/components/Typografic.astro';
                mercado laboral actual y proporcionar a nuestros estudiantes las habilidades necesarias para destacarse
                en la industria.
             </p>
-            <a class="button button--accent button--content"  href="#" >Button</a>
+            <a class="button button--primary button--content" href="#">Button</a>
          </div>
       </div>
-      <div class="counters-container font-bebas-neue">
+      <div class="counters-container font-bebas-neue loading-top">
          <div class="counter">
             <Typografic as="h3" weigth={'400'}>Alumnos</Typografic>
             <Typografic as="p" size={'superTitleSub'}>
@@ -133,50 +133,52 @@ import Typografic from '@/components/Typografic.astro';
 </style>
 
 <script>
-   const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-         if (entry.isIntersecting) {
-            const counter = entry.target as HTMLElement;
-            startCounter(counter, 750);
-            observer.unobserve(counter);
-         }
+   document.addEventListener('astro:page-load', () => {
+      const observer = new IntersectionObserver((entries) => {
+         entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+               const counter = entry.target as HTMLElement;
+               startCounter(counter, 750);
+               observer.unobserve(counter);
+            }
+         });
       });
-   });
 
-   const startCounter = (counter: HTMLElement, duration: number = 2500): void => {
-      const target = +counter.getAttribute('data-target')!;
-      let count = 0;
-      const startTime = performance.now();
+      const startCounter = (counter: HTMLElement, duration: number = 2500): void => {
+         const target = +counter.getAttribute('data-target')!;
+         let count = 0;
+         const startTime = performance.now();
 
-      const updateCounter = (timestamp: number) => {
-         const elapsedTime = timestamp - startTime;
-         const progress = Math.min(elapsedTime / duration, 1);
+         const updateCounter = (timestamp: number) => {
+            const elapsedTime = timestamp - startTime;
+            const progress = Math.min(elapsedTime / duration, 1);
 
-         count = Math.floor(progress * target);
-         counter.innerText = numberWithCommas(count);
+            count = Math.floor(progress * target);
+            counter.innerText = numberWithCommas(count);
 
-         if (progress < 1) {
-            requestAnimationFrame(updateCounter);
-         } else {
-            counter.innerText = numberWithCommas(target); // Asegurarse de que el valor final sea exacto
-         }
+            if (progress < 1) {
+               requestAnimationFrame(updateCounter);
+            } else {
+               counter.innerText = numberWithCommas(target); // Asegurarse de que el valor final sea exacto
+            }
+         };
+
+         requestAnimationFrame(updateCounter);
       };
 
-      requestAnimationFrame(updateCounter);
-   };
+      // Función para formatear números con comas
+      const numberWithCommas = (x: number): string => {
+         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      };
 
-   // Función para formatear números con comas
-   const numberWithCommas = (x: number): string => {
-      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-   };
+      const counterAnimationObserver = (): void => {
+         const counters = document.querySelectorAll<HTMLElement>('.counter__number');
+         counters.forEach((counter) => {
+            observer.observe(counter);
+         });
+      };
 
-   const counterAnimationObserver = (): void => {
-      const counters = document.querySelectorAll<HTMLElement>('.counter__number');
-      counters.forEach((counter) => {
-         observer.observe(counter);
-      });
-   };
-
-   // Iniciar la función de animación
-   counterAnimationObserver();
+      // Iniciar la función de animación
+      counterAnimationObserver();
+   });
 </script>
