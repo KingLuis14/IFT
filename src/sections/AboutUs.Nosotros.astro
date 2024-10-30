@@ -1,134 +1,19 @@
 ---
-import { Icon } from 'astro-icon/components';
+import TikTokVideo from '@/components/TikTokVideo.astro';
 ---
 
-<section class="section section-page">
+<section class="section-page">
    <div class="wrapper container">
-      <div class="container__content loading-top">
-         <small class="font-bebas-neue fs-normal">Curso</small>
-         <h2 class="container__title font-bebas-neue">WordPress</h2>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit eveniet illo ex iure possimus similique.</p>
-         <ul class="container__list">
-            <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
-               <span>Lorem ipsum dolor sit amet.</span>
-            </li>
-            <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
-               <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus illo consectetur sapiente soluta hic quam?</span>
-            </li>
-            <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
-               <span>Lorem ipsum dolor sit amet.</span>
-            </li>
-            <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
-               <span>Lorem ipsum dolor sit amet.</span>
-            </li>
-         </ul>
+      <div class="container__content">
+
+         <h2 class="container__title font-bebas-neue">Conocenos más</h2>
+         <p>IFT es una empresa especializada en capacitaciones tecnológicas. Con nuestro RUC 20611910224, ofrecemos programas de formación de vanguardia en diversas áreas de la tecnología, desde desarrollo de software hasta ciberseguridad.</p>
       </div>
-      <div class="container__imgWrapper loading-top">
-         <img
-            class="container__img"
-            src="https://integro.ancorathemes.com/wp-content/uploads/elementor/thumbs/img-6-copyright-qk4t0xx8xp2ymywwuyacahslqwlvzmj3pz6zlvo0dc.jpg"
-            alt="img1"
-         />
-      </div>
-   </div>
-</section>
-<section class="section section-page invert">
-   <div class="wrapper container">
-      <div class="container__content loading-top">
-         <small class="font-bebas-neue fs-normal">Curso</small>
-         <h2 class="container__title font-bebas-neue">WordPress</h2>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit eveniet illo ex iure possimus similique.</p>
-         <ul class="container__list">
-            <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
-               <span>Lorem ipsum dolor sit amet.</span>
-            </li>
-            <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
-               <span>Lorem ipsum dolor sit amet.</span>
-            </li>
-            <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
-               <span>Lorem ipsum dolor sit amet.</span>
-            </li>
-            <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
-               <span>Lorem ipsum dolor sit amet.</span>
-            </li>
-         </ul>
-      </div>
-      <div class="container__imgWrapper loading-top">
-         <img
-            class="container__img"
-            src="https://integro.ancorathemes.com/wp-content/uploads/elementor/thumbs/img-6-copyright-qk4t0xx8xp2ymywwuyacahslqwlvzmj3pz6zlvo0dc.jpg"
-            alt="img1"
-         />
-      </div>
-   </div>
-</section>
-<section class="section section-page">
-   <div class="wrapper container">
-      <div class="container__content loading-top">
-         <small class="font-bebas-neue fs-normal">Curso</small>
-         <h2 class="container__title font-bebas-neue">WordPress</h2>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit eveniet illo ex iure possimus similique.</p>
-         <ul class="container__list">
-            <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
-               <span>Lorem ipsum dolor sit amet.</span>
-            </li>
-            <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
-               <span>Lorem ipsum dolor sit amet.</span>
-            </li>
-            <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
-               <span>Lorem ipsum dolor sit amet.</span>
-            </li>
-         </ul>
-      </div>
-      <div class="container__imgWrapper loading-top">
-         <img
-            class="container__img"
-            src="https://integro.ancorathemes.com/wp-content/uploads/elementor/thumbs/img-6-copyright-qk4t0xx8xp2ymywwuyacahslqwlvzmj3pz6zlvo0dc.jpg"
-            alt="img1"
-         />
-      </div>
-   </div>
-</section>
-<section class="section section-page invert">
-   <div class="wrapper container">
-      <div class="container__content loading-top">
-         <small class="font-bebas-neue fs-normal">Curso</small>
-         <h2 class="container__title font-bebas-neue">WordPress</h2>
-         <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit eveniet illo ex iure possimus similique. Lorem
-            ipsum dolor sit, amet consectetur adipisicing elit.
-         </p>
-         <ul class="container__list">
-            <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
-               <span>Lorem ipsum dolor sit amet.</span>
-            </li>
-            <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
-               <span>Lorem ipsum dolor sit amet.</span>
-            </li>
-            <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
-               <span>Lorem ipsum dolor sit amet.</span>
-            </li>
-         </ul>
-      </div>
-      <div class="container__imgWrapper loading-top">
-         <img
-            class="container__img"
-            src="https://integro.ancorathemes.com/wp-content/uploads/elementor/thumbs/img-6-copyright-qk4t0xx8xp2ymywwuyacahslqwlvzmj3pz6zlvo0dc.jpg"
-            alt="img1"
+      <div class="container__media">
+         <TikTokVideo
+            videoId="7425773200774073605"
+            thumbnailUrl="/img/tiktok-video.jpg"
+            title="La relación de Ibai con Marcos"
          />
       </div>
    </div>
@@ -155,54 +40,10 @@ import { Icon } from 'astro-icon/components';
          display: flex;
          flex-direction: column;
          gap: 0.5rem;
-         order: 1;
+         //  order: 1;
       }
 
-      &__list {
-         margin-top: 1rem;
-         display: flex;
-         flex-direction: column;
-         gap: 0.5rem;
-         
-         
+      
 
-         .listIcon{
-            // background-color: skyblue;
-            display: flex;
-            // align-items: center;
-            gap: 0.5rem;
-
-            > svg {
-                flex-shrink: 0;
-                // margin-top: .2rem;
-            }
-         }
-      }
-
-      &__imgWrapper{
-        border-radius: .5rem;
-        overflow: hidden;
-      }
-
-      &__img {
-         aspect-ratio: 16/9;
-         min-height: 100%;
-      }
    }
-   .section {
-      color: rgb(0, 0, 0);
-      background-color: var(--blue-100);
-
-      &.invert {
-         background-color: var(--blue-900);
-         color: white;
-
-         @media (width >= 768px) {
-            .container__content {
-               order: 0;
-            }
-         }
-      }
-   }
-
 </style>
