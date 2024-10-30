@@ -32,11 +32,15 @@ const { videoId, thumbnailUrl, title } = Astro.props;
     //   aspect-ratio: 320/570;
       height: 570px;
       background-color: black;
-      margin-inline: auto;
+      margin-inline-end: auto;
       cursor: pointer;
       background-position: center;
       background-size: 100%;
       transition: background-size 0.3s ease;
+
+      @media (width >= 768px) {
+         margin-inline: auto;
+      }
 
       &:hover {
          background-size: 105%;
@@ -100,7 +104,7 @@ const { videoId, thumbnailUrl, title } = Astro.props;
          const iframeEl = document.createElement('iframe');
          iframeEl.style.width = '100%';
          iframeEl.style.height = '100%';
-         iframeEl.classList.add('rounded-2xl', 'w-full', 'h-full', 'snap-center');
+         iframeEl.style.borderRadius = '16px';
          iframeEl.title = this.getAttribute('data-title')!;
          iframeEl.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; transparency';
          iframeEl.allowFullscreen = true;

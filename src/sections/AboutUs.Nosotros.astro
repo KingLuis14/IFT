@@ -1,19 +1,52 @@
 ---
 import TikTokVideo from '@/components/TikTokVideo.astro';
+import { getImage } from 'astro:assets';
+
+import tiktokImg from '@/assets/tiktok-video.jpg';
+
+
+const titktokPlaceholder = await getImage({
+   src: tiktokImg,
+   format: 'webp',
+   width: 400,
+});
+
+
 ---
 
-<section class="section-page">
+<section class="section section-page">
    <div class="wrapper container">
-      <div class="container__content">
-
-         <h2 class="container__title font-bebas-neue">Conocenos más</h2>
-         <p>IFT es una empresa especializada en capacitaciones tecnológicas. Con nuestro RUC 20611910224, ofrecemos programas de formación de vanguardia en diversas áreas de la tecnología, desde desarrollo de software hasta ciberseguridad.</p>
+      <div class="container__content loading-top">
+         <h2 class="container__title font-bebas-neue">Líderes en Capacitación Tecnológica Innovadora para el Futuro</h2>
+         <p>
+            IFT es una empresa especializada en capacitaciones tecnológicas. Con nuestro RUC 20611910224, ofrecemos
+            programas de formación de vanguardia en diversas áreas de la tecnología, desde desarrollo de software hasta
+            ciberseguridad.
+         </p>
       </div>
-      <div class="container__media">
+      <div class="container__media loading-top">
          <TikTokVideo
             videoId="7425773200774073605"
-            thumbnailUrl="/img/tiktok-video.jpg"
+            thumbnailUrl={titktokPlaceholder.src}
             title="La relación de Ibai con Marcos"
+         />
+      </div>
+   </div>
+</section>
+<section class="section section-page invert">
+   <div class="wrapper container">
+      <div class="container__content loading-top">
+         <h2 class="container__title font-bebas-neue">Domina la Tecnología con Nuestros Cursos de Alta Demanda</h2>
+         <p>
+            Nuestros cursos, liderados por expertos, te brindan las habilidades más buscadas en el mercado laboral actual. Desde el primer día, aprenderás lo necesario para destacar en la industria tecnológica y dar el siguiente paso en tu carrera profesional.
+         </p>
+        
+      </div>
+      <div class="container__imgWrapper loading-top">
+         <img
+            class="container__img"
+            src="https://integro.ancorathemes.com/wp-content/uploads/elementor/thumbs/img-6-copyright-qk4t0xx8xp2ymywwuyacahslqwlvzmj3pz6zlvo0dc.jpg"
+            alt="img1"
          />
       </div>
    </div>
@@ -23,7 +56,7 @@ import TikTokVideo from '@/components/TikTokVideo.astro';
    .container {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
-      gap: 1.5rem;
+      gap: 2rem;
       // color: white;
 
       @media (width >= 768px) {
@@ -32,6 +65,7 @@ import TikTokVideo from '@/components/TikTokVideo.astro';
 
       &__title {
          font-size: clamp(2.861rem, 2.6975rem + 0.8174vw, 3.4332rem);
+         margin-bottom: 1rem;
       }
 
       &__content {
@@ -40,10 +74,31 @@ import TikTokVideo from '@/components/TikTokVideo.astro';
          display: flex;
          flex-direction: column;
          gap: 0.5rem;
-         //  order: 1;
+         order: 1;
+
+         > p {
+            color: var(--black-200);
+            // text-wrap: ;
+         }
       }
+   }
 
-      
+   .section {
+      color: rgb(0, 0, 0);
+      background-color: var(--blue-100);
 
+      &.invert {
+         background-color: var(--blue-900);
+         color: white;
+         p {
+            color: var(--white-200);
+         }
+
+         @media (width >= 768px) {
+            .container__content {
+               order: 0;
+            }
+         }
+      }
    }
 </style>

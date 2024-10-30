@@ -22,11 +22,17 @@ const links = [
       href: '/nosotros/',
       text: 'Nosotros',
    },
-
-   
+   {
+      href: '/servicios/',
+      text: 'Servicios',
+   },
    {
       href: '/contacto/',
       text: 'Contacto',
+   },
+   {
+      href: 'https://www.ift.pe/virtual/',
+      text: 'Area Virtual',
    },
 ];
 ---
@@ -50,7 +56,9 @@ const links = [
                                  active: href === currenpath,
                               },
                            ]}
-                           href={href}>
+                           target={ text === 'Area Virtual' ? '_blank' : '_self' }
+                           href={href}
+                           >
                            {text}
                         </a>
                      </li>
@@ -126,7 +134,7 @@ const links = [
          display: flex;
          gap: 1.5rem 0.5rem;
 
-         @media (width < 768px) {
+         @media (width < 960px) {
             height: 100%;
             flex-direction: column;
             justify-content: center;
@@ -135,7 +143,7 @@ const links = [
       }
 
       &__navigation {
-         @media (width < 768px) {
+         @media (width < 960px) {
             background-color: rgb(255, 255, 255);
             position: fixed;
             z-index: -1;
@@ -167,13 +175,13 @@ const links = [
             background-color: var(--yellow-green-800-opacity);
          }
 
-         @media (width >= 768px) {
+         @media (width >= 960px) {
             color: var(--white-000);
          }
       }
 
       &__btn {
-         @media (width >= 768px) {
+         @media (width >= 960px) {
             display: none;
          }
       }
@@ -190,7 +198,7 @@ const links = [
       const $menuNav = document.querySelector('.menu__navigation');
       const $menuElement = document.querySelector('#menu:not([data-sticky])');
 
-      const isDesktop = () => window.matchMedia('(width >= 768px)').matches;
+      const isDesktop = () => window.matchMedia('(width >= 960px)').matches;
 
       const throttle = (cb: (...args: any[]) => void, delay: number = 1000) => {
          let shouldWait = false;

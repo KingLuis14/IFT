@@ -1,0 +1,114 @@
+---
+import { Image } from 'astro:assets';
+import soporte from '@/assets/undraw_Pair_programming_re_or4x.png';
+import responsive from '@/assets/undraw_Real_time_sync_re_nky7.png';
+import socialMedia from '@/assets/undraw_Social_influencer_re_beim.png';
+import contactClient from '@/assets/undraw_Team_up_re_84ok.png';
+import desingUnic from '@/assets/undraw_Website_setup_re_d4y9.png';
+
+const ArrayService = [
+   {
+      title: 'Diseños Únicos y Personalizados que Reflejan la Identidad de tu Marca',
+      descripcion: `Nos especializamos en crear diseños completamente personalizados desde cero, sin recurrir a plantillas predefinidas. Cada detalle es ajustado a tus necesidades y estilo, para garantizar que tu sitio web refleje la identidad única de tu marca y destaque en el mercado`,
+      imagen: desingUnic,
+   },
+
+   {
+      title: 'Experiencias Visuales Adaptables para Todos los Dispositivos',
+      descripcion: `Nuestros diseños responsive garantizan que tu sitio web se vea perfecto y funcione sin problemas en cualquier dispositivo, brindando una experiencia de usuario optimizada para móviles, tablets y computadoras.`,
+      imagen: responsive,
+   },
+   {
+      title: 'Maximiza tu Impacto en Redes Sociales con Estrategias Efectivas',
+      descripcion: `Integramos tus redes sociales a tu sitio web para potenciar tu visibilidad en línea, conectando con tu audiencia de manera más directa y aumentando tu alcance de manera estratégica.`,
+      imagen: socialMedia,
+   },
+   {
+      title: 'Fácil Conexión con tus Clientes a Través de Formularios Eficientes',
+      descripcion: `Creamos formularios de contacto efectivos que facilitan la comunicación entre tu empresa y tus clientes, ayudándote a recibir consultas y comentarios de manera rápida y organizada.`,
+      imagen: contactClient,
+   },
+   {
+      title: 'Formación Especializada para un Mercado Laboral Competitivo',
+      descripcion: `Nuestros cursos están diseñados para brindar las habilidades más demandadas en el sector tecnológico.
+               Impartidos por expertos, te preparan para enfrentar los desafíos actuales y destacar en una industria en
+               constante evolución.`,
+      imagen: soporte,
+   },
+];
+---
+
+{
+   ArrayService.map(({ title, descripcion, imagen }, index) => (
+      <section class:list={['section section-page', { invert: index % 2 === 0 }]}>
+         <div class:list={["wrapper", { 'section-page-flow' : index === 0}]}>
+            {
+               index === 0 && (
+                  <h1 class="fs-super-title-2 font-bebas-neue color-blue-800">Creamos Tu Página Web !</h1>
+               )
+            }
+            <div class="container">
+               <div class="container__content loading-top">
+               <h2 class="container__title font-bebas-neue">{title}</h2>
+               <p>{descripcion}</p>
+            </div>
+            <div class="container__imgWrapper loading-top">
+               <Image
+                  src={imagen}
+                  alt={`IFT - ${title}`}
+                  style={`aspect-ratio: ${imagen.width} / ${imagen.height} ;`}
+               />
+            </div>
+            </div>
+            
+         </div>
+      </section>
+   ))
+}
+
+<style lang="scss">
+   .container {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 2rem;
+      // color: white;
+
+      @media (width >= 768px) {
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      &__title {
+         font-size: clamp(2.861rem, 2.6975rem + 0.8174vw, 3.4332rem);
+         margin-bottom: 1rem;
+      }
+
+      &__content {
+         // background-color: crimson;
+         align-self: center;
+         display: flex;
+         flex-direction: column;
+         gap: 0.5rem;
+         order: 1;
+
+         > p {
+            color: var(--black-200);
+            // text-wrap: ;
+         }
+      }
+   }
+
+   .section {
+      color: rgb(0, 0, 0);
+
+      &.invert {
+         // background-color: var(--blue-900);
+         // color: white;
+
+         @media (width >= 768px) {
+            .container__content {
+               order: 0;
+            }
+         }
+      }
+   }
+</style>

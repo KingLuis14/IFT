@@ -5,10 +5,13 @@ import { Icon } from "astro-icon/components";
 <footer class="section-page bg-color-black-900 color-white-000">
   <div class="wrapper container">
     <nav class="container__navigation">
-      <a href="/" class="container__logo">
-        <img src="/img/logo.png" alt="logo del intituto ift"   >
+      <div  class="container__logo">
+        <a href="/">
+          <img src="/img/logo.png" alt="logo del intituto ift"   >
+        </a>
+        
         <!-- <p>Balanzas del Oriente</p> -->
-      </a>
+      </div>
 
       <div class="container__groupNav">
         <h3>Navegación</h3>
@@ -79,7 +82,7 @@ import { Icon } from "astro-icon/components";
       flex-direction: column;
       gap: 1.5rem;
 
-      > img {
+      > a, img {
         width: 8rem;
       }
     }
