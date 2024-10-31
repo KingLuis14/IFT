@@ -1,0 +1,29 @@
+query NewQuery {
+  cursosDatas {
+    nodes {
+      cursosMalla {
+        id
+        descripcion
+        imageBanner {
+          mediaItemUrl
+        }
+        modulos {
+          idModulo
+          semanas {
+            temas {
+              data
+            }
+          }
+        }
+        image {
+          mediaDetails {
+            height
+            width
+          }
+          mediaItemUrl
+        }
+      }
+      slug
+    }
+  }
+}

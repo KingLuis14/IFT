@@ -2,34 +2,27 @@
 import '@/scss/index.scss';
 import { ViewTransitions } from 'astro:transitions';
 import BtnWhatsApp from '@/components/BtnWhatsApp.astro';
-import MiFooter from '@/sections/Footer.astro';
+import MiFooter, { type FooterData } from '@/sections/Footer.astro';
 import { IMG__DEFAULT } from '@/constants';
-import type { Courses } from '@/interface/Courses';
 import Footer from '@/sections/Footer.astro';
+import type { Data } from '@/interface/Cursos';
+import type { Code } from 'astro:components';
 
 interface Props {
    titulo: string;
    descripction: string;
    image?: string;
+   DataWp : Data;
 }
-const { titulo, descripction, image = IMG__DEFAULT } = Astro.props;
+const { titulo, descripction, image = IMG__DEFAULT, DataWp } = Astro.props;
 
-// const resp  = await fetch(URL_SITE);
-// const data : Courses[] = await resp.json();
 
-// const allCurses = data.map(info => ({
-//   id: info.acf.id,
-//   slug: info.slug
-// }));
+const FooterData: FooterData[] = DataWp?.cursosDatas.nodes.map( node => ({
+    slug : node.slug || '', 
+    text : node.cursosMalla.id || ''
+})) || [];
 
-// const module = data.flatMap(info => info.acf.modulos);
-// const semanas = module.flatMap(modu => modu.semanas);
 
-// console.table(allCurses);
-// console.log(allCurses);
-
-// console.log(semanas.flatMap(sem => sem.temas));
-// console.table(semanas.flatMap(sem => sem.temas));
 ---
 
 <!doctype html>
@@ -74,7 +67,7 @@ const { titulo, descripction, image = IMG__DEFAULT } = Astro.props;
       <slot />
       <slot name="CTA" />
       <BtnWhatsApp />
-      <Footer />
+      <Footer dataWp={FooterData} />
       <!-- <MiFooter dataCourse={ allCurses } /> -->
    </body>
 </html>

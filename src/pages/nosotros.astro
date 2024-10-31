@@ -3,10 +3,48 @@ import Layout from "@/layout/Layout.astro";
 import AboutUs from "@/sections/AboutUs.Nosotros.astro";
 import Navbar from "@/sections/Navbar.astro";
 
+import { wordPressFecth } from '@/utils/WordPressFetch';
+
+const DataWp = await wordPressFecth({
+   query: `
+   
+   query NewQuery {
+  cursosDatas {
+    nodes {
+      slug
+      cursosMalla {
+        id
+        descripcion
+        imageBanner {
+          mediaItemUrl
+        }
+        image {
+          mediaDetails {
+            height
+            width
+          }
+          mediaItemUrl
+        }
+        modulos {
+          idModulo
+          semanas {
+            temas {
+              data
+            }
+          }
+        }
+        
+      }
+    }
+  }
+}
+
+   `,
+});
 
 ---
 
-<Layout titulo="contacto" descripction="contactate con nosotros, mediante nuestras redes ">
+<Layout titulo="contacto" descripction="contactate con nosotros, mediante nuestras redes" DataWp={ DataWp} >
 
     <Navbar slot="Navbar" position="sticky" />
     <AboutUs />

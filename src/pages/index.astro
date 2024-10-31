@@ -5,9 +5,50 @@ import AboutUs from '@/sections/AboutUs.Home.astro';
 import TextInfinite from '@/sections/TextInfinite.astro';
 import HeroForm from '@/sections/HeroForm.astro';
 import Navbar from '@/sections/Navbar.astro';
+import Cursos from '@/sections/Cursos.Home.astro';
+import { wordPressFecth } from '@/utils/WordPressFetch';
+
+const DataWp = await wordPressFecth({
+   query: `
+   
+   query NewQuery {
+  cursosDatas {
+    nodes {
+      slug
+      cursosMalla {
+        id
+        descripcion
+        imageBanner {
+          mediaItemUrl
+        }
+        image {
+          mediaDetails {
+            height
+            width
+          }
+          mediaItemUrl
+        }
+        modulos {
+          idModulo
+          semanas {
+            temas {
+              data
+            }
+          }
+        }
+        
+      }
+    }
+  }
+}
+
+   `,
+});
+
+
 ---
 
-<Layout titulo="inicio" descripction="Instituto de formacion tencologica tu mejor opción en enseñanza online">
+<Layout titulo="inicio" descripction="Instituto de formacion tencologica tu mejor opción en enseñanza online" DataWp={ DataWp} >
    <!-- <link
         slot="preload"
         fetchpriority="high"
@@ -21,8 +62,7 @@ import Navbar from '@/sections/Navbar.astro';
    <Navbar slot="Navbar" />
    <HeroForm />
    <Beneficie />
-   <!-- <Cursos /> -->
-   <!-- <Beneficios /> -->
+   <Cursos  cursos={ DataWp.cursosDatas.nodes}  />
    <TextInfinite />
    <AboutUs />
    <!-- <Cta slot="CTA" /> -->

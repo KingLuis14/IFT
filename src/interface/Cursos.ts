@@ -1,25 +1,61 @@
-// cursos.ts
-export interface Tema {
-    temas: string[];
+export interface Cursos {
+    data:       Data;
+    extensions: Extensions;
 }
 
-export interface Curso {
-    id: string;
-    semanas: Tema[];
+export interface Data {
+    cursosDatas: CursosDatas;
 }
 
-export interface Course {
-    nombre: string;
+export interface CursosDatas {
+    nodes: Node[];
+}
+
+export interface Node {
+    slug:        string;
+    cursosMalla: CursosMalla;
+}
+
+export interface CursosMalla {
+    id:          string;
     descripcion: string;
-    url: string;
-    categoria?: string; // Categoria es opcional ya que no está presente en todos los objetos
-    imagenPlaceholder: string;
-    imagenOriginal: string;
-    imagenBanner: string;
-    imagenBanner64: string;
-    cursos: Curso[];
+    imageBanner: ImageBanner | null;
+    image:       Image;
+    modulos:     Modulo[];
 }
 
-export interface ApiResponse {
-    data: Course[];
+export interface Image {
+    mediaDetails: MediaDetails;
+    mediaItemUrl: string;
+}
+
+export interface MediaDetails {
+    height: number;
+    width:  number;
+}
+
+export interface ImageBanner {
+    mediaItemUrl: string;
+}
+
+export interface Modulo {
+    idModulo: string;
+    semanas:  Semana[];
+}
+
+export interface Semana {
+    temas: Tema[];
+}
+
+export interface Tema {
+    data: string;
+}
+
+export interface Extensions {
+    debug: Debug[];
+}
+
+export interface Debug {
+    type:    string;
+    message: string;
 }

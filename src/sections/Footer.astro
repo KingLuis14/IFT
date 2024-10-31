@@ -1,5 +1,17 @@
 ---
 import { Icon } from "astro-icon/components";
+
+export interface FooterData {
+  slug: string;
+  text : string;
+}
+
+interface Props {
+  dataWp : FooterData[];
+}
+const {dataWp} = Astro.props;
+
+
 ---
 
 <footer class="section-page bg-color-black-900 color-white-000">
@@ -9,17 +21,17 @@ import { Icon } from "astro-icon/components";
         <a href="/">
           <img src="/img/logo.png" alt="logo del intituto ift"   >
         </a>
-        
-        <!-- <p>Balanzas del Oriente</p> -->
+
       </div>
 
       <div class="container__groupNav">
         <h3>Navegación</h3>
         <ul class="container__list">
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Productos</a></li>
-          <li><a href="#">Nosotros</a></li>
-          <li><a href="#">Contacto</a></li>
+          {
+            dataWp.map( data => (
+              <li><a href={`/${data.slug}`}>{data.text}</a></li>
+            ))
+          }      
         </ul>
       </div>
 

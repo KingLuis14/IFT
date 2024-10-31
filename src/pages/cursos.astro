@@ -2,9 +2,49 @@
 import Layout from '@/layout/Layout.astro';
 import CursosSplit from '@/sections/CursosSplit.astro';
 import Navbar from '@/sections/Navbar.astro';
+
+import { wordPressFecth } from '@/utils/WordPressFetch';
+
+const DataWp = await wordPressFecth({
+   query: `
+   
+   query NewQuery {
+  cursosDatas {
+    nodes {
+      slug
+      cursosMalla {
+        id
+        descripcion
+        imageBanner {
+          mediaItemUrl
+        }
+        image {
+          mediaDetails {
+            height
+            width
+          }
+          mediaItemUrl
+        }
+        modulos {
+          idModulo
+          semanas {
+            temas {
+              data
+            }
+          }
+        }
+        
+      }
+    }
+  }
+}
+
+   `,
+});
+
 ---
 
-<Layout titulo="nosotros" descripction="Hola somos un instituto">
+<Layout titulo="nosotros" descripction="Hola somos un instituto" DataWp={ DataWp} >
    <Navbar slot="Navbar" position="sticky" />
    <CursosSplit />
 
