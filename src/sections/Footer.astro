@@ -29,7 +29,7 @@ const {dataWp} = Astro.props;
         <ul class="container__list">
           {
             dataWp.map( data => (
-              <li><a href={`/${data.slug}`}>{data.text}</a></li>
+              <li><a href={`/cursos/${data.slug}`}>{data.text}</a></li>
             ))
           }      
         </ul>

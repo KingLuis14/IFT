@@ -1,24 +1,40 @@
 ---
 import FormNew from '@/components/FormNew.astro';
-import myBackground from '@/assets/home-hero-banner.webp';
+import type { ImageBanner } from '@/interface/Cursos';
 import { getImage } from 'astro:assets';
 
-const desktopImg = await getImage({
-   src: myBackground,
-   format: 'webp',
-   width: 400,
-   quality: 60,
-});
+let backgroundImageUrl : string;
+
+
+interface Props {
+   titulo : string;
+   descripcion: string;
+   textButton?: string;
+   imageBackground: ImageMetadata | ImageBanner;
+}
+
+const { titulo , descripcion , textButton , imageBackground } = Astro.props;
+
+if ('mediaItemUrl' in imageBackground){
+   backgroundImageUrl = imageBackground.mediaItemUrl;
+}else {
+   const desktopImg = await getImage({
+      src: imageBackground,
+      format: 'webp',
+      width: 700,
+      quality: 60,
+   });
+   backgroundImageUrl = desktopImg.src;
+}
+
 ---
 
-<section class="hero-img" style={`background-image: url(${desktopImg.src});`}>
+<section class="hero-img" style={`background-image: url(${backgroundImageUrl});`}>
    <div class="wrapper container">
       <div class="container__content color-white-000">
-         <h1 class="fs-super-title-1 font-bebas-neue" style="line-height: 1;"  >Instituto de Formación Tecnológica</h1>
-         <p>
-            Una empresa especializada en capacitaciones tecnológicas, ofrecemos programas de formación de vanguardia en diversas áreas de la tecnología
-         </p>
-         <a class="button button--primary button--content" href="#">Button</a>
+         <h1 class="fs-super-title-1 font-bebas-neue" style="line-height: 1;"  >{ titulo }</h1>
+         <p>{ descripcion }</p>
+         <a class="button button--primary button--content" href="#">{ textButton }</a>
       </div>
 
       <div class="container__form">

@@ -19,7 +19,7 @@ export interface Node {
 export interface CursosMalla {
     id:          string;
     descripcion: string;
-    imageBanner: ImageBanner | null;
+    imageBanner: ImageBanner;
     image:       Image;
     modulos:     Modulo[];
 }

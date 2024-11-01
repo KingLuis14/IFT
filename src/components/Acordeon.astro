@@ -1,114 +1,119 @@
 ---
-import ItemAcordeon from '@/components/ItemAcordeon.astro';
+import type {  Semana } from '@/interface/Cursos';
 import { Icon } from 'astro-icon/components';
+import ItemAcordeon from './ItemAcordeon.astro';
 
-interface Props {
-  numModulo: number;
-  modulo: string;
-  semanas: string[];
+//{ rotate: numSemana === 1 }  { isOpen: numSemana === 1 }
+
+interface Props extends Semana {
+   numSemana: number;
+   open? : boolean;
+
 }
 
-const { numModulo, semanas } = Astro.props;
+const {  numSemana , temas, open = false } = Astro.props;
 ---
 
-<article class="Acordeon">
-  <button class="Acordeon__Header">
-    Semana {numModulo}
-    <span class="Acordeon__Boton">
-      <Icon name="ArrowIcon" class:list={['Acordeon__Icono', { rotate: numModulo === 1 }]} size={21} />
-    </span>
-  </button>
-  <div class:list={['Acordeon__Contenido', { isOpen: numModulo === 1 }]}>
-    <div style="overflow: hidden;">
-      <ul class="Acordeon__lista">
-        {
-          semanas.map((tema) => {
-            return <ItemAcordeon tema={tema} colorIcono="#4054ff" />;
-          })
-        }
-      </ul>
-    </div>
-  </div>
-</article>
+<div class="Acordeon">
+   <button class="Acordeon__Header">
+      Semana {numSemana}
+      <span class="Acordeon__Boton">
+         <Icon name="ArrowIcon" class:list={['Acordeon__Icono', { rotate: open }]} size={21} />
+      </span>
+   </button>
+   <div class:list={['Acordeon__Contenido', { isOpen: open }]}>
+      <div style="overflow: hidden;">
+         <ul class="Acordeon__lista">
+            {
+               temas.map(({ data }) => (
+                  <li>
+                     <ItemAcordeon tema={data} colorIcono="#4054ff" />
+                  </li>
+               ))
+            }
+         </ul>
+      </div>
+   </div>
+</div>
 
 <style lang="scss">
-  .Acordeon {
-    display: grid;
-    background-color: #fff;
-    border-left: 3px solid var(--color-Primary500);
-    border-radius: 0.25rem;
-
-    &__Header {
-      padding: 1rem;
-      cursor: pointer;
-      display: flex;
-      text-align: start;
-      justify-content: space-between;
-      align-items: center;
-      font-size: var(--step-0);
-      gap: 0.5rem;
-      font-weight: 700;
-      border: none;
-      background-color: transparent;
-    }
-
-    &__Contenido {
+   .Acordeon {
       display: grid;
-      will-change: grid-template-rows;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 0.2s ease-out;
+      background-color: #fff;
+      border-left: 3px solid var(--color-Primary500);
+      border-radius: 0.25rem;
 
-      &.isOpen {
-        grid-template-rows: 1fr;
+      &__Header {
+         padding: 1rem;
+         cursor: pointer;
+         display: flex;
+         text-align: start;
+         justify-content: space-between;
+         align-items: center;
+         font-size: var(--step-0);
+         gap: 0.5rem;
+         font-weight: 700;
+         border: none;
+         background-color: transparent;
       }
-    }
 
-    &__lista {
-      padding-inline: 1rem;
-      padding-bottom: 1rem;
-      display: grid;
-      gap: 0.5rem;
-    }
+      &__Contenido {
+         display: grid;
+         will-change: grid-template-rows;
+         grid-template-rows: 0fr;
+         transition: grid-template-rows 0.2s ease-out;
 
-    &__Icono {
-      transform: rotate(180deg);
-      transition: transform 0.2s linear;
-
-      &.rotate {
-        transform: rotate(0deg);
+         &.isOpen {
+            grid-template-rows: 1fr;
+         }
       }
-    }
-  }
+
+      &__lista {
+         padding-inline: 1rem;
+         padding-bottom: 1rem;
+         display: grid;
+         gap: 0.5rem;
+      }
+
+      &__Icono {
+         transform: rotate(180deg);
+         transition: transform 0.2s linear;
+
+         &.rotate {
+            transform: rotate(0deg);
+         }
+      }
+   }
 </style>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
-    const SectionAcordeon = document.getElementById('malla-curricular');
+   document.addEventListener('astro:page-load', () => {
+      const SectionAcordeon = document.getElementById('malla-curricular');
 
-    const ACORDEON = (e) => {
-      const header = (e.target as HTMLElement).closest('.Acordeon__Header');
-      if (!header) return;
+      const ACORDEON = (e) => {
+         const header = (e.target as HTMLElement).closest('.Acordeon__Header');
+         if (!header) return;
 
-      const contenido = header.nextElementSibling as HTMLElement;
-      contenido.classList.toggle('isOpen');
+         const contenido = header.nextElementSibling as HTMLElement;
+         contenido.classList.toggle('isOpen');
 
-      const arrow = header.querySelector('.Acordeon__Icono');
+         const arrow = header.querySelector('.Acordeon__Icono');
 
-      if (arrow) {
-        arrow.classList.toggle('rotate');
-      }
+         if (arrow) {
+            arrow.classList.toggle('rotate');
+         }
 
-      contenido.addEventListener(
-        'transitionend',
-        () => {
-          contenido.style.willChange = 'auto';
-        },
-        { once: true },
-      );
-    };
+         contenido.addEventListener(
+            'transitionend',
+            () => {
+               contenido.style.willChange = 'auto';
+            },
+            { once: true },
+         );
+      };
 
-    SectionAcordeon?.addEventListener('click', (e) => {
-      ACORDEON(e);
-    });
-  });
+      SectionAcordeon?.addEventListener('click', (e) => {
+         ACORDEON(e);
+      });
+   });
 </script>

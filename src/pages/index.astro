@@ -7,6 +7,8 @@ import HeroForm from '@/sections/HeroForm.astro';
 import Navbar from '@/sections/Navbar.astro';
 import Cursos from '@/sections/Cursos.Home.astro';
 import { wordPressFecth } from '@/utils/WordPressFetch';
+import { getImage } from 'astro:assets';
+import myBackground from '@/assets/home-hero-banner.webp';
 
 const DataWp = await wordPressFecth({
    query: `
@@ -46,6 +48,16 @@ const DataWp = await wordPressFecth({
 });
 
 
+
+
+const HeroData = {
+   titulo : "Instituto de Formación Tecnológica",
+   descripcion: "  Una empresa especializada en capacitaciones tecnológicas, ofrecemos programas de formación de vanguardia en diversas áreas de la tecnología",
+   textButton: "Ver Cursos",
+   imageBackground: myBackground
+}
+
+
 ---
 
 <Layout titulo="inicio" descripction="Instituto de formacion tencologica tu mejor opción en enseñanza online" DataWp={ DataWp} >
@@ -60,7 +72,7 @@ const DataWp = await wordPressFecth({
     /> -->
 
    <Navbar slot="Navbar" />
-   <HeroForm />
+   <HeroForm {...HeroData} />
    <Beneficie />
    <Cursos  cursos={ DataWp.cursosDatas.nodes}  />
    <TextInfinite />

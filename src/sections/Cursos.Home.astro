@@ -16,7 +16,7 @@ const { cursos } = Astro.props;
             {
                cursos.map(({ slug, cursosMalla }) => (
                   <li class="container__item">
-                     <a href={`/${slug}`}>
+                     <a href={`/cursos/${slug}`}>
                         <img src={cursosMalla.image.mediaItemUrl} alt={cursosMalla.id} />
                      </a>
                   </li>

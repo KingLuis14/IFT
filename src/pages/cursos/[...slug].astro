@@ -1,0 +1,74 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '@/layout/Layout.astro';
+import Navbar from '@/sections/Navbar.astro';
+
+import { wordPressFecth } from '@/utils/WordPressFetch';
+import MallaCurricular from '@/sections/MallaCurricular.astro';
+import HeroForm from '@/sections/HeroForm.astro';
+
+export const getStaticPaths = (async () => {
+   const DataWp = await wordPressFecth({
+      query: `
+   
+   query NewQuery {
+  cursosDatas {
+    nodes {
+      slug
+      cursosMalla {
+        id
+        descripcion
+        imageBanner {
+          mediaItemUrl
+        }
+        image {
+          mediaDetails {
+            height
+            width
+          }
+          mediaItemUrl
+        }
+        modulos {
+          idModulo
+          semanas {
+            temas {
+              data
+            }
+          }
+        }
+        
+      }
+    }
+  }
+}
+
+   `,
+   });
+
+   return DataWp.cursosDatas.nodes.map((curso) => ({
+      params: {
+         slug: curso.slug,
+      },
+      props: {
+         DataWp,
+         ...curso.cursosMalla,
+      },
+   }));
+}) satisfies GetStaticPaths;
+
+const { id, DataWp, modulos, image, descripcion, imageBanner } = Astro.props;
+
+const HeroData = {
+   titulo : id,
+   descripcion: descripcion,
+   textButton: "Ver malla",
+   imageBackground: imageBanner
+}
+
+---
+
+<Layout titulo="nosotros" descripction="Hola somos un instituto" DataWp={DataWp}>
+   <Navbar slot="Navbar" position="sticky" />
+   <HeroForm {...HeroData} />
+   <MallaCurricular modulos={modulos} imagen={image} id={id} />
+</Layout>

@@ -9,11 +9,11 @@ const { tema, colorIcono, class: className, ...rest } = Astro.props;
 import { Icon } from "astro-icon/components";
 ---
 
-<li class=`${className}` {...rest}>
+<li class="" {...rest} >
     <span class="Icono" style=`--colorIcono : ${colorIcono}`>
         <Icon name="CheckIcon" size={21} />
     </span>
-    <p>{tema}</p>
+    <p class="color-black-200" >{tema}</p>
 </li>
 
 <style lang="scss">
@@ -29,7 +29,5 @@ import { Icon } from "astro-icon/components";
         flex-shrink: 0;
     }
 
-    p{
-       color: rgb(69, 79, 95);
-    }
+    
 </style>
