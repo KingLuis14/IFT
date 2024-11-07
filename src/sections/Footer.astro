@@ -1,4 +1,5 @@
 ---
+import { NUM__WSP } from "@/constants";
 import { Icon } from "astro-icon/components";
 
 export interface FooterData {
@@ -25,11 +26,18 @@ const {dataWp} = Astro.props;
       </div>
 
       <div class="container__groupNav">
-        <h3>Navegación</h3>
+        <h3>Cursos</h3>
         <ul class="container__list">
           {
             dataWp.map( data => (
-              <li><a href={`/cursos/${data.slug}`}>{data.text}</a></li>
+              <li>
+                <a 
+                href={`/cursos/${data.slug}/#malla-curricular`}
+                aria-label={`ir a la pagina del curso de ${data.text} `}
+                >
+                {data.text}
+                </a>
+                </li>
             ))
           }      
         </ul>
@@ -40,11 +48,12 @@ const {dataWp} = Astro.props;
       <div class="container__groupNav">
         <h3>Empresa</h3>
         <ul class="container__list">
-          <li>tucorreo@gmail.com</li>
+          <li>informes@ift.pe</li>
           <li>
-            <a href="#">Jr Loreto N° 145</a>
+            <a href="/contacto/#ubicacion">Jr Hipólito Unanue N° 393 Cercado de Lima - Perú</a>
           </li>
-          <li><a href="#">980784568</a></li>
+          <li><a target="_blank" href={`https://api.whatsapp.com/send/?phone=${NUM__WSP}&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0`}
+            >{NUM__WSP}</a></li>
         </ul>
       </div>
     </nav>
@@ -54,16 +63,16 @@ const {dataWp} = Astro.props;
         <small>Todos los derechos reservados</small>
       </div>
       <aside>
-        <a href="#">
+        <a target="_blank"  class="social-link" href="https://www.facebook.com/people/Instituto-de-Formaci%C3%B3n-Tecnol%C3%B3gica-IFT/61555145250465/">
           <Icon name="facebook" class="color-blue-300" size={25} />
         </a>
-        <a href="#">
+        <a target="_blank"  class="social-link"  href="https://www.instagram.com/accounts/suspended/?next=https%3A%2F%2Fwww.instagram.com%2Finstitutoift%2F%3Figsh%3DNTc4MTIwNjQ2YQ%253D%253D%26__coig_ufac%3D1#">
           <Icon name="Instagram" class="color-blue-300" size={25} />
         </a>
-        <a href="#">
+        <a target="_blank"  class="social-link" href="https://www.tiktok.com/@instituto.ift">
           <Icon name="Tiktok" class="color-blue-300" size={25} />
         </a>
-        <a href="#">
+        <a target="_blank"  class="social-link" href="https://www.youtube.com/channel/UCesc5xJfVHuvT6k401bGlcg">
           <Icon name="Youtube" class="color-blue-300" size={25} />
         </a>
       </aside>
@@ -130,4 +139,14 @@ const {dataWp} = Astro.props;
       color: var(--white-100);
     }
   }
+
+  .social-link{
+
+    transition: transform .5s;
+    &:hover{
+      transform: scale(1.3);
+    }
+  }
+
+
 </style>

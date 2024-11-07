@@ -11,9 +11,10 @@ interface Props {
    descripcion: string;
    textButton?: string;
    imageBackground: ImageMetadata | ImageBanner;
+   arrayCursos : string[];
 }
 
-const { titulo , descripcion , textButton , imageBackground } = Astro.props;
+const { titulo , descripcion , textButton , imageBackground, arrayCursos } = Astro.props;
 
 if ('mediaItemUrl' in imageBackground){
    backgroundImageUrl = imageBackground.mediaItemUrl;
@@ -40,7 +41,7 @@ if ('mediaItemUrl' in imageBackground){
       <div class="container__form">
 
           <h2>Inscribete</h2>  
-          <FormNew type="cursos" />
+          <FormNew type="cursos" {arrayCursos} />
       </div>
    </div>
 </section>

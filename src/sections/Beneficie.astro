@@ -3,17 +3,12 @@ import CardBeneficie from '@/components/CardBeneficie.astro';
 import Typografic from '@/components/Typografic.astro';
 ---
 
-<section class="section-page bg-color-blue-100"  >
+<section class="section-page bg-color-blue-100">
    <div class="wrapper beneficie">
       <div class="beneficie__content loading-top">
-         <small class="font-bebas-neue color-blue-800">All you need</small>
-         <h2 class="font-bebas-neue color-blue-800 fs-super-title-2"
-            >Our services will make your product successful
-         </h2>
-         <Typografic as="p" color={'black-text'}
-            >Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-            dolore suscipit ipsam sed corrupti dicta?</Typografic
-         >
+         <small class="font-bebas-neue color-blue-800">Educación Online</small>
+         <h2 class="font-bebas-neue color-blue-800 fs-super-title-2">Conoce las Ventajas que Nos Diferencian y Nos Hacen Únicos</h2>
+         <p class="color-black-000">Flexibilidad, calidad y apoyo constante en cada clase.</p>
       </div>
       <div class="beneficie__cardContainer">
          <CardBeneficie icon="certificado" text="Certificacion Progresiva" />
@@ -21,8 +16,8 @@ import Typografic from '@/components/Typografic.astro';
          <CardBeneficie icon="libro" text="Materiales por Curso" />
          <CardBeneficie icon="plataformaVirtual" text="Plataforma Virtual" />
       </div>
-   </d>
-</SectionPage>
+   </div>
+</section>
 
 <style lang="scss">
    .beneficie {
@@ -57,7 +52,6 @@ import Typografic from '@/components/Typografic.astro';
 
          & :global(> *) {
             background-color: var(--white-000);
-           
          }
 
          & :global(:is(> :nth-child(2), > :nth-child(3))) {

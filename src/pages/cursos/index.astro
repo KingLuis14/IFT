@@ -41,11 +41,12 @@ const DataWp = await wordPressFecth({
 
    `,
 });
-
 ---
 
-<Layout titulo="nosotros" descripction="Hola somos un instituto" DataWp={ DataWp} >
+<Layout
+   titulo="cursos"
+   descripction="Nuestros cursos, liderados por expertos, te brindan las habilidades más buscadas en el mercado laboral actual. Desde el primer día, aprenderás lo necesario para destacar en la industria tecnológica y dar el siguiente paso en tu carrera profesional"
+   DataWp={DataWp}>
    <Navbar slot="Navbar" position="sticky" />
-   <CursosSplit />
-
+   <CursosSplit nodes={DataWp.cursosDatas.nodes} />
 </Layout>

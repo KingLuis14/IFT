@@ -41,25 +41,12 @@ const DataWp = await wordPressFecth({
 
    `,
 });
-
-
-
 ---
 
-<Layout titulo="contacto" descripction="contactate con nosotros, mediante nuestras redes " DataWp={ DataWp} >
-   <!-- <link
-      slot="preload"
-      fetchpriority="high"
-      rel="preload"
-      as="image"
-      href=`/img/${imagen}-banner-small-lcpi.${PLACEHOLDER_FORMATS}`
-      media="(max-width: 640px)"
-      type="image/webp"
-   /> -->
-
+<Layout titulo="contacto" descripction="contactate con nosotros, mediante nuestras redes y demás" DataWp={DataWp}>
    <Navbar slot="Navbar" position="sticky" />
    <FormContact />
-   <section class="section-page">
+   <!-- <section class="section-page" id="ubicacion">
       <div class="wrapper section-page-flow">
          <h1 class="fs-super-title-2 font-bebas-neue">Ubicanos</h1>
          <iframe
@@ -70,5 +57,5 @@ const DataWp = await wordPressFecth({
             referrerpolicy="no-referrer-when-downgrade">
          </iframe>
       </div>
-   </section>
+   </section> -->
 </Layout>

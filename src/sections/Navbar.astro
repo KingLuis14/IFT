@@ -58,6 +58,7 @@ const links = [
                            ]}
                            target={ text === 'Area Virtual' ? '_blank' : '_self' }
                            href={href}
+                           aria-label={`ir a la pagina de ${text} `}
                            >
                            {text}
                         </a>
@@ -68,7 +69,7 @@ const links = [
          </nav>
       </div>
 
-      <button class="menu__btn">
+      <button class="menu__btn" aria-label="abrir menu de navegacion"  >
          <Icon name={'BtnToogle'} size={25} />
       </button>
    </div>

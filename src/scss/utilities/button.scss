@@ -1,38 +1,52 @@
-.button{
-    padding: .75em 1.6em;
-    border-radius: .25em;
-    font-weight: 500;
-    
+.button {
+   padding: 0.75em 1.6em;
+   border-radius: 0.25em;
+   font-weight: 500;
+   cursor: pointer;
 
-    &--accent{
-        background-color: var(--green-500);
-    }
+   &--accent {
+      background-color: var(--green-500);
+   }
 
-    &--center{
-        display: block;
-        margin-inline: auto;
-        text-align: center;
-        width: max-content;
-    }
+   &--center {
+      display: block;
+      margin-inline: auto;
+      text-align: center;
+      width: max-content;
+   }
 
-    &--content{
-        width: fit-content;
-    }
+   &--content {
+      width: fit-content;
+   }
 
-    &--primary{
-        background-color: var(--blue-600);
-        color: var(--white-000);
+   &--primary {
+      background-color: var(--blue-600);
+      color: var(--white-000);
 
-        &:hover{
-            background-color: var(--blue-800);
-        }
-    }
+      &:hover {
+         background-color: var(--blue-800);
+      }
+   }
 
-    &--navigation{
-        
-        padding: .5em 1.2em;
-        font-weight: 400;
+   &--loading {
+      
+      color: var(--white-000);
+      background: linear-gradient(90deg, var(--blue-400) 0%, var(--blue-600) 50%, var(--blue-400) 100%);
+      background-size: 200% 100%;
+      animation: loadingBackground 1.5s ease-in-out infinite;
+   }
 
-        
-    }
+   &--navigation {
+      padding: 0.5em 1.2em;
+      font-weight: 400;
+   }
+
+   @keyframes loadingBackground {
+      0% {
+         background-position: 200% 0;
+      }
+      100% {
+         background-position: -200% 0;
+      }
+   }
 }

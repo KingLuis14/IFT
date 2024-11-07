@@ -1,7 +1,7 @@
 ---
-import Layout from "@/layout/Layout.astro";
-import AboutUs from "@/sections/AboutUs.Nosotros.astro";
-import Navbar from "@/sections/Navbar.astro";
+import Layout from '@/layout/Layout.astro';
+import AboutUs from '@/sections/AboutUs.Nosotros.astro';
+import Navbar from '@/sections/Navbar.astro';
 
 import { wordPressFecth } from '@/utils/WordPressFetch';
 
@@ -41,11 +41,12 @@ const DataWp = await wordPressFecth({
 
    `,
 });
-
 ---
 
-<Layout titulo="contacto" descripction="contactate con nosotros, mediante nuestras redes" DataWp={ DataWp} >
-
-    <Navbar slot="Navbar" position="sticky" />
-    <AboutUs />
+<Layout
+   titulo="nosotros"
+   descripction="IFT es una empresa especializada en capacitaciones tecnológicas. Con nuestro RUC 20611910224, ofrecemos programas de formación de vanguardia en diversas áreas de la tecnología, desde desarrollo de software hasta ciberseguridad."
+   DataWp={DataWp}>
+   <Navbar slot="Navbar" position="sticky" />
+   <AboutUs />
 </Layout>

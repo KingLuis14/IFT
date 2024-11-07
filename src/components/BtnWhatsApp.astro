@@ -1,9 +1,10 @@
 ---
+import { NUM__WSP } from "@/constants";
 import { Icon } from "astro-icon/components";
 ---
 
 <a
-    href={`https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0`}
+    href={`https://api.whatsapp.com/send/?phone=${NUM__WSP}&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0`}
     target="_blank"
     class="Container"
     aria-label="boton para abrir el whatsapp"

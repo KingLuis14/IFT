@@ -1,6 +1,7 @@
 ---
 import Button from '@/components/Button.astro';
 import Typografic from '@/components/Typografic.astro';
+import { NUM__WSP } from '@/constants';
 ---
 
 <section>
@@ -19,7 +20,7 @@ import Typografic from '@/components/Typografic.astro';
       >
       <Button
          as="a"
-         href="https://api.whatsapp.com/send/?phone=51980816746&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0"
+         href={`https://api.whatsapp.com/send/?phone=${NUM__WSP}&text=%C2%A1Hola%21+%EF%BF%BD+Mas+informaci%C3%B3n&type=phone_number&app_absent=0`}
          target="_blank"
          size={'content'}
          theme="theme2">Mas Información</Button

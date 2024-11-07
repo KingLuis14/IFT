@@ -16,7 +16,10 @@ const { cursos } = Astro.props;
             {
                cursos.map(({ slug, cursosMalla }) => (
                   <li class="container__item">
-                     <a href={`/cursos/${slug}`}>
+                     <a
+                      href={`/cursos/${slug}/#malla-curricular`}
+                      aria-label={`ir a la pagina del curso de ${cursosMalla.id} `}
+                     >
                         <img src={cursosMalla.image.mediaItemUrl} alt={cursosMalla.id} />
                      </a>
                   </li>

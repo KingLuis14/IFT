@@ -51,24 +51,35 @@ export const getStaticPaths = (async () => {
       },
       props: {
          DataWp,
-         ...curso.cursosMalla,
+         arrayCursos : DataWp.cursosDatas.nodes.map(curso => curso.cursosMalla.id),
+         ...curso.cursosMalla
       },
    }));
 }) satisfies GetStaticPaths;
 
-const { id, DataWp, modulos, image, descripcion, imageBanner } = Astro.props;
+const { id, DataWp, modulos, image, descripcion, imageBanner, arrayCursos } = Astro.props;
+
+
 
 const HeroData = {
-   titulo : id,
+   titulo: id,
    descripcion: descripcion,
-   textButton: "Ver malla",
-   imageBackground: imageBanner
-}
-
+   textButton: 'Ver malla',
+   imageBackground: imageBanner,
+};
 ---
 
-<Layout titulo="nosotros" descripction="Hola somos un instituto" DataWp={DataWp}>
-   <Navbar slot="Navbar" position="sticky" />
-   <HeroForm {...HeroData} />
+<Layout titulo={id} descripction={descripcion} DataWp={DataWp} image={image.mediaItemUrl}>
+   <link
+      slot="preload"
+      fetchpriority="high"
+      rel="preload"
+      as="image"
+      href=`${imageBanner.mediaItemUrl}`
+      type="image/webp"
+   />
+
+   <Navbar slot="Navbar" />
+   <HeroForm {...HeroData} arrayCursos={arrayCursos} />
    <MallaCurricular modulos={modulos} imagen={image} id={id} />
 </Layout>

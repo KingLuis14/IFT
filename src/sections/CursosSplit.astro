@@ -1,8 +1,55 @@
 ---
+import type { CursosDatas } from '@/interface/Cursos';
 import { Icon } from 'astro-icon/components';
+
+interface Props extends CursosDatas {}
+
+const { nodes } = Astro.props;
 ---
 
-<section class="section section-page">
+{
+   nodes.map(({ slug, cursosMalla }, index) => (
+      <section class:list={['section section-page', { invert: index % 2 === 1 }]}>
+         <div class="wrapper container">
+            <div class="container__content loading-top">
+               <small class="font-bebas-neue fs-normal">Curso</small>
+               <h2 class="container__title font-bebas-neue">{cursosMalla.id}</h2>
+               <p> {cursosMalla.descripcion} </p>
+               <ul class="container__list">
+                  <li class="listIcon">
+                     <Icon name="CheckIcon" size={22} />
+                     <span>Virtual y Asincrono</span>
+                  </li>
+                  <li class="listIcon">
+                     <Icon name="CheckIcon" size={22} />
+                     <span>Certificación al Finalizar</span>
+                  </li>
+                  <li class="listIcon">
+                     <Icon name="CheckIcon" size={22} />
+                     <span>Plataforma Virtual</span>
+                  </li>
+               </ul>
+               <a 
+               class="button button--primary button--content"
+               style="margin-top: 1rem;"
+                href={`/cursos/${slug}/#malla-curricular`}
+                >Ver Malla</a>
+            </div>
+            <div class="container__imgWrapper loading-top">
+               <img
+                  class="container__img"
+                  src={cursosMalla.image.mediaItemUrl}
+                  alt={cursosMalla.id}
+                  style={` aspect-ratio : ${cursosMalla.image.mediaDetails.width} /  ${cursosMalla.image.mediaDetails.height} `}
+               />
+            </div>
+            
+         </div>
+      </section>
+   ))
+}
+
+<!-- <section class="section section-page">
    <div class="wrapper container">
       <div class="container__content loading-top">
          <small class="font-bebas-neue fs-normal">Curso</small>
@@ -10,19 +57,22 @@ import { Icon } from 'astro-icon/components';
          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit eveniet illo ex iure possimus similique.</p>
          <ul class="container__list">
             <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
+               <Icon name="CheckIcon" size={22} />
                <span>Lorem ipsum dolor sit amet.</span>
             </li>
             <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
-               <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus illo consectetur sapiente soluta hic quam?</span>
+               <Icon name="CheckIcon" size={22} />
+               <span>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus illo consectetur sapiente soluta
+                  hic quam?
+               </span>
             </li>
             <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
+               <Icon name="CheckIcon" size={22} />
                <span>Lorem ipsum dolor sit amet.</span>
             </li>
             <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
+               <Icon name="CheckIcon" size={22} />
                <span>Lorem ipsum dolor sit amet.</span>
             </li>
          </ul>
@@ -44,19 +94,19 @@ import { Icon } from 'astro-icon/components';
          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit eveniet illo ex iure possimus similique.</p>
          <ul class="container__list">
             <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
+               <Icon name="CheckIcon" size={22} />
                <span>Lorem ipsum dolor sit amet.</span>
             </li>
             <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
+               <Icon name="CheckIcon" size={22} />
                <span>Lorem ipsum dolor sit amet.</span>
             </li>
             <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
+               <Icon name="CheckIcon" size={22} />
                <span>Lorem ipsum dolor sit amet.</span>
             </li>
             <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
+               <Icon name="CheckIcon" size={22} />
                <span>Lorem ipsum dolor sit amet.</span>
             </li>
          </ul>
@@ -78,15 +128,15 @@ import { Icon } from 'astro-icon/components';
          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit eveniet illo ex iure possimus similique.</p>
          <ul class="container__list">
             <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
+               <Icon name="CheckIcon" size={22} />
                <span>Lorem ipsum dolor sit amet.</span>
             </li>
             <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
+               <Icon name="CheckIcon" size={22} />
                <span>Lorem ipsum dolor sit amet.</span>
             </li>
             <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
+               <Icon name="CheckIcon" size={22} />
                <span>Lorem ipsum dolor sit amet.</span>
             </li>
          </ul>
@@ -111,15 +161,15 @@ import { Icon } from 'astro-icon/components';
          </p>
          <ul class="container__list">
             <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
+               <Icon name="CheckIcon" size={22} />
                <span>Lorem ipsum dolor sit amet.</span>
             </li>
             <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
+               <Icon name="CheckIcon" size={22} />
                <span>Lorem ipsum dolor sit amet.</span>
             </li>
             <li class="listIcon">
-               <Icon name="CheckIcon" size={22}  />
+               <Icon name="CheckIcon" size={22} />
                <span>Lorem ipsum dolor sit amet.</span>
             </li>
          </ul>
@@ -132,7 +182,7 @@ import { Icon } from 'astro-icon/components';
          />
       </div>
    </div>
-</section>
+</section> -->
 
 <style lang="scss">
    .container {
@@ -163,25 +213,23 @@ import { Icon } from 'astro-icon/components';
          display: flex;
          flex-direction: column;
          gap: 0.5rem;
-         
-         
 
-         .listIcon{
+         .listIcon {
             // background-color: skyblue;
             display: flex;
             // align-items: center;
             gap: 0.5rem;
 
             > svg {
-                flex-shrink: 0;
-                // margin-top: .2rem;
+               flex-shrink: 0;
+               // margin-top: .2rem;
             }
          }
       }
 
-      &__imgWrapper{
-        border-radius: .5rem;
-        overflow: hidden;
+      &__imgWrapper {
+         border-radius: 0.5rem;
+         overflow: hidden;
       }
 
       &__img {
@@ -194,8 +242,8 @@ import { Icon } from 'astro-icon/components';
       background-color: var(--blue-100);
 
       &.invert {
-         background-color: var(--blue-900);
-         color: white;
+         background-color: var(--white-000);
+         // color: white;
 
          @media (width >= 768px) {
             .container__content {
@@ -204,5 +252,4 @@ import { Icon } from 'astro-icon/components';
          }
       }
    }
-
 </style>
